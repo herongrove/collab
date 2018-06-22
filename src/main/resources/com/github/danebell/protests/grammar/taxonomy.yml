@@ -1,0 +1,10 @@
+- Entities:
+  - Person
+  - Organization
+  - Government
+  - Location:
+    - Nation
+    - City
+    - Province
+- Events:
+  - Protest

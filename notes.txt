@@ -1,0 +1,13 @@
+Goals: 
+1. To extract information related to the demands of protests related to (1) international crises and (2) territorial disputes.
+2. To extract information about protestor violence.
+3. To extract information about government responses.
+
+Examples:
+At least <number> were killed and <number> were injured in <place> <when> during <violent?> protests against <topic>
+Enraged about <topic>, <name>, a <occupation>, joined thousands of <people> in a rare <legal?> protest march on the streets of <place> <when>.
+In the streets <when>, the protesters were objecting to <topic>.
+Although the protests clearly had government support — large-scale public demonstrations are extremely rare in <place> — many people came on their own and appeared to be genuinely angered at <topic>.
+
+Hard:
+The police kept protesters separated into groups of 100 to 200 each; at the peak of the demonstration, in the early afternoon, streets were lined with at least 20 such groups.

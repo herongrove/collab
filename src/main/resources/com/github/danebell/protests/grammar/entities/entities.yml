@@ -1,0 +1,33 @@
+- name: ner-person
+  label: Person
+  action: mkNERMentions
+  priority: 1
+  type: token
+  pattern: |
+    [entity='PERSON'] [entity='PERSON']*
+
+- name: ner-date
+  label: Date
+  action: mkNERMentions
+  priority: 1
+  type: token
+  pattern: |
+    [entity='DATE'] [entity='DATE']*
+
+- name: ner-org
+  label: Organization
+  action: mkNERMentions
+  priority: 1
+  type: token
+  pattern: |
+    [entity='ORGANIZATION'] [entity='ORGANIZATION']*
+
+- name: ner-loc
+  label: Location
+  action: mkNERMentions
+  priority: 1
+  type: token
+  pattern: |
+    [entity='LOCATION'] [entity='LOCATION']*
+
+
