@@ -6,6 +6,8 @@ import scala.collection.immutable.ListMap
 import jline.console.ConsoleReader
 import jline.console.history.FileHistory
 
+import com.github.danebell.protests.utils.DisplayUtils._
+
 /**
   * Interactive shell
   */
@@ -62,7 +64,6 @@ object ProtestShell extends App {
     }
 
     def extractFrom(text:String): Unit = {
-
       // preprocessing
       val doc = ieSystem.annotate(text)
 
