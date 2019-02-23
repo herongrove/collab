@@ -1,4 +1,4 @@
-package com.github.danebell.protests.utils
+package com.github.danebell.collab.utils
 
 import org.clulab.odin._
 import org.clulab.processors.{Document, Sentence}
@@ -68,7 +68,8 @@ object DisplayUtils {
     for ((s, i) <- doc.sentences.zipWithIndex) {
       sb.append(s"sentence #$i $nl")
       sb.append(s.getSentenceText + nl)
-      sb.append("Tokens: " + (s.words.indices, s.words, s.tags.get).zipped.mkString(", ") + nl)
+      if (s.lemmas.nonEmpty) sb.append(s.lemmas.get.mkString("", " ", nl))
+      sb.append("Tokens: " + (s.words.indices, s.words, s.tags.get).zipped.mkString("", ", ", nl))
       if (printDeps) sb.append(syntacticDependenciesToString(s) + nl)
       sb.append(nl)
 

@@ -1,0 +1,13 @@
+###############
+### SYNTAX
+###############
+
+- name: "propose-syntax-1"
+  label: Propose
+  action: mkCollabMention
+  pattern: |
+    trigger = [lemma=propose & tag=/^V/]
+    proposer:Actor = nsubj /conj|compound|amod|nmod_(such_as|including)/{,2}
+    proposal:Phrase = (dobj | ccomp) /conj|compound|amod|nmod_(such_as|including)/{,2}
+
+

@@ -1,10 +1,10 @@
-package com.github.danebell.protests.mentions
+package com.github.danebell.collab.mentions
 
 import org.clulab.odin._
 import org.clulab.processors.Document
 import org.clulab.struct.Interval
 
-class ProtestTextBoundMention(
+class CollabTextBoundMention(
   labels: Seq[String],
   tokenInterval: Interval,
   sentence: Int,
@@ -13,7 +13,7 @@ class ProtestTextBoundMention(
   foundBy: String
 ) extends TextBoundMention(labels, tokenInterval, sentence, document, keep, foundBy)
 
-class ProtestRelationMention(
+class CollabRelationMention(
   labels: Seq[String],
   arguments: Map[String, Seq[Mention]],
   paths: Map[String, Map[Mention, SynPath]],
@@ -23,7 +23,7 @@ class ProtestRelationMention(
   foundBy: String
 ) extends RelationMention(labels, mkTokenInterval(arguments), arguments, paths, sentence, document, keep, foundBy)
 
-class ProtestEventMention(
+class CollabEventMention(
   labels: Seq[String],
   trigger: TextBoundMention,
   arguments: Map[String, Seq[Mention]],

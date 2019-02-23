@@ -1,0 +1,5 @@
+taxonomy: com/github/danebell/collab/grammar/taxonomy.yml
+
+rules:
+  - import: com/github/danebell/collab/grammar/entities/entities.yml
+

@@ -1,0 +1,30 @@
+- Entity:
+  - Avoid
+  - Phrase:
+    - NounPhrase
+    - VerbPhrase
+    - PrepPhrase
+    - WhPhrase
+    - Sentence
+  - Concept:
+    - Topic
+    - Actor:
+      - Person
+      - Organization
+      - Government
+    - Date
+    - Location:
+      - Nation
+      - State
+      - City
+- Event:
+  - Collaboration
+  - Legislate:
+    - Propose
+    - Second
+    - Pass
+  - Communication:
+    - Declarative
+    - Interrogative
+    - Imperative
+  - Meeting

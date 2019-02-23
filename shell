@@ -1,1 +1,1 @@
-sbt "runMain com.github.danebell.protests.ProtestShell"
+sbt "runMain com.github.danebell.collab.CollabShell"

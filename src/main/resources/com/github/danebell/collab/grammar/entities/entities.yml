@@ -1,0 +1,130 @@
+- name: ner-person
+  label: Person
+  action: mkNERMentions
+  priority: 1
+  type: token
+  pattern: |
+    [entity=PERSON] [entity=PERSON]*
+
+- name: ner-date
+  label: Date
+  action: mkNERMentions
+  priority: 1
+  type: token
+  pattern: |
+    [entity=DATE] [entity=DATE]*
+
+- name: ner-org
+  label: Organization
+  action: mkNERMentions
+  priority: 1
+  type: token
+  pattern: |
+    [entity=ORGANIZATION] [entity=ORGANIZATION]*
+
+- name: ner-loc
+  label: Location
+  action: mkNERMentions
+  priority: 1
+  type: token
+  pattern: |
+    [entity=LOCATION] [entity=LOCATION]*
+
+
+# ALL CONCEPTS
+
+#- name: "base-concept-penn"
+#  label: Concept
+#  type: token
+#  unit: tag
+#  pattern: |
+#    /NN|PROPN|ADJ/* /NN/+
+#
+#- name: "base-concept-universal"
+#  label: Concept
+#  type: token
+#  unit: tag
+#  pattern: |
+#    /NOUN|PROPN|ADJ/* /NOUN|PROPN/+
+
+- name: "noun-phrase-1"
+  label: NounPhrase
+  priority: 1
+  type: token
+  #action: convertToConcept
+  unit: "tag"
+  pattern: |
+    /DT|NNP?S?|JJ/* /NNP?S?|PRP|JJ/ /DT|NNP?S?|JJ/*
+
+- name: "prep-phrase"
+  label: PrepPhrase
+  priority: 2
+  type: token
+  unit: "tag"
+  pattern: |
+    "IN"+ @NounPhrase
+
+- name: "prep-phrase-recurs"
+  label: PrepPhrase
+  priority: 3
+  type: token
+  unit: "tag"
+  pattern: |
+    @PrepPhrase{2,}
+
+- name: "noun-phrase-2"
+  label: NounPhrase
+  priority: 4
+  type: token
+  unit: "tag"
+  pattern: |
+    @NounPhrase @PrepPhrase
+
+- name: "noun-phrase-3"
+  label: NounPhrase
+  priority: 5
+  type: token
+  unit: "tag"
+  pattern: |
+    @NounPhrase "CC" @PrepPhrase
+    @NounPhrase "CC" @PrepPhrase
+
+- name: "verb-phrase-1"
+  label: VerbPhrase
+  priority: 6
+  type: token
+  unit: "tag"
+  pattern: |
+    /^(RB|VB)/+ @PrepPhrase? @NounPhrase+ ("CC" @NounPhrase)* @PrepPhrase*
+
+- name: "verb-phrase-2"
+  label: VerbPhrase
+  priority: 6+
+  type: token
+  unit: "tag"
+  pattern: |
+    /^(RB|VB)/+ @PrepPhrase
+
+- name: "wh-phrase-1"
+  label: WhPhrase
+  priority: 7
+  type: token
+  unit: "tag"
+  pattern: |
+    /^WP/ @VerbPhrase
+
+- name: "verb-phrase-3"
+  label: VerbPhrase
+  priority: 8
+  type: token
+  unit: "tag"
+  pattern: |
+    @VerbPhrase (@WhPhrase | @VerbPhrase)+
+
+- name: "sentence-1"
+  label: Sentence
+  priority: 9
+  type: token
+  unit: "tag"
+  pattern: |
+    @NounPhrase @VerbPhrase+

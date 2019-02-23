@@ -1,15 +1,15 @@
-package com.github.danebell.protests.utils
+package com.github.danebell.collab.utils
 
-import java.io.{File, FileNotFoundException}
+import java.io.{File, FileNotFoundException, PrintWriter}
 import java.nio.charset.StandardCharsets
+import java.nio.file.Paths
+
+import com.typesafe.scalalogging.LazyLogging
 
 import scala.io.BufferedSource
 import scala.io.Source
 
-//import org.slf4j.LoggerFactory
-
-object FileUtils {
-  //val logger = LoggerFactory.getLogger(this.getClass())
+object FileUtils extends LazyLogging {
   val utf8 = StandardCharsets.UTF_8.toString
 
   def sourceFromResource(path: String): BufferedSource = {
@@ -17,12 +17,12 @@ object FileUtils {
 
     if (url == null)
       throw newFileNotFoundException(path)
-    //logger.info("Sourcing resource " + url.getPath())
+    logger.info("Sourcing resource " + url.getPath())
     Source.fromURL(url, utf8)
   }
 
   def sourceFromFile(file: File): BufferedSource = {
-    //logger.info("Sourcing file " + file.getPath())
+    logger.info("Sourcing file " + file.getPath())
     Source.fromFile(file, utf8)
   }
 
@@ -48,4 +48,26 @@ object FileUtils {
   def getTextFromResource(path: String): String =
     getTextFromSource(sourceFromResource(path))
 
+  def getTextFromFile(file: File): String =
+    getTextFromSource(sourceFromFile(file))
+
+  def getTextFromFile(file: String): String = {
+    val fileFile = new File(file)
+    getTextFromSource(sourceFromFile(fileFile))
+  }
+
+  def writeTextToFile(file: String, text: String, dir: String = ""): Unit = {
+    writeTextToFile(Paths.get(dir, file).toFile, text)
+  }
+
+  def writeTextToFile(file: File, text: String): Unit = {
+    if (! file.getParentFile.exists) try { file.getParentFile.mkdirs() }
+    val p = new PrintWriter(file)
+    try {
+      p.write(text)
+    }
+    finally {
+      p.close()
+    }
+  }
 }

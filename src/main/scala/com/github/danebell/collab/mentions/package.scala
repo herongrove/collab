@@ -1,16 +1,16 @@
-package com.github.danebell.protests
+package com.github.danebell.collab
 
 import org.clulab.odin._
 
 package object mentions {
-  type ProtestMention = Mention
+  type CollabMention = Mention
 
   implicit class MentionOps(mention: Mention) {
-    def toProtestMention: ProtestMention = mention match {
-      case m: ProtestMention => m
+    def toCollabMention: CollabMention = mention match {
+      case m: CollabMention => m
 
       case m: TextBoundMention =>
-        new ProtestTextBoundMention(
+        new CollabTextBoundMention(
           m.labels,
           m.tokenInterval,
           m.sentence,
@@ -20,7 +20,7 @@ package object mentions {
         )
 
       case m: RelationMention =>
-        new ProtestRelationMention(
+        new CollabRelationMention(
           m.labels,
           convertArguments(m.arguments),
           m.paths,
@@ -31,7 +31,7 @@ package object mentions {
         )
 
       case m: EventMention =>
-        new ProtestEventMention(
+        new CollabEventMention(
           m.labels,
           m.trigger,
           convertArguments(m.arguments),
@@ -44,8 +44,8 @@ package object mentions {
     }
   }
 
-  private def convertArguments(arguments: Map[String, Seq[Mention]]): Map[String, Seq[ProtestMention]] =
+  private def convertArguments(arguments: Map[String, Seq[Mention]]): Map[String, Seq[CollabMention]] =
     arguments.transform {
-      case (k, v) => v.map(_.toProtestMention)
+      case (k, v) => v.map(_.toCollabMention)
     }
 }

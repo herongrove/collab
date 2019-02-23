@@ -1,4 +1,4 @@
-package com.github.danebell.protests
+package com.github.danebell.collab
 
 import scala.io.Source
 
@@ -10,7 +10,7 @@ object RuleReader {
 
   case class Rules(entities: String, events: String)
 
-  val resourcesPath = "/com/github/danebell/protests/grammars"
+  val resourcesPath = "/com/github/danebell/collab/grammar"
   val entitiesMasterFile = s"$resourcesPath/entities_master.yml"
   val eventsMasterFile = s"$resourcesPath/events_master.yml"
 
@@ -34,4 +34,13 @@ object RuleReader {
 
     Rules(entities, events)
   }
+
+  def reload(): Rules = {
+    val resourcesPrefix = s"src/main/resources"
+    val entities = readFile(s"$resourcesPrefix/$entitiesMasterFile")
+    val events = readFile(s"$resourcesPrefix/$eventsMasterFile")
+
+    Rules(entities, events)
+  }
+
 }
