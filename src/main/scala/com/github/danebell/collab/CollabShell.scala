@@ -34,7 +34,7 @@ object CollabShell extends App {
   val ieSystem = new CollabSystem()
 
   val nonceDoc = ieSystem.annotate("load")
-  val nonceMentions = ieSystem.extractFrom(nonceDoc)
+  val nonceMentions = ieSystem.extract(nonceDoc)
 
   println("\nWelcome to the Protests Shell!")
   printCommands()
@@ -50,7 +50,7 @@ object CollabShell extends App {
       case ":reload" =>
         ieSystem.reload()
 
-      case ":exit" | null =>
+      case ":exit" | ":quit" | null =>
         running = false
 
       case text =>
@@ -71,7 +71,7 @@ object CollabShell extends App {
     val doc = ieSystem.annotate(text)
 
     // extract mentions from annotated document
-    val mentions = ieSystem.extractFrom(doc).sortBy(m => (m.sentence, m.getClass.getSimpleName))
+    val mentions = ieSystem.extract(doc).sortBy(m => (m.sentence, m.getClass.getSimpleName))
 
     // debug display the mentions
     displayMentions(mentions, doc, printDeps=true)

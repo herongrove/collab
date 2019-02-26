@@ -69,6 +69,7 @@ object DisplayUtils {
       sb.append(s"sentence #$i $nl")
       sb.append(s.getSentenceText + nl)
       if (s.lemmas.nonEmpty) sb.append(s.lemmas.get.mkString("", " ", nl))
+      if (s.entities.nonEmpty) sb.append(s.entities.get.mkString("", " ", nl))
       sb.append("Tokens: " + (s.words.indices, s.words, s.tags.get).zipped.mkString("", ", ", nl))
       if (printDeps) sb.append(syntacticDependenciesToString(s) + nl)
       sb.append(nl)

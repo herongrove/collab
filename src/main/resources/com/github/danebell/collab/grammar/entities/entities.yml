@@ -1,15 +1,15 @@
 - name: ner-person
   label: Person
   action: mkNERMentions
-  priority: 1
+  priority: 2
   type: token
   pattern: |
-    [entity=PERSON] [entity=PERSON]*
+    ([entity="B-Title"] [entity="I-Title"]*)? [entity=PERSON] [entity=PERSON]*
 
 - name: ner-date
   label: Date
   action: mkNERMentions
-  priority: 1
+  priority: 2
   type: token
   pattern: |
     [entity=DATE] [entity=DATE]*
@@ -17,7 +17,7 @@
 - name: ner-org
   label: Organization
   action: mkNERMentions
-  priority: 1
+  priority: 2
   type: token
   pattern: |
     [entity=ORGANIZATION] [entity=ORGANIZATION]*
@@ -25,7 +25,7 @@
 - name: ner-loc
   label: Location
   action: mkNERMentions
-  priority: 1
+  priority: 2
   type: token
   pattern: |
     [entity=LOCATION] [entity=LOCATION]*
@@ -49,7 +49,7 @@
 
 - name: "noun-phrase-1"
   label: NounPhrase
-  priority: 1
+  priority: 3
   type: token
   #action: convertToConcept
   unit: "tag"
@@ -58,7 +58,7 @@
 
 - name: "prep-phrase"
   label: PrepPhrase
-  priority: 2
+  priority: 4
   type: token
   unit: "tag"
   pattern: |
@@ -66,7 +66,7 @@
 
 - name: "prep-phrase-recurs"
   label: PrepPhrase
-  priority: 3
+  priority: 5
   type: token
   unit: "tag"
   pattern: |
@@ -74,7 +74,7 @@
 
 - name: "noun-phrase-2"
   label: NounPhrase
-  priority: 4
+  priority: 6
   type: token
   unit: "tag"
   pattern: |
@@ -82,7 +82,7 @@
 
 - name: "noun-phrase-3"
   label: NounPhrase
-  priority: 5
+  priority: 7
   type: token
   unit: "tag"
   pattern: |
@@ -91,7 +91,7 @@
 
 - name: "verb-phrase-1"
   label: VerbPhrase
-  priority: 6
+  priority: 8
   type: token
   unit: "tag"
   pattern: |
@@ -99,7 +99,7 @@
 
 - name: "verb-phrase-2"
   label: VerbPhrase
-  priority: 6+
+  priority: 8+
   type: token
   unit: "tag"
   pattern: |
@@ -107,7 +107,7 @@
 
 - name: "wh-phrase-1"
   label: WhPhrase
-  priority: 7
+  priority: 9
   type: token
   unit: "tag"
   pattern: |
@@ -115,7 +115,7 @@
 
 - name: "verb-phrase-3"
   label: VerbPhrase
-  priority: 8
+  priority: 10
   type: token
   unit: "tag"
   pattern: |
@@ -123,7 +123,7 @@
 
 - name: "sentence-1"
   label: Sentence
-  priority: 9
+  priority: 11
   type: token
   unit: "tag"
   pattern: |

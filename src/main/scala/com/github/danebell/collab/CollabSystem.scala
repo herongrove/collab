@@ -9,7 +9,8 @@ import org.clulab.odin.{ExtractorEngine, State}
 class CollabSystem(rules: Option[Rules] = None) {
 
 
-  val proc: Processor = new FastNLPProcessor() // TODO: Get from configuration file soon
+  //val proc: Processor = new FastNLPProcessor() // TODO: Get from configuration file
+  val proc: Processor = new CollabProcessor() // TODO: Get from configuration file
   var entityRules: String = if (rules.isEmpty) readResource(RuleReader.entitiesMasterFile) else rules.get.entities
   var eventRules: String = if (rules.isEmpty) readResource(RuleReader.eventsMasterFile) else rules.get.events
   val actions: CollabActions = new CollabActions()
@@ -25,12 +26,12 @@ class CollabSystem(rules: Option[Rules] = None) {
     doc
   }
 
-  def extractFromText(text: String): Seq[CollabMention] = {
+  def extract(text: String): Seq[CollabMention] = {
     val doc = annotate(text)
-    extractFrom(doc)
+    extract(doc)
   }
 
-  def extractFrom(doc: Document): Seq[CollabMention] = {
+  def extract(doc: Document): Seq[CollabMention] = {
     val entities = entityEngine.extractFrom(doc)
     val events = entityEngine.extractFrom(doc, State(entities))
     events
