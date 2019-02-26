@@ -10,9 +10,7 @@ class CollabProcessor extends CluProcessor(config = ConfigFactory.load("collabpr
 
   override lazy val ner: Option[Tagger[String]] = {
     getArgString(s"$prefix.ner.type", Some("none")) match {
-      case "collab" => {
-        Option(new CoHybridNer())
-      } // FIXME: load serialized model if available
+      case "collab" => Option(new CoHybridNer())
       case "none" => None
       case _ => throw new RuntimeException(s"ERROR: Unknown argument value for $prefix.ner.type!")
     }
