@@ -2,12 +2,31 @@
 ### SYNTAX
 ###############
 
-- name: "propose-syntax-1"
+- name: "propose-syntax-propose-1"
   label: Propose
-  action: mkCollabMention
+  action: ${eventAction}
   pattern: |
     trigger = [lemma=propose & tag=/^V/]
     proposer:Actor = nsubj /conj|compound|amod|nmod_(such_as|including)/{,2}
-    proposal:Phrase = (dobj | ccomp) /conj|compound|amod|nmod_(such_as|including)/{,2}
+    proposal:Phrase? = (dobj | ccomp) /conj|compound|amod|nmod_(such_as|including)/{,2}
 
+- name: "propose-syntax-motion-1"
+  label: Propose
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=make & tag=/^V/] [tag=DT]* [tag=/^(J|N|R)/]* [lemma=motion & tag=/^N/]
+    proposer:Actor = nsubj /conj|compound|amod|nmod_(such_as|including)/{,2}
+    proposal:Phrase? = acl /conj|compound|amod|nmod_(such_as|including)/{,2}
+
+- name: "propose-syntax-motion-2"
+  label: Propose
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=motion & tag=/^N/] [lemma=be] [lemma=make & tag=/^V/]
+    proposer:Actor = nmod_by /conj|compound|amod|nmod_(such_as|including)/{,2}
+    #proposal:Phrase? =  /conj|compound|amod|nmod_(such_as|including)/{,2}
+
+###############
+### SURFACE
+###############
 

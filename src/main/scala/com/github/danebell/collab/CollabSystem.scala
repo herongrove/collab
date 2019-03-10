@@ -4,6 +4,7 @@ import org.clulab.processors.{Document, Processor}
 import org.clulab.processors.fastnlp.FastNLPProcessor
 import RuleReader._
 import com.github.danebell.collab.mentions.CollabMention
+import com.github.danebell.collab.utils.DisplayUtils._
 import org.clulab.odin.{ExtractorEngine, State}
 
 class CollabSystem(rules: Option[Rules] = None) {
@@ -33,7 +34,7 @@ class CollabSystem(rules: Option[Rules] = None) {
 
   def extract(doc: Document): Seq[CollabMention] = {
     val entities = entityEngine.extractFrom(doc)
-    val events = entityEngine.extractFrom(doc, State(entities))
+    val events = eventEngine.extractFrom(doc, State(entities))
     events
   }
 

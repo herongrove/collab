@@ -1,4 +1,9 @@
 taxonomy: com/github/danebell/collab/grammar/taxonomy.yml
 
+vars:
+  event_action: "mkCollabMention"
+
 rules:
   - import: com/github/danebell/collab/grammar/events/communicate.yml
+    vars:
+      eventAction: ${event_action}
