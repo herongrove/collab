@@ -1,0 +1,6 @@
+name: collab
+dependencies:
+  - python=2.7
+  - pip
+  - pip:
+    - pdfminer
