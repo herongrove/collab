@@ -3,28 +3,30 @@
 ###############
 
 - name: "propose-syntax-propose-1"
+  example: "Mary proposed a plan to find a time to meet."
   label: Propose
   action: ${eventAction}
   pattern: |
     trigger = [lemma=propose & tag=/^V/]
-    proposer:Actor = nsubj /conj|compound|amod|nmod_(such_as|including)/{,2}
-    proposal:Phrase? = (dobj | ccomp) /conj|compound|amod|nmod_(such_as|including)/{,2}
+    agent:Actor = nsubj /conj|compound|amod|nmod_(such_as|including)/{,2}
+    theme:Phrase? = (dobj | ccomp) /conj|compound|amod|nmod_(such_as|including)/{,2}
 
 - name: "propose-syntax-motion-1"
+  example: "Mary proposed that we go out to lunch."
   label: Propose
   action: ${eventAction}
   pattern: |
     trigger = [lemma=make & tag=/^V/] [tag=DT]* [tag=/^(J|N|R)/]* [lemma=motion & tag=/^N/]
-    proposer:Actor = nsubj /conj|compound|amod|nmod_(such_as|including)/{,2}
-    proposal:Phrase? = acl /conj|compound|amod|nmod_(such_as|including)/{,2}
+    agent:Actor = nsubj /conj|compound|amod|nmod_(such_as|including)/{,2}
+    theme:Phrase? = acl /conj|compound|amod|nmod_(such_as|including)/{,2}
 
 - name: "propose-syntax-motion-2"
   label: Propose
   action: ${eventAction}
   pattern: |
     trigger = [lemma=motion & tag=/^N/] [lemma=be] [lemma=make & tag=/^V/]
-    proposer:Actor = nmod_by /conj|compound|amod|nmod_(such_as|including)/{,2}
-    #proposal:Phrase? =  /conj|compound|amod|nmod_(such_as|including)/{,2}
+    agent:Actor = nmod_by /conj|compound|amod|nmod_(such_as|including)/{,2}
+    #theme:Phrase? =  /conj|compound|amod|nmod_(such_as|including)/{,2}
 
 ###############
 ### SURFACE
