@@ -2,6 +2,8 @@
   - Title
   - Avoid
   - Phrase:
+    - FirstPerson
+    - ProperNoun
     - NounPhrase
     - VerbPhrase
     - PrepPhrase

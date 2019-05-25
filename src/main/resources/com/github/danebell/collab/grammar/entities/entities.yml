@@ -38,14 +38,31 @@
 #  type: token
 #  unit: tag
 #  pattern: |
-#    /NN|PROPN|ADJ/* /NN/+
+#    /NN|NNP|ADJ/* /NN/+
 #
 #- name: "base-concept-universal"
 #  label: Concept
 #  type: token
 #  unit: tag
 #  pattern: |
-#    /NOUN|PROPN|ADJ/* /NOUN|PROPN/+
+#    /NN|NNP|ADJ/* /NN|NNP/+
+
+- name: "1PL"
+  label: FirstPerson
+  priority: 3
+  type: token
+  #action: convertToConcept
+  pattern: |
+    [lemma=/^(we|us)$/
+
+- name: "proper-noun"
+  label: ProperNoun
+  priority: 3
+  type: token
+  #action: convertToConcept
+  unit: "tag"
+  pattern: |
+    /NNPS?/+
 
 - name: "noun-phrase-1"
   label: NounPhrase
