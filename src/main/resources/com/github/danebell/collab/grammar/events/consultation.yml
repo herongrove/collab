@@ -1,0 +1,55 @@
+- name: "consultation-syntax-noun-between-1"
+  example: "Informal consultation between Golden Pass and the DOT regarding additional LNG and pipeline safety and federal safety standards is currently ongoing."
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = nmod_between /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = nmod_between /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-with-1"
+  example: "As the lead federal agency, the FERC is responsible for the Section 7 consultation with the FWS."
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = <nmod_for [word=/^(responsible|accountable)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-initiate-1"
+  example: "Golden Pass initiated informal consultation with the FWS, NOAA Fisheries, the TPWD, and the LDWF"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = <dobj ([tag=VB] <xcomp)? [tag=/^VB(D|Z|P)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = <dobj? nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-in-consultation-with-1"
+  example: "In consultation with the FWS, NOAA Fisheries, Golden Pass initially identified 8 federally listed
+            species"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = <nmod_in >nsujb [tag=/^VB(D|Z|P)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-verb-1"
+  example: "In addition, the FERC consults with the FWS and NOAA Fisheries"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^VB(D|Z|P)/]
+    actor1:Entity = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-verb-2"
+  example: "In addition, the FERC is required to consult with the FWS and NOAA Fisheries"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=VB]
+    actor1:Entity = <xcomp [lemma=require] >nsubjpass /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = <xcomp? nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
