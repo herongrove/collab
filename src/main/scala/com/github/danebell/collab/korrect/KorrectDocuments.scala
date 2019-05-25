@@ -99,16 +99,29 @@ object KorrectDocuments extends App {
     new KorrectDocuments(conf)
   }
 
+  def cleanEach(in: File, out: File): Unit = {
+    val rawFiles = in.listFiles() filter (! _.isDirectory) filter (! _.getName.startsWith("."))
+    val raw = rawFiles map (f => f.getName -> FileUtils.getTextFromFile(f))
+
+    val clean = raw map { case (fn, text) => fn -> kd.joinLines(text) }
+
+    clean foreach { case (fn, text) =>
+      // println(s"File: $fn")
+      FileUtils.writeTextToFile(fn, text, dir=out.getAbsolutePath)
+    }
+
+    val rawDirs = in.listFiles() filter (_.isDirectory)
+    rawDirs foreach { inDir =>
+      // println(s"Directory: ${inDir.getName} (${Paths.get(out.getAbsolutePath, inDir.getName)})")
+      cleanEach(inDir, Paths.get(out.getAbsolutePath, inDir.getName).toFile)
+    }
+  }
+
   val conf = ConfigFactory.load("reference.conf")
   val kd = new KorrectDocuments(conf)
 
-  val rawLoc = conf.getString("collab.raw")
-  val rawFiles = new File(rawLoc).listFiles() filter (! _.isDirectory)
-  val raw = rawFiles map (f => f.getName -> FileUtils.getTextFromFile(f))
+  val rawLoc = new File(conf.getString("collab.raw"))
+  val cleanLoc = new File(conf.getString("collab.clean"))
 
-  val clean = raw map { case (fn, text) => fn -> kd.joinLines(text) }
-
-  val cleanLoc = conf.getString("collab.clean")
-
-  clean.foreach { case (fn, text) => FileUtils.writeTextToFile(fn, text, dir=cleanLoc) }
+  cleanEach(rawLoc, cleanLoc)
 }
