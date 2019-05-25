@@ -2,8 +2,10 @@ taxonomy: com/github/danebell/collab/grammar/taxonomy.yml
 
 vars:
   event_action: "mkCollabMention"
+  consult_triggers: "consult"
 
 rules:
-  - import: com/github/danebell/collab/grammar/events/communicate.yml
+  - import: com/github/danebell/collab/grammar/events/consultation.yml
     vars:
       eventAction: ${event_action}
+      trigger: ${consult_triggers}
