@@ -16,9 +16,26 @@ class KorrectDocuments(val config: Config) {
     text
       .replaceAll("™", "'")
       .replaceAll("ﬂ|ﬁ", "\"")
+      .replaceAll("Œ", "-")
+      .replaceAll("Ł", "")
   }
 
-  def cutHeaders(text: String): String = text.replaceAll("(?i)page\\s+\\d+(\\s*(of)|/\\s*\\d+|\\s+cont(inue|')d)?", "")
+  def cutHeaders(text: String): String =
+    text.replaceAll("(?i)page\\s+\\d+(\\s*(of)|/\\s*\\d+|\\s+cont(inue|')d)?", "")
+
+  def addSpace(text: String): String =
+    text
+      .replaceAll("([A-Za-z])\\.(\\d)", "$1. $2")
+      .replaceAll("([A-Za-z])(\\d)", "$1 $2")
+      .replaceAll("(\\d)([A-Za-z])", "$1 $2")
+      .replaceAll("([a-z])([A-Z])", "$1 $2")
+      .replaceAll("X([A-Z])", "$1")
+      .replaceAll("""([?:\\.”])([A-Za-z])""", "$1 $2")
+      .replaceAll("([A-Za-z])/([A-Za-z])", "$1 / $2")
+
+  def addNewlines(text: String): String =
+    text.replaceAll("(?<!\\.) *(\\d+\\))", "\n$1")
+      .replaceAll("   +", "\n")
 
   def joinLines(text: String): String = {
     /*    def joinL(a: Seq[Seq[String]], b: Seq[String]): Seq[Seq[String]] = {
@@ -67,7 +84,12 @@ class KorrectDocuments(val config: Config) {
   }
 */
     val noHeaders = cutHeaders(text)
-    subChars(noHeaders).replaceAll("\r?\n", "")
+    val goodChars = subChars(noHeaders)
+    val noNL = goodChars.replaceAll("\r?\n", "")
+    val extraSpaces = addSpace(noNL)
+    val extraNewlines = addNewlines(extraSpaces)
+
+    extraNewlines
   }
 }
 
