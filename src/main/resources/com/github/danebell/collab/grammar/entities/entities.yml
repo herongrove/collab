@@ -53,7 +53,7 @@
   type: token
   #action: convertToConcept
   pattern: |
-    [lemma=/^(we|us)$/
+    [lemma=/^(we|us)$/]
 
 - name: "proper-noun"
   label: ProperNoun

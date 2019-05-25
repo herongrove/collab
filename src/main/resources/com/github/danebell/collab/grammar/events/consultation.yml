@@ -26,13 +26,12 @@
     actor2:Entity = <dobj? nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-in-consultation-with-1"
-  example: "In consultation with the FWS, NOAA Fisheries, Golden Pass initially identified 8 federally listed
-            species"
+  example: "In consultation with the FWS, NOAA Fisheries, Golden Pass initially identified 8 federally listed species"
   label: Consultation
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <nmod_in >nsujb [tag=/^VB(D|Z|P)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity = <nmod_in >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-verb-1"
