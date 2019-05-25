@@ -2,6 +2,8 @@ package com.github.danebell.collab.ner
 
 import java.util.Properties
 
+import com.github.danebell.collab.CollabProcessor
+
 import scala.collection.JavaConverters._
 import com.typesafe.scalalogging.LazyLogging
 import edu.stanford.nlp.ling.CoreAnnotations.{NormalizedNamedEntityTagAnnotation, SentencesAnnotation, TokensAnnotation}
@@ -17,6 +19,7 @@ import scala.collection.mutable.ArrayBuffer
 
 /** Draws heavily from org.clulab.processors.shallownlp.ShallowNLPProcessor  */
 class CoCrfNer extends Tagger[String] with LazyLogging {
+  val proc: Processor = new CollabProcessor()
   val internStrings: Boolean = false
 
   lazy val tokenizer: Tokenizer = new OpenDomainEnglishTokenizer(None)
@@ -49,7 +52,7 @@ class CoCrfNer extends Tagger[String] with LazyLogging {
 
   def mkDocument(text:String, keepText:Boolean): Document = {
     // create the CLU document
-    val doc = CluProcessor.mkDocument(tokenizer, text, keepText = true)
+    val doc = proc.mkDocument(text, keepText = keepText)
 
     // now create the CoreNLP document Annotation
     cluDocToCoreDoc(doc, keepText)
@@ -58,9 +61,14 @@ class CoCrfNer extends Tagger[String] with LazyLogging {
   override def find(sentence: Sentence): Array[String] = {
     basicSanityCheck(sentence)
 
-    val doc = new Document(Array(sentence))
-    doc.text = Some(sentence.getSentenceText)
-    val annotation = ShallowNLPProcessor.docToAnnotation(doc)
+    val doc = mkDocument(sentence.getSentenceText, keepText = true)
+    val annotation = try {
+      ShallowNLPProcessor.docToAnnotation(doc)
+    } catch {
+      case e: Exception =>
+        println(s"|||${sentence.words.mkString(" ")}|||")
+        throw e
+    }
 
     try {
       sner.annotate(annotation)
@@ -88,5 +96,4 @@ class CoCrfNer extends Tagger[String] with LazyLogging {
     }
     tb.toArray
   }
-
 }

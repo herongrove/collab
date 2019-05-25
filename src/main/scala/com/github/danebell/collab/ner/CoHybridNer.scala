@@ -21,7 +21,11 @@ class CoHybridNer(val config: Config = ConfigFactory.load("collabprocessor"))
     val ruleLabels = ruleNer.find(sentence)
     val crfLabels = crfNer.find(sentence)
 
-    LexiconNER.mergeLabels(ruleLabels, crfLabels)
+    if (ruleLabels.length == crfLabels.length) {
+      LexiconNER.mergeLabels(ruleLabels, crfLabels)
+    } else {
+      println(s"|||${sentence.words.mkString(" ")}|||${sentence.getSentenceText}|||")
+    }
 
     ruleLabels
   }

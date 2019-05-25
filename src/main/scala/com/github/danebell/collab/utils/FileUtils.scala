@@ -12,6 +12,31 @@ import scala.io.Source
 object FileUtils extends LazyLogging {
   val utf8 = StandardCharsets.UTF_8.toString
 
+  def listFiles(dir: String): Seq[File] = {
+    listFiles(new File(dir))
+  }
+
+  def listFiles(dir: File): Seq[File] = {
+    if (dir.exists && dir.isDirectory) {
+      dir.listFiles.filter(_.isFile).toList
+    } else {
+      Nil
+    }
+  }
+
+  def listFilesRecursively(dir: String): Seq[File] = {
+    listFiles(new File(dir))
+  }
+
+  def listFilesRecursively(dir: File): Seq[File] = {
+    if (dir.exists && dir.isDirectory) {
+      val (files, dirs) = dir.listFiles().partition(_.isFile)
+      files ++ dirs.filter(_.isDirectory).flatMap(listFilesRecursively)
+    } else {
+      Nil
+    }
+  }
+
   def sourceFromResource(path: String): BufferedSource = {
     val url = FileUtils.getClass.getResource(path)
 
@@ -61,7 +86,9 @@ object FileUtils extends LazyLogging {
   }
 
   def writeTextToFile(file: File, text: String): Unit = {
-    if (! file.getParentFile.exists) try { file.getParentFile.mkdirs() }
+    if (! file.getParentFile.exists) {
+      file.getParentFile.mkdirs()
+    }
     val p = new PrintWriter(file)
     try {
       p.write(text)

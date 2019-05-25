@@ -1,6 +1,7 @@
 package com.github.danebell.collab.korrect
 
 import java.io.File
+import java.nio.file.Paths
 
 import com.typesafe.config.{Config, ConfigFactory}
 import com.github.danebell.collab.utils.FileUtils

@@ -3,6 +3,7 @@ package com.github.danebell.collab.mentions
 import org.clulab.odin._
 import org.clulab.processors.Document
 import org.clulab.struct.Interval
+import com.github.nscala_time.time.Imports._
 
 class CollabTextBoundMention(
   labels: Seq[String],

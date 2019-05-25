@@ -4,14 +4,14 @@ import org.clulab.processors.{Document, Processor}
 import org.clulab.processors.fastnlp.FastNLPProcessor
 import RuleReader._
 import com.github.danebell.collab.mentions.CollabMention
+import com.github.danebell.collab.mentions._
 import com.github.danebell.collab.utils.DisplayUtils._
+import com.typesafe.scalalogging.LazyLogging
 import org.clulab.odin.{ExtractorEngine, State}
 
-class CollabSystem(rules: Option[Rules] = None) {
+class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
 
-
-  //val proc: Processor = new FastNLPProcessor() // TODO: Get from configuration file
-  val proc: Processor = new CollabProcessor() // TODO: Get from configuration file
+  val proc: Processor = new CollabProcessor()
   var entityRules: String = if (rules.isEmpty) readResource(RuleReader.entitiesMasterFile) else rules.get.entities
   var eventRules: String = if (rules.isEmpty) readResource(RuleReader.eventsMasterFile) else rules.get.events
   val actions: CollabActions = new CollabActions()
@@ -33,9 +33,18 @@ class CollabSystem(rules: Option[Rules] = None) {
   }
 
   def extract(doc: Document): Seq[CollabMention] = {
-    val entities = entityEngine.extractFrom(doc)
+    val entities = try {
+      entityEngine.extractFrom(doc)
+    } catch { case e: Exception =>
+      //e.printStackTrace()
+      logger.error(doc.id + " failed because it didn't have entities!")
+      Nil
+    }
     val events = eventEngine.extractFrom(doc, State(entities))
-    events
+    val nonOverlapping = MentionFilter.nonIdenticalArgs(events)
+    val mostSpecific = MentionFilter.keepMostSpecific(nonOverlapping)
+
+    mostSpecific.map(_.toCollabMention)
   }
 
   def reload(): Unit = {
