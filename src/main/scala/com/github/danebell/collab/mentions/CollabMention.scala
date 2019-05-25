@@ -11,8 +11,10 @@ class CollabTextBoundMention(
   sentence: Int,
   document: Document,
   keep: Boolean,
-  foundBy: String
+  foundBy: String,
+  var date: Option[DateTime] = None
 ) extends TextBoundMention(labels, tokenInterval, sentence, document, keep, foundBy)
+  with Dated
 
 class CollabRelationMention(
   labels: Seq[String],
@@ -21,8 +23,10 @@ class CollabRelationMention(
   sentence: Int,
   document: Document,
   keep: Boolean,
-  foundBy: String
+  foundBy: String,
+  var date: Option[DateTime] = None
 ) extends RelationMention(labels, mkTokenInterval(arguments), arguments, paths, sentence, document, keep, foundBy)
+  with Dated
 
 class CollabEventMention(
   labels: Seq[String],
@@ -33,4 +37,6 @@ class CollabEventMention(
   document: Document,
   keep: Boolean,
   foundBy: String,
+  var date: Option[DateTime] = None
 ) extends EventMention(labels, mkTokenInterval(trigger, arguments), trigger, arguments, paths, sentence, document, keep, foundBy)
+  with Dated

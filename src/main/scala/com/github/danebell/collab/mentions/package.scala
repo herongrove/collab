@@ -1,9 +1,10 @@
 package com.github.danebell.collab
 
 import org.clulab.odin._
+import scala.language.implicitConversions
 
 package object mentions {
-  type CollabMention = Mention
+  type CollabMention = Mention with Dated
 
   implicit class MentionOps(mention: Mention) {
     def toCollabMention: CollabMention = mention match {
