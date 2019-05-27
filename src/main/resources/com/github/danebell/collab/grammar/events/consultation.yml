@@ -1,3 +1,30 @@
+- name: "consultation-syntax-noun-1"
+  example: "BOEM and BSEE are currently in ESA consultation with NMFS and FWS"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-2"
+  example: "BOEM is currently engaged in ESA consultation with FWS and NMFS"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = <nmod_in >nsubjpass /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-3"
+  example: "Section 106 consultation for the proposed action was initiated by the DOE with the Louisiana and Texas SHPOs"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = <nsubjpass >nmod_by /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = <nsubjpass >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
 - name: "consultation-syntax-noun-between-1"
   example: "Informal consultation between Golden Pass and the DOT regarding additional LNG and pipeline safety and federal safety standards is currently ongoing."
   label: Consultation
@@ -22,33 +49,116 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <dobj ([tag=VB] <xcomp)? [tag=/^VB(D|Z|P)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = <dobj? nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity = <dobj ([tag=/^V/] <xcomp)? [tag=/^VB(D|Z|P|N)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = <dobj? nmod_on? nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
-- name: "consultation-syntax-noun-in-consultation-with-1"
-  example: "In consultation with the FWS, NOAA Fisheries, Golden Pass initially identified 8 federally listed species"
+- name: "consultation-syntax-noun-initiate-2"
+  example: "The NRC initiated consultation on the proposed action by writing to the Florida SHPO and the Advisory Council on Historic Preservation."
   label: Consultation
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <nmod_in >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity = <dobj ([tag=/^V/] <xcomp)? [tag=/^VB(D|Z|P|N)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = <dobj >advcl /nmod/ /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-in-consultation-with-1"
+  example: "In consultation with the FWS, NOAA Fisheries, Golden Pass initially identified 8 federally listed species"
+  #example: "In consultation with the TPWD and the LDWF, we identified 18 additional species"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = </nmod_(in|based)/ >nsubj? /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-completed-1"
+  example: "Sabine Pass LNG completed Section 7 of the ESA consultation with the FWS, NOAA Fisheries, and the LDWF"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = <nmod_of? <dobj [lemma=complete & tag=/^VB[DZPGN]/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-acting-1"
+  example: "BOEM is acting as lead agency in the reinitiated consultation, with BSEE involvement."
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = <nmod_in? <nmod_as [lemma=act] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = <nmod_in? <nmod_as [lemma=act] >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-poss-1"
+  example: "The NRC’s and FPL’s consultation with the Florida SHPO concluded yesterday."
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity = (>/nmod:poss/ | >compound | <conj) /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-verb-1"
   example: "In addition, the FERC consults with the FWS and NOAA Fisheries"
+  #example: "TVA is consulting with the USFWS over the potential effects to this species."
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^VB(D|Z|P)/]
-    actor1:Entity = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    trigger = [lemma=/^(${trigger})/ & tag=/^VB[DZPGN]/]
+    actor1:Entity = <acl? >/nsubj(pass)?/ /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = (>nmod_with | >dobj)? /conj|compound|amod|nmod_(such_as|including)|appos|dep/{,3}
 
-- name: "consultation-syntax-verb-2"
+- name: "consultation-syntax-verb-1b-wrong"
+  example: "DOE has noted that, as part of an air permit application, Lake Charles Cogeneration, LLC, previously consulted with the Louisiana SHPO"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^VB[DZPGN]/]
+    actor1:Entity = <acl /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-verb-2a"
   example: "In addition, the FERC is required to consult with the FWS and NOAA Fisheries"
   label: Consultation
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/^(${trigger})/ & tag=VB]
     actor1:Entity = <xcomp [lemma=require] >nsubjpass /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = <xcomp? nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-verb-2b"
+  example: "Federal law requires us to consult with the DOD to determine whether there would be any impacts"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=VB]
+    actor1:Entity = <xcomp [lemma=require] >dobj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-verb-3"
+  example: "The USACE will continue to consult with the Seminole Tribe of Florida and the Miccosukee Tribe of Indians of Florida on the development of the work plan."
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=VB]
+    actor1:Entity = <xcomp [lemma=continue] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-verb-4"
+  example: "The Jena Band of Choctaw Indians requested to be consulted by FERC"
+  label: Consultation
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^VB[ND]/]
+    actor1:Entity = <ccomp [lemma=/^(request|ask|demand|petition|appeal)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = >nmod_by /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+#- name: "consultation-catchall"
+#  label: Consultation
+#  action: ${eventAction}
+#  pattern: |
+#    trigger = [lemma=/^(${trigger})/]
+#    actor1:Entity = >>
+#    actor2:Entity = >>
+
 
