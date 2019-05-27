@@ -106,42 +106,42 @@
     @NounPhrase "CC" @PrepPhrase
     @NounPhrase "CC" @PrepPhrase
 
-- name: "verb-phrase-1"
-  label: VerbPhrase
-  priority: 8
-  type: token
-  unit: "tag"
-  pattern: |
-    /^(RB|VB)/+ @PrepPhrase? @NounPhrase+ ("CC" @NounPhrase)* @PrepPhrase*
-
-- name: "verb-phrase-2"
-  label: VerbPhrase
-  priority: 8+
-  type: token
-  unit: "tag"
-  pattern: |
-    /^(RB|VB)/+ @PrepPhrase
-
-- name: "wh-phrase-1"
-  label: WhPhrase
-  priority: 9
-  type: token
-  unit: "tag"
-  pattern: |
-    /^WP/ @VerbPhrase
-
-- name: "verb-phrase-3"
-  label: VerbPhrase
-  priority: 10
-  type: token
-  unit: "tag"
-  pattern: |
-    @VerbPhrase (@WhPhrase | @VerbPhrase)+
-
-- name: "sentence-1"
-  label: Sentence
-  priority: 11
-  type: token
-  unit: "tag"
-  pattern: |
-    @NounPhrase @VerbPhrase+
+#- name: "verb-phrase-1"
+#  label: VerbPhrase
+#  priority: 8
+#  type: token
+#  unit: "tag"
+#  pattern: |
+#    /^(RB|VB)/+ @PrepPhrase? @NounPhrase+ ("CC" @NounPhrase)* @PrepPhrase*
+#
+#- name: "verb-phrase-2"
+#  label: VerbPhrase
+#  priority: 8+
+#  type: token
+#  unit: "tag"
+#  pattern: |
+#    /^(RB|VB)/+ @PrepPhrase
+#
+#- name: "wh-phrase-1"
+#  label: WhPhrase
+#  priority: 9
+#  type: token
+#  unit: "tag"
+#  pattern: |
+#    /^WP/ @VerbPhrase
+#
+#- name: "verb-phrase-3"
+#  label: VerbPhrase
+#  priority: 10
+#  type: token
+#  unit: "tag"
+#  pattern: |
+#    @VerbPhrase (@WhPhrase | @VerbPhrase)+
+#
+#- name: "sentence-1"
+#  label: Sentence
+#  priority: 11
+#  type: token
+#  unit: "tag"
+#  pattern: |
+#    @NounPhrase @VerbPhrase+
