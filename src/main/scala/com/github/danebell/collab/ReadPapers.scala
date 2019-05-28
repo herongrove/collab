@@ -18,9 +18,10 @@ object ReadPapers extends App with LazyLogging {
   system.extract(nonce)
 
   val papersDir = config.getString("collab.clean")
-  val outFile = config.getString("collab.out")
+  val outDir = config.getString("collab.out")
 
-  val papers = listFilesRecursively(papersDir)
+  val alreadyDone = listFilesRecursively(outDir).map(_.getName)
+  val papers = listFilesRecursively(papersDir).filterNot{ f => alreadyDone.contains(f.getName) }
 
   papers.par.foreach { file =>
     val txt = getTextFromFile(file)
@@ -32,7 +33,7 @@ object ReadPapers extends App with LazyLogging {
       logger.debug(s"${mentions.length} event mentions in $file")
       mentions.map{ m => mentionToTabular(m, "actor1", "actor2") }
     } else Nil
-    val outLoc = Paths.get(outFile, file.getName).toFile
-    writeTextToFile(outLoc, lines.mkString("\n"))
+    val outFile = Paths.get(outDir, file.getName).toFile
+    writeTextToFile(outFile, lines.mkString("\n"))
   }
 }
