@@ -24,7 +24,13 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
 
   def annotate(text: String, keepText: Boolean = true): Document = {
     val doc = proc.annotate(text, keepText)
-    doc
+    Document(
+      id = doc.id,
+      sentences = doc.sentences.filter(_.getSentenceText.contains("consult")),
+      coref = doc.coreferenceChains,
+      dtree = doc.discourseTree,
+      text = doc.text
+    )
   }
 
   def extract(text: String): Seq[CollabMention] = {
