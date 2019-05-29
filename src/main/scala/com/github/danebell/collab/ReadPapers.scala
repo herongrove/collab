@@ -26,9 +26,8 @@ object ReadPapers extends App with LazyLogging {
   papers.par.foreach { file =>
     val txt = getTextFromFile(file)
     val lines = if (txt.trim.nonEmpty && txt.contains("consult")) {
-      val doc = system.proc.mkDocument(txt, keepText = false)
+      val doc = system.annotate(txt, keepText = false)
       doc.id = Option(FilenameUtils.getBaseName(file.getName))
-      system.proc.annotate(doc)
       val mentions = system.extract(doc) filterNot (_.isInstanceOf[TextBoundMention])
       logger.debug(s"${mentions.length} event mentions in $file")
       mentions.map{ m => mentionToTabular(m, "actor1", "actor2") }

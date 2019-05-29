@@ -23,7 +23,7 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
     Seq(entityRules, eventRules).mkString("\n\n")
 
   def annotate(text: String, keepText: Boolean = true): Document = {
-    val doc = proc.annotate(text, keepText)
+    val doc = proc.mkDocument(text, keepText)
     Document(
       id = doc.id,
       sentences = doc.sentences.filter(_.getSentenceText.contains("consult")),
