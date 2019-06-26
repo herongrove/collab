@@ -33,7 +33,7 @@ object CollabShell extends App {
 
   val ieSystem = new CollabSystem()
 
-  val nonceDoc = ieSystem.annotate("load")
+  val nonceDoc = ieSystem.annotate("consulted")
   val nonceMentions = ieSystem.extract(nonceDoc)
 
   println("\nWelcome to the Protests Shell!")

@@ -13,12 +13,12 @@ object ReadPapers extends App with LazyLogging {
   val config = ConfigFactory.load()
 
   val system = new CollabSystem()
-  val nonce = system.proc.mkDocument("This starts the processor")
+  val nonce = system.proc.mkDocument("consulted")
   system.proc.annotate(nonce)
   system.extract(nonce)
 
   val papersDir = config.getString("collab.clean")
-  val outDir = config.getString("collab.out")
+  val outDir = config.getString("collab.mentions")
 
   val alreadyDone = listFilesRecursively(outDir).map(_.getName)
   val papers = listFilesRecursively(papersDir).filterNot{ f => alreadyDone.contains(f.getName) }
