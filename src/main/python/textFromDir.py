@@ -11,7 +11,7 @@ from pipes import quote
 
 # convert a directory of pdf files (1st arg) to text and put them in a different directory (2nd arg)
 # source activate collab
-# python textFromDir /home/dane/data/energy/pdf /home/dane/data/energy/raw
+# python textFromDir.py /home/dane/data/collab/pdf /home/dane/data/collab/raw
 def main(args):
     toconvert = glob.glob(os.path.join(args[1], '*.pdf'))
     print("Converting {} files".format(len(toconvert)))
