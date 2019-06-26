@@ -24,13 +24,16 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
 
   def annotate(text: String, keepText: Boolean = true): Document = {
     val doc = proc.mkDocument(text, keepText)
-    Document(
-      id = doc.id,
-      sentences = doc.sentences.filter(_.getSentenceText.contains("consult")),
-      coref = doc.coreferenceChains,
-      dtree = doc.discourseTree,
-      text = doc.text
-    )
+    val relevant = doc
+      .sentences
+      .filter(_.getSentenceText.contains("consult"))
+      .map(_.getSentenceText)
+      .mkString(" ")
+    val relevantDoc = proc.mkDocument(relevant, keepText)
+
+    if(relevantDoc.sentences.nonEmpty) proc.annotate(relevantDoc)
+
+    relevantDoc
   }
 
   def extract(text: String): Seq[CollabMention] = {
