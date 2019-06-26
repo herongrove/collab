@@ -34,8 +34,11 @@ class KorrectDocuments(val config: Config) {
       .replaceAll("([A-Za-z])/([A-Za-z])", "$1 / $2")
 
   def addNewlines(text: String): String =
-    text.replaceAll("(?<!\\.) *(\\d+\\))", "\n$1")
-      .replaceAll("   +", "\n")
+    text//.replaceAll("(?<!\\.) *(\\d+\\))", "\n$1")
+      .replaceAll(" *• *", "\n")
+      .replaceAll(" +o  ", "\n")
+      .replaceAll("  +", "\n")
+      .replaceAll("\f", "\n")
 
   def joinLines(text: String): String = {
     /*    def joinL(a: Seq[Seq[String]], b: Seq[String]): Seq[Seq[String]] = {
