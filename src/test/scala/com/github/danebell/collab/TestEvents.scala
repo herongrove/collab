@@ -11,8 +11,17 @@ class TestEvents extends FlatSpec with Matchers {
 //  }
 
   "CollabSystem" should "find consultation" in {
-    val ms = system.extract("Informal consultation between Golden Pass and the DOT regarding additional LNG and pipeline safety and federal safety standards is currently ongoing.")
+    val s = "Informal consultation between Golden Pass and the DOT regarding additional LNG and pipeline safety and federal safety standards is currently ongoing."
+    val ms = system.extract(s)
     val less = ms filter (_ matches "Consultation")
     less should not be empty
   }
+
+  it should "find consultation" in {
+    val s = "BOEM is acting as lead agency in the reinitiated consultation, with BSEE involvement."
+    val ms = system.extract(s)
+    val less = ms filter (_ matches "Consultation")
+    less should not be empty
+  }
+
 }

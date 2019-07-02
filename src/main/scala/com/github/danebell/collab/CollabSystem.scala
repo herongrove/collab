@@ -26,7 +26,7 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
     val doc = proc.mkDocument(text, keepText)
     val relevant = doc
       .sentences
-      .filter(_.getSentenceText.contains("consult"))
+      .filter(_.getSentenceText.toLowerCase.contains("consult"))
       .map(_.getSentenceText)
       .mkString(" ")
     val relevantDoc = proc.mkDocument(relevant, keepText)

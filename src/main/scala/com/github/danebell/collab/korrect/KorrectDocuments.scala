@@ -18,6 +18,7 @@ class KorrectDocuments(val config: Config) {
       .replaceAll("ﬂ|ﬁ", "\"")
       .replaceAll("Œ", "-")
       .replaceAll("Ł", "")
+      .replaceAll("\uF0B7", "")
   }
 
   def cutHeaders(text: String): String =

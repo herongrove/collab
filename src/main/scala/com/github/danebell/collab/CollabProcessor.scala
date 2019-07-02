@@ -15,8 +15,8 @@ class CollabProcessor(
 
   override lazy val ner: Option[Tagger[String]] = {
     getArgString(s"$prefix.ner.type", Some("none")) match {
-//      case "collab" => Option(new CoHybridNer())
-      case "collab" => Option(new CoCrfNer())
+      case "collab" => Option(new CoHybridNer())
+//      case "collab" => Option(new CoCrfNer())
       case "none" => None
       case _ => throw new RuntimeException(s"ERROR: Unknown argument value for $prefix.ner.type!")
     }

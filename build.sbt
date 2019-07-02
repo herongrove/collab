@@ -17,7 +17,7 @@ lazy val commonScalacOptions = Seq(
 lazy val commonSettings = Seq(
   // NOTE: spark is still stuck at 2.11
   scalaVersion := "2.12.8",
-  crossScalaVersions := Seq("2.11.11", "2.12.8"),
+  //crossScalaVersions := Seq("2.11.11", "2.12.8"),
   // we want to use -Ywarn-unused-import most of the time
   scalacOptions ++= commonScalacOptions,
   scalacOptions += "-Ywarn-unused-import",

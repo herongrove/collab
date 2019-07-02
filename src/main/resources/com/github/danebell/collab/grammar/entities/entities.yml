@@ -22,6 +22,14 @@
   pattern: |
     [entity=ORGANIZATION] [entity=ORGANIZATION]*
 
+- name: ner-org2
+  label: Organization
+  action: mkNERMentions
+  priority: 2
+  type: token
+  pattern: |
+    [entity="B-Organization"] [entity="I-Organization"]*
+
 - name: ner-loc
   label: Location
   action: mkNERMentions

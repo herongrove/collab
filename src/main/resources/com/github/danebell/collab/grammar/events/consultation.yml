@@ -3,7 +3,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -12,7 +12,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = <nmod_in >nsubjpass /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -21,7 +21,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = <nsubjpass >nmod_by /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = <nsubjpass >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -30,7 +30,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = nmod_between /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = nmod_between /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -39,7 +39,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = <nmod_for [word=/^(responsible|accountable)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -48,7 +48,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = <dobj ([tag=/^V/] <xcomp)? [tag=/^VB(D|Z|P|N)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = <dobj? nmod_on? nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -57,7 +57,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = <dobj ([tag=/^V/] <xcomp)? [tag=/^VB(D|Z|P|N)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = <dobj >advcl /nmod/ /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -67,7 +67,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = </nmod_(in|based)/ >nsubj? /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -76,7 +76,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = <nmod_of? <dobj [lemma=complete & tag=/^VB[DZPGN]/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -85,7 +85,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = <nmod_in? <nmod_as [lemma=act] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = <nmod_in? <nmod_as [lemma=act] >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -94,7 +94,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
     actor1:Entity = (>/nmod:poss/ | >compound | <conj) /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -104,7 +104,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^VB[DZPGN]/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^VB[DZPGN]/]
     actor1:Entity = <acl? >/nsubj(pass)?/ /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = (>nmod_with | >dobj)? /conj|compound|amod|nmod_(such_as|including)|appos|dep/{,3}
 
@@ -113,7 +113,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^VB[DZPGN]/]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^VB[DZPGN]/]
     actor1:Entity = <acl /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -122,7 +122,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=VB]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=VB]
     actor1:Entity = <xcomp [lemma=require] >nsubjpass /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -131,7 +131,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=VB]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=VB]
     actor1:Entity = <xcomp [lemma=require] >dobj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -140,7 +140,7 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=VB]
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=VB]
     actor1:Entity = <xcomp [lemma=continue] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
@@ -149,15 +149,15 @@
   label: Consultation
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^VB[ND]/]
-    actor1:Entity = <ccomp [lemma=/^(request|ask|demand|petition|appeal)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^VB[ND]/]
+    actor1:Entity = <ccomp [lemma=/(?i)^(request|ask|demand|petition|appeal)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = >nmod_by /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 #- name: "consultation-catchall"
 #  label: Consultation
 #  action: ${eventAction}
 #  pattern: |
-#    trigger = [lemma=/^(${trigger})/]
+#    trigger = [lemma=/(?i)^(${trigger})/]
 #    actor1:Entity = >>
 #    actor2:Entity = >>
 
