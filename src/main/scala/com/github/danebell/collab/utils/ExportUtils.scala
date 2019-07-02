@@ -25,8 +25,9 @@ object ExportUtils extends LazyLogging {
     val argument2 = stringifyArg(mention, arg2)
     //val date = mention.date.map(d => d.toString(StaticDateTimeFormat.forPattern("yyyy-MM-dd")))
     val docId = mention.document.id.getOrElse("")
+    val sentenceText = mention.document.sentences(mention.sentence).getSentenceText
 
-    s"$lbl\t$argument1\t$argument2\t$docId\t${mention.foundBy}\t${mention.text}"
+    s"$lbl\t$argument1\t$argument2\t$docId\t${mention.foundBy}\t$sentenceText"
   }
 
   def stringifyArg(mention: CollabMention, arg: String): String =

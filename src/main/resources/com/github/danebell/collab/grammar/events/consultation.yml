@@ -1,6 +1,10 @@
+####################
+# DEPENDENCY RULES #
+####################
+
 - name: "consultation-syntax-noun-1"
   example: "BOEM and BSEE are currently in ESA consultation with NMFS and FWS"
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -9,7 +13,7 @@
 
 - name: "consultation-syntax-noun-2"
   example: "BOEM is currently engaged in ESA consultation with FWS and NMFS"
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -18,7 +22,7 @@
 
 - name: "consultation-syntax-noun-3"
   example: "Section 106 consultation for the proposed action was initiated by the DOE with the Louisiana and Texas SHPOs"
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -27,7 +31,7 @@
 
 - name: "consultation-syntax-noun-between-1"
   example: "Informal consultation between Golden Pass and the DOT regarding additional LNG and pipeline safety and federal safety standards is currently ongoing."
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -36,7 +40,7 @@
 
 - name: "consultation-syntax-noun-with-1"
   example: "As the lead federal agency, the FERC is responsible for the Section 7 consultation with the FWS."
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -45,7 +49,7 @@
 
 - name: "consultation-syntax-noun-initiate-1"
   example: "Golden Pass initiated informal consultation with the FWS, NOAA Fisheries, the TPWD, and the LDWF"
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -54,7 +58,7 @@
 
 - name: "consultation-syntax-noun-initiate-2"
   example: "The NRC initiated consultation on the proposed action by writing to the Florida SHPO and the Advisory Council on Historic Preservation."
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -64,7 +68,7 @@
 - name: "consultation-syntax-noun-in-consultation-with-1"
   example: "In consultation with the FWS, NOAA Fisheries, Golden Pass initially identified 8 federally listed species"
   #example: "In consultation with the TPWD and the LDWF, we identified 18 additional species"
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -73,7 +77,7 @@
 
 - name: "consultation-syntax-noun-completed-1"
   example: "Sabine Pass LNG completed Section 7 of the ESA consultation with the FWS, NOAA Fisheries, and the LDWF"
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -82,7 +86,7 @@
 
 - name: "consultation-syntax-noun-acting-1"
   example: "BOEM is acting as lead agency in the reinitiated consultation, with BSEE involvement."
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -91,7 +95,7 @@
 
 - name: "consultation-syntax-noun-poss-1"
   example: "The NRC’s and FPL’s consultation with the Florida SHPO concluded yesterday."
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
@@ -101,7 +105,7 @@
 - name: "consultation-syntax-verb-1"
   example: "In addition, the FERC consults with the FWS and NOAA Fisheries"
   #example: "TVA is consulting with the USFWS over the potential effects to this species."
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^VB[DZPGN]/]
@@ -110,7 +114,7 @@
 
 - name: "consultation-syntax-verb-1b-wrong"
   example: "DOE has noted that, as part of an air permit application, Lake Charles Cogeneration, LLC, previously consulted with the Louisiana SHPO"
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^VB[DZPGN]/]
@@ -119,7 +123,7 @@
 
 - name: "consultation-syntax-verb-2a"
   example: "In addition, the FERC is required to consult with the FWS and NOAA Fisheries"
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=VB]
@@ -128,7 +132,7 @@
 
 - name: "consultation-syntax-verb-2b"
   example: "Federal law requires us to consult with the DOD to determine whether there would be any impacts"
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=VB]
@@ -137,7 +141,7 @@
 
 - name: "consultation-syntax-verb-3"
   example: "The USACE will continue to consult with the Seminole Tribe of Florida and the Miccosukee Tribe of Indians of Florida on the development of the work plan."
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=VB]
@@ -146,7 +150,7 @@
 
 - name: "consultation-syntax-verb-4"
   example: "The Jena Band of Choctaw Indians requested to be consulted by FERC"
-  label: Consultation
+  label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^VB[ND]/]
@@ -154,11 +158,45 @@
     actor2:Entity = >nmod_by /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 #- name: "consultation-catchall"
-#  label: Consultation
+#  label: ${label}
 #  action: ${eventAction}
 #  pattern: |
 #    trigger = [lemma=/(?i)^(${trigger})/]
 #    actor1:Entity = >>
 #    actor2:Entity = >>
+
+
+###############
+# TOKEN RULES #
+###############
+
+- name: "reinitate-consultation-token"
+  example: "On July 30, 2010, BOEMRE reinitiated ESA Section 7 Consultation on the previous 2007-2012 WPA/CPA Multisale EIS with both FWS and NMFS."
+  label: ${label}
+  action: ${eventAction}
+  type: token
+  pattern: |
+    @actor1:Entity
+    [! tag=/^VB/ & ! mention=Entity]*
+    [word=/(?i)^(${posVerbs})/ & tag=/^VB/]
+    [! tag=/^VB/]*
+    would?
+    (?<trigger> [lemma=consultation])
+    [! tag=/^VB/]*
+    with
+    both?
+    @actor2:Entity
+    (("," @actor2:Entity)?
+     (and | as well as) @actor2:Entity)?
+
+
+
+
+
+
+
+
+
+
 
 

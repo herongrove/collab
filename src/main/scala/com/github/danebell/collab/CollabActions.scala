@@ -1,8 +1,7 @@
 package com.github.danebell.collab
 
 import com.typesafe.scalalogging.LazyLogging
-import org.clulab.odin.{Actions, Mention, State}
-
+import org.clulab.odin._
 import com.github.danebell.collab.mentions._
 
 class CollabActions extends Actions with LazyLogging {
@@ -23,6 +22,41 @@ class CollabActions extends Actions with LazyLogging {
       // do any candidates overlap the mention?
       val overlap = candidates.exists(_.tokenInterval.overlaps(m.tokenInterval))
       if (overlap) None else Some(m.toCollabMention)
+    }
+  }
+}
+
+object CollabActions {
+  def cartesianProduct(mention: Mention): Seq[Mention] = {
+    //println(s"${mention.arguments.map{ case (nm, args) => s"$nm: ${args.map(_.text).mkString(", ")}"}.mkString("; ")}\n")
+
+    val arguments = mention.arguments
+    // sanity checks
+    if (arguments.values.flatten.toSeq.length < 3) return Seq(mention)
+    if (! arguments.contains("actor1") || ! arguments.contains("actor2")) return Seq(mention)
+    for {
+      actor1 <- arguments("actor1")
+      actor2 <- arguments("actor2")
+    } yield {
+      //println(s"\tactor1: ${actor1.text}, actor2: ${actor2.text}")
+      val ceArgs = Map("actor1" -> Seq(actor1), "actor2" -> Seq(actor2))
+      val minArgs = (arguments - "actor1" - "actor2") ++ ceArgs
+      mention match {
+        case em: EventMention =>
+          val interval = mkTokenInterval(trigger = em.trigger, arguments = minArgs)
+          em.copy(tokenInterval = interval, arguments = minArgs)
+        case rm: RelationMention =>
+          val interval = mkTokenInterval(arguments = minArgs)
+          rm.copy(tokenInterval = interval, arguments = minArgs)
+      }
+    }
+  }
+
+  def splitEvents(mentions: Seq[Mention], state: State): Seq[Mention] = {
+    mentions flatMap {
+      case tbm: TextBoundMention => Seq(tbm)
+      case em: EventMention => cartesianProduct(em)
+      case rm: RelationMention => cartesianProduct(rm)
     }
   }
 }

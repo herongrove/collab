@@ -1,10 +1,23 @@
 package com.github.danebell.collab
 
 import com.github.danebell.collab.mentions.CollabMention
-import org.clulab.odin.{EventMention, Mention, TextBoundMention}
+import org.clulab.odin.{EventMention, Mention, RelationMention, TextBoundMention}
 import org.clulab.struct.Interval
 
 object MentionFilter {
+
+
+  /**
+    * Returns the same mentions, filtering out repeats of events with the same arguments (preferring
+    * [[EventMention]]s over [[RelationMention]]s.
+    */
+  def keepFirst(ms: Seq[Mention]): Seq[Mention] = {
+    val (tbms, events) = ms.partition(_.isInstanceOf[TextBoundMention])
+    val sameArgs = events.groupBy{ m => (m.label, m.arguments) }.values
+    tbms ++ sameArgs.map{ group =>
+      group.maxBy(_.isInstanceOf[EventMention])
+    }
+  }
 
   /**
     * Returns the same mentions, filtering out mentions whose arguments overlap. For example,

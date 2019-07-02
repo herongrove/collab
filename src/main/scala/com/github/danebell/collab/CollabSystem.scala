@@ -1,13 +1,12 @@
 package com.github.danebell.collab
 
 import org.clulab.processors.{Document, Processor}
-import org.clulab.processors.fastnlp.FastNLPProcessor
 import RuleReader._
 import com.github.danebell.collab.mentions.CollabMention
 import com.github.danebell.collab.mentions._
-import com.github.danebell.collab.utils.DisplayUtils._
 import com.typesafe.scalalogging.LazyLogging
 import org.clulab.odin.{ExtractorEngine, State}
+
 
 class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
 
@@ -50,10 +49,12 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
       Nil
     }
     val events = eventEngine.extractFrom(doc, State(entities))
-    val nonOverlapping = MentionFilter.nonIdenticalArgs(events)
+    val split = CollabActions.splitEvents(events, State(events))
+    val nonOverlapping = MentionFilter.nonIdenticalArgs(split)
     val mostSpecific = MentionFilter.keepMostSpecific(nonOverlapping)
+    val nonDuplicates = MentionFilter.keepFirst(mostSpecific)
 
-    mostSpecific.map(_.toCollabMention)
+    nonDuplicates.map(_.toCollabMention)
   }
 
   def reload(): Unit = {

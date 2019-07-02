@@ -1,6 +1,12 @@
+- name: avoid-eis
+  label: Avoid
+  priority: 1
+  type: token
+  pattern: |
+    "EIS"
+
 - name: ner-person
   label: Person
-  action: mkNERMentions
   priority: 2
   type: token
   pattern: |
@@ -8,7 +14,6 @@
 
 - name: ner-date
   label: Date
-  action: mkNERMentions
   priority: 2
   type: token
   pattern: |
@@ -16,23 +21,20 @@
 
 - name: ner-org
   label: Organization
-  action: mkNERMentions
   priority: 2
   type: token
   pattern: |
-    [entity=ORGANIZATION] [entity=ORGANIZATION]*
+    [entity=ORGANIZATION & ! mention=Avoid] [entity=ORGANIZATION & ! mention=Avoid]*
 
 - name: ner-org2
   label: Organization
-  action: mkNERMentions
   priority: 2
   type: token
   pattern: |
-    [entity="B-Organization"] [entity="I-Organization"]*
+    [entity="B-Organization" & ! mention=Avoid] [entity="I-Organization" & ! mention=Avoid]*
 
 - name: ner-loc
   label: Location
-  action: mkNERMentions
   priority: 2
   type: token
   pattern: |
@@ -72,6 +74,23 @@
   pattern: |
     /NNPS?/+
 
+- name: "acronym"
+  label: ProperNoun
+  priority: 3
+  type: token
+  #action: convertToConcept
+  pattern: |
+    [word=/^([A-Z]{2,})$/ & ! mention=Avoid]
+
+#- name: "noun-phrase-1"
+#  label: NounPhrase
+#  priority: 3
+#  type: token
+#  #action: convertToConcept
+#  unit: "tag"
+#  pattern: |
+#    /DT|NNP?S?|JJ/* /NNP?S?|PRP|JJ/ /DT|NNP?S?|JJ/*
+
 - name: "noun-phrase-1"
   label: NounPhrase
   priority: 3
@@ -79,7 +98,7 @@
   #action: convertToConcept
   unit: "tag"
   pattern: |
-    /DT|NNP?S?|JJ/* /NNP?S?|PRP|JJ/ /DT|NNP?S?|JJ/*
+    /DT|NNPS?|JJ/* /NNPS?/ /DT|NNPS?|JJ/*
 
 - name: "prep-phrase"
   label: PrepPhrase
@@ -113,6 +132,13 @@
   pattern: |
     @NounPhrase "CC" @PrepPhrase
     @NounPhrase "CC" @PrepPhrase
+
+- name: department-of-X
+  label: Organization
+  priority: 8
+  type: token
+  pattern: |
+    "Department" "of" @NounPhrase
 
 #- name: "verb-phrase-1"
 #  label: VerbPhrase

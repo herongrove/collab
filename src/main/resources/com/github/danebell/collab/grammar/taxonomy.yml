@@ -1,6 +1,7 @@
+- Avoid
+- Date
+- Title
 - Entity:
-  - Title
-  - Avoid
   - Phrase:
     - FirstPerson
     - ProperNoun
@@ -15,7 +16,6 @@
       - Person
       - Organization
       - Government
-    - Date
     - Location:
       - Nation
       - State
