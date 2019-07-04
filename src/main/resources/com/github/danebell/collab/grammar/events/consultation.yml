@@ -102,6 +102,24 @@
     actor1:Entity = (>/nmod:poss/ | >compound | <conj) /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
     actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
+- name: "consultation-syntax-noun-following"
+  example: "Following consultation with the Commandant of the U.S. Coast Guard and the Secretary of the Interior, USEPA assumed air quality responsibility"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
+    actor1:Entity = </nmod_(in|following)/ (<conj | >conj)* >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = >nmod_with (>/nmod_of|conj/)* /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-meeting"
+  example: "NRC government-to-government consultation meeting with the USACE and the Seminole Tribe of Florida, June 2015 (USACE and NRC 2015-TN4735)"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
+    actor1:Entity = <compound [lemma=/conference|meet/] >compound /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity = <compound [lemma=/conference|meet/] >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
 - name: "consultation-syntax-verb-1"
   example: "In addition, the FERC consults with the FWS and NOAA Fisheries"
   #example: "TVA is consulting with the USFWS over the potential effects to this species."
@@ -162,8 +180,8 @@
 #  action: ${eventAction}
 #  pattern: |
 #    trigger = [lemma=/(?i)^(${trigger})/]
-#    actor1:Entity = >>
-#    actor2:Entity = >>
+#    actor1:Actor = (<<|>>)+
+#    actor2:Actor = (<<|>>)+
 
 
 ###############

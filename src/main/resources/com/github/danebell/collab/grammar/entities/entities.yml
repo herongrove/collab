@@ -80,7 +80,7 @@
   type: token
   #action: convertToConcept
   pattern: |
-    [word=/^([A-Z]{2,})$/ & ! mention=Avoid]
+    [word=/^([A-Z]{2,})$/ & ! mention=Avoid] [tag=/NNPS?/]*
 
 #- name: "noun-phrase-1"
 #  label: NounPhrase
