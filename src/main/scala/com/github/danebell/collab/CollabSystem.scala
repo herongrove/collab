@@ -30,7 +30,9 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
       .mkString(" ")
     val relevantDoc = proc.mkDocument(relevant, keepText)
 
-    if(relevantDoc.sentences.nonEmpty) proc.annotate(relevantDoc)
+    if(relevantDoc.sentences.nonEmpty) try {
+      proc.annotate(relevantDoc)
+    }
 
     relevantDoc
   }

@@ -38,7 +38,7 @@ class KorrectDocuments(val config: Config) {
     text//.replaceAll("(?<!\\.) *(\\d+\\))", "\n$1")
       .replaceAll(" *• *", "\n")
       .replaceAll(" +o  ", "\n")
-      .replaceAll("  +", "\n")
+      .replaceAll("   +", "\n")
       .replaceAll("\f", "\n")
 
   def joinLines(text: String): String = {
@@ -93,7 +93,7 @@ class KorrectDocuments(val config: Config) {
     val extraSpaces = addSpace(noNL)
     val extraNewlines = addNewlines(extraSpaces)
 
-    extraNewlines
+    extraNewlines.replaceAll("  +", " ")
   }
 }
 
