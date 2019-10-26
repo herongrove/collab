@@ -30,26 +30,45 @@ object CollabActions {
   def cartesianProduct(mention: Mention): Seq[Mention] = {
     //println(s"${mention.arguments.map{ case (nm, args) => s"$nm: ${args.map(_.text).mkString(", ")}"}.mkString("; ")}\n")
 
-    val arguments = mention.arguments
+    val args = mention.arguments
     // sanity checks
-    if (arguments.values.flatten.toSeq.length < 3) return Seq(mention)
-    if (! arguments.contains("actor1") || ! arguments.contains("actor2")) return Seq(mention)
-    for {
-      actor1 <- arguments("actor1")
-      actor2 <- arguments("actor2")
-    } yield {
-      //println(s"\tactor1: ${actor1.text}, actor2: ${actor2.text}")
-      val ceArgs = Map("actor1" -> Seq(actor1), "actor2" -> Seq(actor2))
-      val minArgs = (arguments - "actor1" - "actor2") ++ ceArgs
-      mention match {
-        case em: EventMention =>
-          val interval = mkTokenInterval(trigger = em.trigger, arguments = minArgs)
-          em.copy(tokenInterval = interval, arguments = minArgs)
-        case rm: RelationMention =>
-          val interval = mkTokenInterval(arguments = minArgs)
-          rm.copy(tokenInterval = interval, arguments = minArgs)
+    if (args.values.flatten.toSeq.length < 3) return Seq(mention)
+    if (args.contains("actor1") && args.contains("actor2")) {
+      for {
+        actor1 <- args("actor1")
+        actor2 <- args("actor2")
+      } yield {
+        //println(s"\tactor1: ${actor1.text}, actor2: ${actor2.text}")
+        val actorArgs = Map("actor" -> Seq(actor1, actor2))
+        val newArgs = (args - "actor1" - "actor2") ++ actorArgs
+        mention match {
+          case em: EventMention =>
+            val interval = mkTokenInterval(trigger = em.trigger, arguments = newArgs)
+            em.copy(tokenInterval = interval, arguments = newArgs)
+          case rm: RelationMention =>
+            val interval = mkTokenInterval(arguments = newArgs)
+            rm.copy(tokenInterval = interval, arguments = newArgs)
+        }
       }
-    }
+    } else if (args.contains("actor") || args.contains("actor1")) {
+      val actorKeys = args
+        .filterKeys(_.startsWith("actor"))
+        .values
+        .flatten
+        .toSeq
+      for (actorPair <- actorKeys.combinations(2).toSeq) yield {
+        val actorArgs = Map("actor" -> actorPair)
+        val newArgs = (args - "actor") ++ actorArgs
+        mention match {
+          case em: EventMention =>
+            val interval = mkTokenInterval(trigger = em.trigger, arguments = newArgs)
+            em.copy(tokenInterval = interval, arguments = newArgs)
+          case rm: RelationMention =>
+            val interval = mkTokenInterval(arguments = newArgs)
+            rm.copy(tokenInterval = interval, arguments = newArgs)
+        }
+      }
+    } else Seq(mention)
   }
 
   def splitEvents(mentions: Seq[Mention], state: State): Seq[Mention] = {

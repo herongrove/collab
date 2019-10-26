@@ -8,8 +8,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-2"
   example: "BOEM is currently engaged in ESA consultation with FWS and NMFS"
@@ -17,8 +17,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <nmod_in >nsubjpass /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <nmod_in >nsubjpass /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-3"
   example: "Section 106 consultation for the proposed action was initiated by the DOE with the Louisiana and Texas SHPOs"
@@ -26,8 +26,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <nsubjpass >nmod_by /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = <nsubjpass >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <nsubjpass >nmod_by /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = <nsubjpass >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-between-1"
   example: "Informal consultation between Golden Pass and the DOT regarding additional LNG and pipeline safety and federal safety standards is currently ongoing."
@@ -35,8 +35,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = nmod_between /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = nmod_between /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = nmod_between /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = nmod_between /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-with-1"
   example: "As the lead federal agency, the FERC is responsible for the Section 7 consultation with the FWS."
@@ -44,8 +44,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <nmod_for [word=/^(responsible|accountable)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <nmod_for [word=/^(responsible|accountable)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-initiate-1"
   example: "Golden Pass initiated informal consultation with the FWS, NOAA Fisheries, the TPWD, and the LDWF"
@@ -53,8 +53,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <dobj ([tag=/^V/] <xcomp)? [tag=/^VB(D|Z|P|N)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = <dobj? nmod_on? nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <dobj ([tag=/^V/] <xcomp)? [tag=/^VB(D|Z|P|N)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = <dobj? nmod_on? nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-initiate-2"
   example: "The NRC initiated consultation on the proposed action by writing to the Florida SHPO and the Advisory Council on Historic Preservation."
@@ -62,8 +62,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <dobj ([tag=/^V/] <xcomp)? [tag=/^VB(D|Z|P|N)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = <dobj >advcl /nmod/ /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <dobj ([tag=/^V/] <xcomp)? [tag=/^VB(D|Z|P|N)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = <dobj >advcl /nmod/ /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-in-consultation-with-1"
   example: "In consultation with the FWS, NOAA Fisheries, Golden Pass initially identified 8 federally listed species"
@@ -72,8 +72,17 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = </nmod_(in|based)/ >nsubj? /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = </nmod_(in|based)/ >nsubj? /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "consultation-syntax-noun-in-consultation-with-2"
+  example: "It joined  the  Coastal  Resources  Commission  (CRC)  in  consultation  with  the  Division  of Coastal  Management  (DCM)"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
+    actor1:Entity+ = </nmod_(in|based)/ >dobj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-completed-1"
   example: "Sabine Pass LNG completed Section 7 of the ESA consultation with the FWS, NOAA Fisheries, and the LDWF"
@@ -81,8 +90,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <nmod_of? <dobj [lemma=complete & tag=/^VB[DZPGN]/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <nmod_of? <dobj [lemma=complete & tag=/^VB[DZPGN]/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-acting-1"
   example: "BOEM is acting as lead agency in the reinitiated consultation, with BSEE involvement."
@@ -90,8 +99,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <nmod_in? <nmod_as [lemma=act] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = <nmod_in? <nmod_as [lemma=act] >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <nmod_in? <nmod_as [lemma=act] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = <nmod_in? <nmod_as [lemma=act] >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-poss-1"
   example: "The NRC’s and FPL’s consultation with the Florida SHPO concluded yesterday."
@@ -99,8 +108,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = (>/nmod:poss/ | >compound | <conj) /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = (>/nmod:poss/ | >compound | <conj) /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-following"
   example: "Following consultation with the Commandant of the U.S. Coast Guard and the Secretary of the Interior, USEPA assumed air quality responsibility"
@@ -108,8 +117,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = </nmod_(in|following)/ (<conj | >conj)* >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = >nmod_with (>/nmod_of|conj/)* /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = </nmod_(in|following)/ (<conj | >conj)* >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >nmod_with (>/nmod_of|conj/)* /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-noun-meeting"
   example: "NRC government-to-government consultation meeting with the USACE and the Seminole Tribe of Florida, June 2015 (USACE and NRC 2015-TN4735)"
@@ -117,8 +126,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^N/]
-    actor1:Entity = <compound [lemma=/conference|meet/] >compound /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = <compound [lemma=/conference|meet/] >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <compound [lemma=/conference|meet/] >compound /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = <compound [lemma=/conference|meet/] >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-verb-1"
   example: "In addition, the FERC consults with the FWS and NOAA Fisheries"
@@ -127,8 +136,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^VB[DZPGN]/]
-    actor1:Entity = <acl? >/nsubj(pass)?/ /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = (>nmod_with | >dobj)? /conj|compound|amod|nmod_(such_as|including)|appos|dep/{,3}
+    actor1:Entity+ = <acl? >/nsubj(pass)?/ /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = (>nmod_with | >dobj)? /conj|compound|amod|nmod_(such_as|including)|appos|dep/{,3}
 
 - name: "consultation-syntax-verb-1b-wrong"
   example: "DOE has noted that, as part of an air permit application, Lake Charles Cogeneration, LLC, previously consulted with the Louisiana SHPO"
@@ -136,8 +145,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^VB[DZPGN]/]
-    actor1:Entity = <acl /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <acl /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-verb-2a"
   example: "In addition, the FERC is required to consult with the FWS and NOAA Fisheries"
@@ -145,8 +154,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=VB]
-    actor1:Entity = <xcomp [lemma=require] >nsubjpass /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <xcomp [lemma=require] >nsubjpass /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-verb-2b"
   example: "Federal law requires us to consult with the DOD to determine whether there would be any impacts"
@@ -154,8 +163,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=VB]
-    actor1:Entity = <xcomp [lemma=require] >dobj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <xcomp [lemma=require] >dobj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-verb-3"
   example: "The USACE will continue to consult with the Seminole Tribe of Florida and the Miccosukee Tribe of Indians of Florida on the development of the work plan."
@@ -163,8 +172,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=VB]
-    actor1:Entity = <xcomp [lemma=continue] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <xcomp [lemma=continue] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = <xcomp? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 - name: "consultation-syntax-verb-4"
   example: "The Jena Band of Choctaw Indians requested to be consulted by FERC"
@@ -172,8 +181,8 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/(?i)^(${trigger})/ & tag=/^VB[ND]/]
-    actor1:Entity = <ccomp [lemma=/(?i)^(request|ask|demand|petition|appeal)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
-    actor2:Entity = >nmod_by /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor1:Entity+ = <ccomp [lemma=/(?i)^(request|ask|demand|petition|appeal)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >nmod_by /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
 
 #- name: "consultation-catchall"
 #  label: ${label}
@@ -206,7 +215,6 @@
     @actor2:Entity
     (("," @actor2:Entity)?
      (and | as well as) @actor2:Entity)?
-
 
 
 

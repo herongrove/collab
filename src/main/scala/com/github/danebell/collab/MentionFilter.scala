@@ -25,14 +25,17 @@ object MentionFilter {
     */
   def nonIdenticalArgs(ms: Seq[Mention]): Seq[Mention] = {
     ms.filterNot{ m =>
-      val actor1 = m.arguments.getOrElse("actor1", Nil)
-      val actor2 = m.arguments.getOrElse("actor2", Nil)
-      actor1.exists{ a1 =>
-        actor2.exists{ a2 =>
-          a1.tokenInterval overlaps a2.tokenInterval
+      val argList = m.arguments.values.flatten.toList
+      val argSet = argList.toSet
+      // same mention used twice
+      argList.length > argSet.size ||
+        // different mentions with overlapping intervals
+        argSet.exists{ a1 =>
+          (argSet - a1).exists{ a2 =>
+            a1.tokenInterval overlaps a2.tokenInterval
+          }
         }
       }
-    }
   }
 
   /**

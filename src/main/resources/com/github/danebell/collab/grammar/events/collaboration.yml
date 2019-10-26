@@ -1,0 +1,153 @@
+####################
+# DEPENDENCY RULES #
+####################
+
+- name: "collaboration-syntax-noun-team-1"
+  example: "A   team   of   resource   professionals,   including representatives  from  the Cape  Fear  River  Watch and  UNC  Wilmington conducted  a  follow-up  field investigation of the identified degradation issues."
+  example: "A team including UNC and the FDA."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(team|partnership)$/ & tag=/^N/]
+    actor:Entity+ = >/nmod_(of|between)/? >nmod_including? >nmod_from? /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "collaboration-syntax-noun-counsel-1"
+  example: "The Miles  Firm is legal counsel to the Authority Board and continues to  advise  staff  regarding  in-house  legal  issues."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=counsel & tag=/^N/]
+    actor1:Entity+ = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >/nmod_(for|of|to)/ /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "collaboration-syntax-noun-meet-1"
+  example: "Parsons had discussions with the US Army Corps of Engineers."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(collaborat|work|cooperat|contract|meet|talk|discuss)$/ & tag=/^N/]
+    actor1:Entity+ = <dobj [lemma=/^(call|lead|have)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = <dobj? >nmod_with >nmod_at? >nmod_of? /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "collaboration-syntax-noun-partnership-1"
+  example: "Parsons had discussions with the US Army Corps of Engineers."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(collaborat|work|cooperat|contract|meet|talk|discuss)$/ & tag=/^N/]
+    actor1:Entity+ = <dobj [lemma=/^(call|lead|have)$/] >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = <dobj? >nmod_with >nmod_at? >nmod_of? /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "collaboration-syntax-verb-represent-1a"
+  example: "Participants represented the National Drought Mitigation Center and NIDIS."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = (?<= [lemma=participant]) [lemma=/(?i)^represent$/ & tag=/^V/]
+    actor:Entity+ = >dobj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "collaboration-syntax-verb-represent-1b"
+  example: "Participants represented the National Drought Mitigation Center and NIDIS."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=represent & tag=/^VB[DN]/] (?= by the? [lemma=/(?i)^participant$/])
+    actor:Entity+ = >nsubjpass /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "collaboration-syntax-verb-work-1"
+  example: "DCM  is  also working with  FEMA, the NSF, and Governor  Kilgrave"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^V/]
+    actor1:Entity+ = >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "collaboration-syntax-verb-work-2"
+  example: "DCM  and FEMA are working together to kill the moon"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^V/]
+    actor:Entity+ = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "collaboration-syntax-verb-act-1"
+  example: "The Miles  Firm acts as legal counsel to the Authority Board and continues to  advise  staff  regarding  in-house  legal  issues."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=act & tag=/^V/]
+    actor1:Entity+ = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = (?= >nmod_as) >nmod_as? >/nmod_(for|of|to)/ /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "collaboration-syntax-verb-attend-1"
+  example: "CFRW staff, board members and volunteers attended an event at the Family YMCA"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=attend & tag=/^V/]
+    actor1:Entity+ = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+    actor2:Entity+ = >dobj >nmod_at? /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+- name: "collaboration-syntax-verb-signed-1"
+  example: "The NSF and the DEA signed a Memorandum of Understanding (MOU)."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=sign & tag=/^V/]
+    actor:Entity+ = >nsubj /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+#    actor2:Entity? = >nmod_at? >nmod_with /conj|compound|amod|nmod_(such_as|including)|appos/{,2}
+
+
+###############
+# TOKEN RULES #
+###############
+
+- name: "collaboration-token-noun-team-1"
+  example: "A team of resource professionals from the Cape  Fear  River  Watch and  UNC  Wilmington conducted  a  follow-up  field investigation of the identified degradation issues."
+  type: token
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    (?<trigger> [lemma=team & tag=/^N/])
+    (consisting? of|including)
+    ([tag=/NNS?/]+ from)?
+    [tag=DT]* @actor:Entity
+    (("," [tag=DT]* @actor:Entity)*
+    ","? (and | as well as) [tag=DT]* @actor:Entity)?
+
+- name: "collaboration-token-verb-represent-1a"
+  example: "Participants represented the National Drought Mitigation Center and NIDIS."
+  type: token
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    [lemma=participant] (?<trigger> [lemma=represent & tag=/^V/])
+    [tag=DT]* @actor:Entity
+    (("," [tag=DT]* @actor:Entity)*
+    ","? (and | as well as) [tag=DT]* @actor:Entity)?
+
+- name: "collaboration-token-verb-represent-1b"
+  example: "The National Drought Mitigation Center and NIDIS were represented by the participants."
+  type: token
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    [tag=DT]* @actor:Entity
+    (("," [tag=DT]* @actor:Entity)*
+    ","? (and | as well as) [tag=DT]* @actor:Entity)?
+    [lemma=be & tag=/^VBD/] (?<trigger> [lemma=represent & tag=/^VB[DN]/])
+    by the? [lemma=participant]
+
+- name: "in-consultation-token"
+  example: "It directed  the  Coastal  Resources  Commission  (CRC)  in  consultation  with  the  Division  of Coastal  Management  (DCM),  Division  of  Land  Resources,  and  the  Coastal  Resources Advisory  Council  (CRAC)  to  study  the  use  and  applicability  of  a  terminal  groin  as  an erosion  control  device."
+  label: ${label}
+  action: ${eventAction}
+  type: token
+  pattern: |
+    @actor:Entity
+    in [lemma=/^(${trigger})/ & tag=/^N/]
+    with
+    @actor:Entity
+    (("," [tag=DT]* @actor:Entity)*
+    ","? (and | as well as) [tag=DT]* @actor:Entity)?

@@ -1,644 +1,441 @@
-Federal Energy Regulatory Commission	FERC
-US Department of Energy	USDOE
-U.S. Department of Energy	USDOE
-US Army Corps of Engineers	USACE
-U.S. Army Corps of Engineers	USACE
-US Department of Transportation	USDOT
-U.S. Department of Transportation	USDOT
-US Environmental Protection Agency	USEPA
-U.S. Environmental Protection Agency	USEPA
-Golden Pass Products LLC	GPP
-US Coast Guard	USCG
-U.S. Coast Guard	USCG
-Coast Guard	USCG
-National Oceanic and Atmospheric Administration Fisheries	NOAAF
-Texas Parks and Wildlife Department	TPWD
-Louisiana Department of Wildlife and Fisheries	LDWF
-Louisiana Department of Culture, Recreation, and Tourism, Division of Archaeology	LDCRTA
-US Department of Defense	USDOD
-U.S. Department of Defense	USDOD
-Jefferson County, Texas	JEFF
-Orange County, Texas	ORANGE
-National Resource Conservation Service	NRCS
-Calcasieu Parish	CALAS
-Texas Commission on Environmental Quality	TCEQ
-Texas Parks and Wildlife Department	TPWD
-Louisiana Division of Historic Preservation	LDHP
-Texas Historical Commission	THC
-Alabama-Coushatta Tribe of Texas	ALCOUS
-Caddo Nation of Oklahoma	CADDO
-Chitimacha Tribe of Louisiana	CHITI
-Coushatta Tribe of Louisiana	COUSH
-Jena Band of Choctaw Indians	JENA
-Mississippi Band of Choctaw Indians	CHOC_MS
-Quapaw Tribe of Indians, Tonkawa Tribe of Oklahoma	QUAP
-Tunica-Biloxi Indians of Louisiana	TUNI
-Sabine Pass LNG	SPLNG
-Tennessee Valley Authority	TVA
-US Fish and Wildlife Service	USFWS
-U.S. Fish and Wildlife Service	USFWS
-United Keetowah Band of Cherokee Indians	UKB
-US Department of Interior	USDOI
-U.S. Department of Interior	USDOI
-Tennessee Historical Commission	TNHC
-Bureau of Ocean Energy Management, Regulation and Enforcement	BOEMRE
-Bureau of Ocean Energy Management Regulation and Enforcement	BOEMRE
-Bureau of Ocean Energy Management	BOEM
-Bureau of Safety and Environmental Enforcement	BSEE
-National Oceanic and Atmospheric Administration National Marine Fisheries Service	NMFS
-Leucadia Energy, LLC	LEUC
-Leucadia Energy	LEUC
-Ecology and Environment, Inc.	ECOENV
-Ecology and Environment	ECOENV
-Choctaw Nation	CHOCTAW
-Louisiana Natural Heritage Program	LNHP
-Denbury	DEN
-Lake Charles Cogeneration, LLC	LKCHAR
-Lake Charles Cogeneration	LKCHAR
-William Self Associates Inc. (WSA)	WSA
-William Self Associates Inc.	WSA
-William Self Associates	WSA
-Dial Cordy and Associates Inc.	DCA
-Dial Cordy and Associates	DCA
-US Army Corps of Engineers Wilmington District	USACE_WD
-U.S. Army Corps of Engineers Wilmington District	USACE_WD
-Carteret County	CARTERET
-Town of Atlantic Beach	ATLANTIC
-Town of Pine Knoll Shores	PINE
-Town of Indian Beach	INDIAN
-Town of Emerald Isle	EMERALD
-US Army Corps of Engineers Wilmington District	USACE_JD
-U.S. Army Corps of Engineers Wilmington District	USACE_JD
-US Nuclear Regulatory Commission	USNRC
-U.S. Nuclear Regulatory Commission	USNRC
-Florida Power and Light Company	FPL
-Advisory Council on Historic Preservation	ACHP
-Florida Fish and Wildlife Conservation Commission	FFWCC
-National Marine Fisheries Service	NMFS
-Miami-Dade Office of Historic and Archaeological Resources	MDOHAR
-Florida Division of Historical Resources	FDHR
-Seminole Tribe of Florida	SEMINOLE
-Miccosukee Tribe of Indians of Florida	MICCO
-Tennessee Department of Transportation	TDOT
-Parsons Brinckerhoff Inc.	PARSONS
-Parsons Brinckerhoff	PARSONS
-US Department of Transportation Federal Highway Administration	USDOT_FHA
-Eastern Band of the Cherokee	ECHEROKEE
-Bowlby and Associates	BOWLBY
-Civil and Environmental Consultant, Inc.	CIVIL
-Civil and Environmental Consultant	CIVIL
-Panamerican Consulting	PANA
-KS Ware and Associates	KSWARE
-K.S. Ware and Associates	KSWARE
-Alabama Historical Commission	AHC
-Georgia Department of Natural Resources Historic Preservation Division	GDNR_HPD
-Mississippi Department of Archives and History State Historic Preservation Office	MDAH_SHPO
-Kentucky Heritage Council	KHC
-North Carolina Department of Natural and Cultural Resources Historical Commission	NCDNCR
-Virginia Department of Historic Resources	VADHR
-US Department of Energy Advanced Research Projects Agency	USDOE_ARPA
-US Department of Agriculture Forest Service	USDA_FS
-US Department of Agriculture Animal and Plant Inspection Service	USDA_APHIS
-US Fish and Wildlife Serfice Mississippi Field Office	USFWS_MS
-US Fish and Wildlife Service Louisiana Office	USFWS_LA
-Choctaw Nation of Oklahoma	CHOC_OK
-Mississippi Natural Heritage Program	MNHP
-US Department of Energy Office of Fossil Energy	USDOI_OFE
-City of Norfolk	NORFOLK
-VHB	VHB
-Housing and Urban Development	HUD
-Virginia Department of Environmental Quality	VADEQ
-Chickahominy Tribe	CHICK
-Eastern Chickahominy Tribe	ECHICK
-Upper Mattaponi Tribe	UMATT
-Nansemond Tribe	NANSE
-Monacan Indian Nation	MONA
-Delaware Nation	DELA
-Pamunkey Indian Tribe	PAMU
-Driftwood LNG, LLC	DRIFT
-Driftwood LNG	DRIFT
-Driftwood Pipeline, LLC	DRIFT
-Driftwood Pipeline	DRIFT
-Driftwood LNG, LLC and Driftwood Pipeline, LLC (collectively, "Driftwood")	DRIFT
-Driftwood	DRIFT
-Louisiana Department of Natural Resources Office of Coastal Management	LDNR_OCM
-Venture Global LNG	VENTURE
-Magnolia LNG	MAG
-Moran Shipping	MORAN
-COTP Marine Safety Unit	COTP_MSU
-ABS Consulting	ABS
-Marine Pilots Institute of Covington	MPIC
-Bechtel	BECHT
-Port of Lake Charles	PORT
-Lake Charles Pilots	LCPILOT
-Louisiana State Police	LAPOL
-National Park Service Environmental Quality Division	NPS_EQD
-National Park Service Big South Fork NRRA	NPS_BSF
-National Park Service Southeast Region	NPS_SE
-National Park Service Water Resources Division	NPS_WRD
-National Park Service Geological Resources Division	NPS_GRD
-Wood Environment and Infrastructure Solutions, Inc.	WOOD
-National Park Service	NPS
-US Department of Interior Office of Surface Mining	USDOI_OSM
-U.S. Department of Interior Office of Surface Mining	USDOI_OSM
-Kentucky Department for Environmental Protection	KDEP
-Tennessee Department of Environment and Conservation	TDEC
-Kentucky State Clearinghouse	KSC
-Columbia Gulf Transmission, LLC	CGT
-Gulf Xpress Project	GXP
-West Virginia Department of Environmental Protection	WVDEP
-West Virginia Division of Natural Resources (WVDNR)	WVDNR
-West Virginia Division of Natural Resources	WVDNR
-US Fish and Wildlife Service West Virginia Field Office	USFWS_WV
-U.S. Fish and Wildlife Service West Virginia Field Office	USFWS_WV
-Columbia Gas	CGAS
-West Virginia Division of Culture and History	WVDCH
-West Virginia Department of Natural Resources Natural Heritage Program	WVDNR_NHP
-West Virginia Department of Natural Resources – Natural Heritage Program	WVDNR_NHP
-West Virginia Department of Natural Resources - Natural Heritage Program	WVDNR_NHP
-West Virginia Department of Natural Resources -- Natural Heritage Program	WVDNR_NHP
-Kentucky Department of Fish and Wildlife Resources	KDFWR
-Mississippi Department of Archives and History State Historic Preservation Office	MDAH
-Mississippi Department of Wildlife, Fish, and Parks Museum of Natural Science	MDWFP_MNS
-Mississippi Department of Wildlife, Fish, and Parks – Museum of Natural Science	MDWFP_MNS
-Mississippi Department of Wildlife, Fish, and Parks - Museum of Natural Science	MDWFP_MNS
-Mississippi Department of Wildlife, Fish, and Parks -- Museum of Natural Science	MDWFP_MNS
-West Virginia Department of Health and Human Resources	WVDHHR
-Mississippi Department of Environmental Quality	MDEQ
-National Resource Conservation Service West Virginia Office	NRCS_WV
-Mississippi Department of Wildlife, Fish, and Parks	MDWFP
-Seneca Nation of Indians	SENECA
-Accomack County	ACCOMACK
-Division of Economics US Fish and Wildlife Service	USFWS_DE
-North American Waterfowl Management Plan Committee	NAWMP
-North American Waterbird Conservation Plan	NAWCP
-US Shorebird Conservation Plan Council	USSCP
-U.S. Shorebird Conservation Plan Council	USSCP
-Partners in Flight Conservation Plans	PIF
-US Environmental Protection Agency Region 4	USEPA_4
-U.S. Environmental Protection Agency Region 4	USEPA_4
-ANAMAR Environmental Consulting, Inc.	ANAMAR
-ANAMAR Environmental Consulting	ANAMAR
-Anamar Environmental Consulting, Inc.	ANAMAR
-Anamar Environmental Consulting	ANAMAR
-US Army Corps of Engineers Jacksonville District	USACE_JD
-U.S. Army Corps of Engineers Jacksonville District	USACE_JD
-US Army Corps of Engineers Chief Environmental Branch	USACE_CEB
-U.S. Army Corps of Engineers Chief Environmental Branch	USACE_CEB
-North Jax Civic Association	NJCA
-Florida Department of Environmental Protection	FDEP
-US Army Corps of Engineers Planning Division	USACE_PD
-U.S. Army Corps of Engineers Planning Division	USACE_PD
-US Army Corps of Engineers Ocean Dumping Management	USEPA_ODM
-U.S. Army Corps of Engineers Ocean Dumping Management	USEPA_ODM
-Florida Department of State Division of Historical Resources	FDOS_DHS
-US Department of Interior Regional Environmental Protection	USDOI_REP
-U.S. Department of Interior Regional Environmental Protection	USDOI_REP
-US Environmental Protection Agency Wetlands, Coastal, and Ocean Branch	USEPA_WCOB
-U.S. Environmental Protection Agency Wetlands, Coastal, and Ocean Branch	USEPA_WCOB
-National Oceanic and Atmospheric Administration Southeast Regional Office	NOAA_SE
-National Marine Fisheries Service Southeast Regional Office	NMFS_SRO
-Alabama Department of Conservation and Natural Resources	ADOCNR
-Geological Survey of Alabama	GSAL
-National Park Service	NPS
-US Department of Agriculture	USDA
-U.S. Department of Agriculture	USDA
-Alabama Department of Environmental Management	ADEM
-National Oceanic and Atmospheric Administration Gulf of Mexico Disaster Response Center	NOAA_GMDRC
-US Fish and Wildlife Service Alabama Ecological Services Field Office	USFWS_ALES
-U.S. Fish and Wildlife Service Alabama Ecological Services Field Office	USFWS_ALES
-US Department of Interior Deepwater Horizon Case Management Office	USDOI_DWH
-U.S. Department of Interior Deepwater Horizon Case Management Office	USDOI_DWH
-National Park Service Fort Raleigh National Historic Site	NPS_FRNHS
-National Park Service Denver Service Center	NPS_DSC
-Parsons Infrastructure and Technology	PARSONS_IT
-Tuscarora Nation	TUCSA
-Kinder Morgan	KMORG
-Lake Charles Regional Airport	LCRA
-Transcontinental Gas Pipe Line Company, LLC (Transco)	TRANSCO
-Transcontinental Gas Pipe Line Company, LLC	TRANSCO
-Transcontinental Gas Pipe Line Company	TRANSCO
-Transco	TRANSCO
-Pennsylvania Department of Transportation	PDOT
-Reading Company Technical and Historical Society	RCTHS
-Port Arthur LNG	PALNG
-Port Arthur Pipeline, LLC	PAPL
-JD Murphree WMA	JDMWMA
-J.D. Murphree WMA	JDMWMA
-Area Maritime Security Committee	AMSC
-Harbor Safety Committee	HSC
-Seminole Tribe of Oklahoma	SEM_OK
-Venture Calcasieu Pass	VENTURE_CP
-Louisiana Department of Natural Resources	LDNR
-Sabine River Authority of Texas	SAB_TX
-Sabine River Authority, State of Louisiana	SAB_LA
-US Navy	NAVY
-U.S. Navy	NAVY
-Navy	NAVY
-North Carolina Division of Coastal Management	NCDCM
-North Carolina	NC
-Georgia Department of Transportation	GADOT
-Georgia Department of Natural Resources Coastal Resources Division	GDNR_CRD
-Savannah State University	SSU
-Georgia Historical Society	GHS
-Savannah Pilots Association	SPA
-Tybee Island City Council	TICC
-Coastal Georgia Regional Council	CGRDC
-Savannah/Chatham County Police Department	SPD
-Tybee Island Historic Society	THIS
-Chatham County Public Works and Parks Department	CCPW
-Oatland Island Education Center	OIEC
-Georgia Land Trust	GLAND
-Metropolitan Planning Commission	MPC
-National Park Service, Denver Service Center	NPS_DSC
-US Fish and Wildlife Service Savannah Refuge Complex Office	USFWS_SRCO
-U.S. Fish and Wildlife Service Savannah Refuge Complex Office	USFWS_SRCO
-Georgia Historic Preservation Division	GHPD
-Georgia Coastal Resources Division	GCRD
-Chatham County Savannah Metropolitan Planning Commission	CC_SMPC
-Chatham County – Savannah Metropolitan Planning Commission	CC_SMPC
-Chatham County - Savannah Metropolitan Planning Commission	CC_SMPC
-Chatham County -- Savannah Metropolitan Planning Commission	CC_SMPC
-National Parks Conservation Association	NPCA
-Georgia Conservancy	GACON
-Kentucky Department of Highways	KDH
-Atlantic Coast Pipeline, LLC	ACP
-Atlantic Coast Pipeline	ACP
-Dominion Energy Transmission, Inc.	DETI
-Dominion Energy Transmission	DETI
-Westmoreland Conservancy	WESTC
-National Partk Service ANST Office	NPS_ANST
-National Partk Service – ANST Office	NPS_ANST
-National Partk Service - ANST Office	NPS_ANST
-National Partk Service -- ANST Office	NPS_ANST
-US Fish and Wildlife Service Virginia Field Office	USFWS_VA
-U.S. Fish and Wildlife Service Virginia Field Office	USFWS_VA
-US Fish and Wildlife Service North Carolina Field Office	USFWS_NC
-U.S. Fish and Wildlife Service North Carolina Field Office	USFWS_NC
-US Fish and Wildlife Service Pennsylvania Office	USFWS_PA
-U.S. Fish and Wildlife Service Pennsylvania Office	USFWS_PA
-Virginia Department of Agriculture and Consumer Services	VADACS
-Virginia Department of Game and Inland Fisheries	VADGIF
-North Carolina Natural Heritage Program	NCNHP
-North Carolina State Historic Preservation Office	NCSHPO
-North Carolina Wildlife Resources Commission	NCWRC
-Pennsylvania Department of Conservation and Natural Resources	PADCNR
-Pennsylvania Historical and Museum Commission, Bureau for Historic Preservation	PAHMC
-Pennsylvania Historical and Museum Commission	PAHMC
-West Virginia Geological and Economic Survey	WVGES
-Virginia Department of Mines, Minerals, and Energy	VDMME
-North Carolina Geological Survey	NCGS
-Virginia Department of Health Office of Drinking Water	VDH_ODW
-Virginia Department of Health – Office of Drinking Water	VDH_ODW
-Virginia Department of Health - Office of Drinking Water	VDH_ODW
-Virginia Department of Health -- Office of Drinking Water	VDH_ODW
-Monongahela National Forest	MNF
-George Washington National Forest	GWNF
-Virginia Department of Conservation and Recreation	VADCR
-Pennsylvania Fish and Boat Commission	PAFBC
-Virginia Speleological Survey	VASS
-West Virginia Speleological Survey	WVSS
-Virginia Cave Conservancy	VCC
-Karst Waters Institute	KWI
-Pennsylvania Natural Heritage Program	PNHP
-Wintergreen Resort	WINTER
-Spruce Creek Resort and Market	SPRUCE
-McClauren Subdivision	MCCLAUREN
-West Virginia State Parks	WVSP
-Shenandoah Valley Battlefields Foundation	SVBF
-Catawba Indian Nation	CATAWBA
-Eastern Shawnee Tribe of Oklahoma	ESHAWNEE
-Tonawanda Band of Seneca Indians	TONAWANDA
-Tuscarora Nation	TUCSARORA
-Appalachian Trail Conservancy	ATC
-Barry Graham Oil Service	BGOS
-City of Coral Gables	CGABLES
-South Florida Water Management District	CGABLES
-US Fish and Wildlife Service Ohio Ecological Services Field Office	USFWS_OH
-U.S. Fish and Wildlife Service Ohio Ecological Services Field Office	USFWS_OH
-US Fish and Wildlife Service Region 5 Migratory Bird Permit Office	USFWS_MBPO
-U.S. Fish and Wildlife Service Region 5 Migratory Bird Permit Office	USFWS_MBPO
-Kentucky State Nature Preserve Commission	KYSNPC
-Kentucky State Department of Fish and Wildlife Resources	KYDFWR
-Kentucky Division of Forestry	KYDOF
-Ohio Environmental Protection Agency	OHEPA
-Ohio Department of Natural Resources	OHDNR
-West Virginia Natural Resources Conservation Service	WVNRCS
-Ohio State Historic Preservation Office	OHSHPO
-Pennsylvania State Historic Preservation Office	PASHPO
-Kentucky State Historic Preservation Office	KYSHPO
-Council on Environmental Quality	CEQ
-Miami-Dade County	MDADE
-Everglades National Park	EVERNP
-Biscayne National Park	BISCNP
-Miami-Dade County Department of Environmental Resources Management	MDC_DERM
-Miami-Dade County Department of Planning and Zoning	MDC_DPZ
-Miami-Dade Limestone Products Association	MDLPA
-Miami-Dade Department of Environmental Resources	MDDER
-South Florida Water Management District	SFWMD
-Washington Metropolitan Airport Authority	WMAA
-Louis Berger Group	LBGROUP
-FERC	FERC
-USDOE	USDOE
-USACE	USACE
-USDOT	USDOT
-USEPA	USEPA
-GPP	GPP
-USCG	USCG
-NOAAF	NOAAF
-TPWD	TPWD
-LDWF	LDWF
-LDCRTA	LDCRTA
-USDOD	USDOD
-NRCS	NRCS
-TCEQ	TCEQ
-TPWD	TPWD
-LDHP	LDHP
-THC	THC
-SPLNG	SPLNG
-TVA	TVA
-USFWS	USFWS
-UKB	UKB
-USDOI	USDOI
-TNHC	TNHC
-BOEMRE	BOEMRE
-BOEM	BOEM
-BSEE	BSEE
-NMFS	NMFS
-ECOENV	ECOENV
-LNHP	LNHP
-LKCHAR	LKCHAR
-WSA	WSA
-DCA	DCA
-USACE WD	USACE_WD
-USACE-WD	USACE_WD
-USACEWD	USACE_WD
-USACE JD	USACE_JD
-USACE-JD	USACE_JD
-USACEJD	USACE_JD
-USNRC	USNRC
-FPL	FPL
-ACHP	ACHP
-FFWCC	FFWCC
-NMFS	NMFS
-MDOHAR	MDOHAR
-FDHR	FDHR
-TDOT	TDOT
-USDOT FHA	USDOT_FHA
-USDOT-FHA	USDOT_FHA
-USDOTFHA	USDOT_FHA
-AHC	AHC
-GDNR HPD	GDNR_HPD
-GDNR-HPD	GDNR_HPD
-GDNRHPD	GDNR_HPD
-MDAH SHPO	MDAH_SHPO
-MDAH-SHPO	MDAH_SHPO
-MDAHSHPO	MDAH_SHPO
-KHC	KHC
-NCDNCR	NCDNCR
-VADHR	VADHR
-USDOE ARPA	USDOE_ARPA
-USDOE-ARPA	USDOE_ARPA
-USDOEARPA	USDOE_ARPA
-USDA FS	USDA_FS
-USDA-FS	USDA_FS
-USDAFS	USDA_FS
-USDA APHIS	USDA_APHIS
-USDA-APHIS	USDA_APHIS
-USDAAPHIS	USDA_APHIS
-USFWS MS	USFWS_MS
-USFWS-MS	USFWS_MS
-USFWSMS	USFWS_MS
-USFWS LA	USFWS_LA
-USFWS-LA	USFWS_LA
-USFWSLA	USFWS_LA
-MNHP	MNHP
-USDOI OFE	USDOI_OFE
-USDOI-OFE	USDOI_OFE
-USDOIOFE	USDOI_OFE
-VHB	VHB
-HUD	HUD
-VADEQ	VADEQ
-LDNR OCM	LDNR_OCM
-LDNR-OCM	LDNR_OCM
-LDNROCM	LDNR_OCM
-COTP MSU	COTP_MSU
-COTP-MSU	COTP_MSU
-COTPMSU	COTP_MSU
-ABS	ABS
-MPIC	MPIC
-NPS EQD	NPS_EQD
-NPS-EQD	NPS_EQD
-NPSEQD	NPS_EQD
-NPS BSF	NPS_BSF
-NPS-BSF	NPS_BSF
-NPSBSF	NPS_BSF
-NPS SE	NPS_SE
-NPS-SE	NPS_SE
-NPSSE	NPS_SE
-NPS WRD	NPS_WRD
-NPS-WRD	NPS_WRD
-NPSWRD	NPS_WRD
-NPS GRD	NPS_GRD
-NPS-GRD	NPS_GRD
-NPSGRD	NPS_GRD
-NPS	NPS
-USDOI OSM	USDOI_OSM
-USDOI-OSM	USDOI_OSM
-USDOIOSM	USDOI_OSM
-KDEP	KDEP
-TDEC	TDEC
-KSC	KSC
-CGT	CGT
-GXP	GXP
-WVDEP	WVDEP
-WVDNR	WVDNR
-USFWS WV	USFWS_WV
-USFWS-WV	USFWS_WV
-USFWSWV	USFWS_WV
-WVDCH	WVDCH
-WVDNR NHP	WVDNR_NHP
-WVDNR-NHP	WVDNR_NHP
-WVDNRNHP	WVDNR_NHP
-KDFWR	KDFWR
-MDAH	MDAH
-MDWFP MNS	MDWFP_MNS
-MDWFP-MNS	MDWFP_MNS
-MDWFPMNS	MDWFP_MNS
-WVDHHR	WVDHHR
-MDEQ	MDEQ
-NRCS WV	NRCS_WV
-NRCS-WV	NRCS_WV
-NRCSWV	NRCS_WV
-MDWFP	MDWFP
-USFWS DE	USFWS_DE
-USFWS-DE	USFWS_DE
-USFWSDE	USFWS_DE
-NAWMP	NAWMP
-NAWCP	NAWCP
-USSCP	USSCP
-PIF	PIF
-USEPA 4	USEPA_4
-USACE JD	USACE_JD
-USACE-JD	USACE_JD
-USACEJD	USACE_JD
-USACE CEB	USACE_CEB
-USACE-CEB	USACE_CEB
-USACECEB	USACE_CEB
-NJCA	NJCA
-FDEP	FDEP
-USACE PD	USACE_PD
-USACE-PD	USACE_PD
-USACEPD	USACE_PD
-USEPA ODM	USEPA_ODM
-USEPA-ODM	USEPA_ODM
-USEPAODM	USEPA_ODM
-FDOS DHS	FDOS_DHS
-FDOS-DHS	FDOS_DHS
-FDOS_DHS	FDOS_DHS
-USDOI REP	USDOI_REP
-USDOI-REP	USDOI_REP
-USDOIREP	USDOI_REP
-USEPA WCOB	USEPA_WCOB
-USEPA-WCOB	USEPA_WCOB
-USEPAWCOB	USEPA_WCOB
-NOAA SE	NOAA_SE
-NOAA-SE	NOAA_SE
-NOAASE	NOAA_SE
-NMFS SRO	NMFS_SRO
-NMFS-SRO	NMFS_SRO
-NMFSSRO	NMFS_SRO
-ADOCNR	ADOCNR
-NPS	NPS
-USDA	USDA
-ADEM	ADEM
-NOAA GMDRC	NOAA_GMDRC
-NOAA-GMDRC	NOAA_GMDRC
-NOAAGMDRC	NOAA_GMDRC
-USFWS ALES	USFWS_ALES
-USFWS-ALES	USFWS_ALES
-USFWSALES	USFWS_ALES
-USDOI DWH	USDOI_DWH
-USDOI-DWH	USDOI_DWH
-USDOIDWH	USDOI_DWH
-NPS FRNHS	NPS_FRNHS
-NPS-FRNHS	NPS_FRNHS
-NPSFRNHS	NPS_FRNHS
-NPS DSC	NPS_DSC
-NPS-DSC	NPS_DSC
-NPSDSC	NPS_DSC
-LCRA	LCRA
-PDOT	PDOT
-RCTHS	RCTHS
-PALNG	PALNG
-PAPL	PAPL
-JDMWMA	JDMWMA
-AMSC	AMSC
-HSC	HSC
-LDNR	LDNR
-SAB TX	SAB_TX
-SAB-TX	SAB_TX
-SABTX	SAB_TX
-SAB LA	SAB_LA
-SAB-LA	SAB_LA
-SABLA	SAB_LA
-NCDCM	NCDCM
-NC	NC
-GADOT	GADOT
-GDNR CRD	GDNR_CRD
-GDNR-CRD	GDNR_CRD
-GDNRCRD	GDNR_CRD
-SSU	SSU
-GHS	GHS
-SPA	SPA
-TICC	TICC
-CGRDC	CGRDC
-SPD	SPD
-THIS	THIS
-CCPW	CCPW
-CCPWPD	CCPW
-OIEC	OIEC
-GLAND	GLAND
-MPC	MPC
-NPS DSC	NPS_DSC
-NPS-DSC	NPS_DSC
-NPSDSC	NPS_DSC
-USFWS SRCO	USFWS_SRCO
-USFWS-SRCO	USFWS_SRCO
-USFWSSRCO	USFWS_SRCO
-GHPD	GHPD
-GCRD	GCRD
-CC SMPC	CC_SMPC
-CC-SMPC	CC_SMPC
-CCSMPC	CC_SMPC
-NPCA	NPCA
-KDH	KDH
-ACP	ACP
-DETI	DETI
-WESTC	WESTC
-NPS ANST	NPS_ANST
-NPS-ANST	NPS_ANST
-NPSANST	NPS_ANST
-USFWS VA	USFWS_VA
-USFWS-VA	USFWS_VA
-USFWSVA	USFWS_VA
-USFWS NC	USFWS_NC
-USFWS-NC	USFWS_NC
-USFWSNC	USFWS_NC
-USFWS PA	USFWS_PA
-USFWS-PA	USFWS_PA
-USFWSPA	USFWS_PA
-VADACS	VADACS
-VADGIF	VADGIF
-NCNHP	NCNHP
-NCSHPO	NCSHPO
-NCWRC	NCWRC
-PADCNR	PADCNR
-PAHMC	PAHMC
-WVGES	WVGES
-VDMME	VDMME
-NCGS	NCGS
-VDH ODW	VDH_ODW
-VDH-ODW	VDH_ODW
-VDHODW	VDH_ODW
-MNF	MNF
-GWNF	GWNF
-VADCR	VADCR
-PAFBC	PAFBC
-VASS	VASS
-WVSS	WVSS
-VCC	VCC
-KWI	KWI
-PNHP	PNHP
-WVSP	WVSP
-SVBF	SVBF
-ATC	ATC
-CCG	CGABLES
-USFWS OH	USFWS_OH
-USFWS-OH	USFWS_OH
-USFWSOH	USFWS_OH
-USFWS MBPO	USFWS_MBPO
-USFWS-MBPO	USFWS_MBPO
-USFWSMBPO	USFWS_MBPO
-KYSNPC	KYSNPC
-KYDFWR	KYDFWR
-KYDOF	KYDOF
-OHEPA	OHEPA
-OHDNR	OHDNR
-WVNRCS	WVNRCS
-OHSHPO	OHSHPO
-PASHPO	PASHPO
-KYSHPO	KYSHPO
-CEQ	CEQ
-MDC DERM	MDC_DERM
-MDC-DERM	MDC_DERM
-MDCDERM	MDC_DERM
-MDC DPZ	MDC_DPZ
-MDC-DPZ	MDC_DPZ
-MDCDPZ	MDC_DPZ
-MDLPA	MDLPA
-MD DER	MDDER
-MD-DER	MDDER
-MDDER	MDDER
-SFWMD	SFWMD
-WMAA	WMAA
+Airlie Gardens	Airlie Gardens
+Albert R. Rubin (EMC)	Albert R. Rubin
+Alex Marks	Alex Marks
+Alison Willis (MFC)	Alison Willis
+American Airlines	American Airlines
+American Water Works Association	American Water Works Association
+Andy Wood	Audubon Society of North Carolina
+Angie Pennock	Angie Pennock
+Anne Deaton	Anne Deaton
+APWA-NC Stormwater Management Division	American Public Works Association Stormwater Management Division
+APWA-NC Stormwater Management Divison (SMD)	American Public Works Association Stormwater Management Division
+Army	US Army
+Army Corps of Engineers	US Army Corps of Engineers
+Attorney General’s Office	North Carolina Attorney General
+Audubon Society of North Carolina	Audubon Society of North Carolina
+Audubon South Carolina	Audubon Society of South Carolina
+Authority Board	Cape Fear Utility Authority Board
+B + O design studio	B + O design studio
+Beaufort-Jasper Water & Sewer Authority	Beaufort-Jasper Water and Sewer Authority
+Bell South	BellSouth
+BellSouth	BellSouth
+Bennett Wynne	Bennett Wynne
+Bill Hunt	Bill Hunt
+Bill McDow	Bill McDow
+BNEA	Bottom Neighborhood Empowerment Association 
+Bob Ingles	Bob Ingles
+Bob Stroud	Bob Stroud
+Bonnie Duncan	Bonnie Duncan
+Bottom Neighborhood	Bottom Neighborhood Empowerment Association 
+Bouty Baldridge	Cape Fear River Watch
+Brad Knott, Deputy Director of Legislative Affairs	Brad Knott
+Brunswick County	Brunswick County
+Brunswick Nuclear Power Plant	Brunswick Nuclear Generating Station
+Cam McNutt	Cam McNutt
+Camilla Herlevich	Camilla Herlevich
+Cape Fear Council of Governments	Cape Fear Council of Governments
+Cape Fear River Assembly (CFRA)	Cape Fear River Assembly
+Cape Fear River Watch	Cape Fear River Watch
+Carl Scott and the rest of the Stormwater Services crew	Carl Scott
+Castle Hayne Steering Committee	Castle Hayne Steering Committee
+cdmsmith.com	CDM Smith
+Center for Disease Control	Centers for Disease Control and Prevention
+Center for Marine Science, University of North Carolina at Wilmington	University of North Carolina Wilmington
+CFPUA	Cape Fear Public Utility Authority
+CFRA	Cape Fear River Assembly
+CFRW	Cape Fear River Watch
+CFRW staff	Cape Fear River Watch
+Charleston Resilience Network	Charleston Resilience Network
+CHPP Steering Committee	Coastal Habitat Protection Plan Steering Committee
+Chris O'Keefe	Chris O'Keefe
+Chris O’Keefe	Chris O’Keefe
+Chuck Laughridge (MFC)	Chuck Laughridge
+CISA	Carolinas Integrated Sciences and Assessments
+CISA	Carolinas Integrated Sciences and Assessments
+City of Wilmington	City of Wilmington
+city of Wilmington	City of Wilmington
+City of Wilmington and New Hanover County stormwater management	City of Wilmington Public Services Department Stormwater Management Division
+City of Wilmington Development Services Department	City of Wilmington Public Services Department Planning Development and Transportation
+City of Wilmington staff from Stormwater Services, Transportation Planning, and Streets Maintenance	City of Wilmington Public Services Department Planning Development and Transportation
+City of Wilmington Stormwater Services Division	City of Wilmington Public Services Department
+City of Wilmington Streets and Stormwater Department	City of Wilmington Public Services Department
+City of Wilmington, Stormwater	City of Wilmington Public Services Department
+City of Wilmington/New Hanover County Community Outreach	New Hanover County/City of Wilmington Community Relations Advisory Committee
+City of WilmingtonEnergy	City of Wilmington Energy
+CLIMAS	Climate Assessment for the Southwest
+Co-Chairman The Honorable Trudy Wade, Co-Chairman	Trudy Wade
+Co-ChairmanThe Honorable Chuck McGrady	Chuck McGrady
+Co-ChairmanThe HonorableTrudy Wade	Trudy Wade
+Coast Guard	US Coast Guard
+Coastal Resources Advisory Council (CRAC)	Coastal Resources Advisory Council
+Coastal Resources Commission	Coastal Resources Commission
+Coastal Resources Commission (CRC)	Coastal Resources Commission
+Coastal Resources Commission’s	Coastal Resources Commission
+CoCoRaHS network	Community Collaborative Rain, Hail & Snow Network
+Community Collaborative Rain, Hail & Snow (CoCoRaHS) Network	Community Collaborative Rain, Hail & Snow Network
+Community Collaborative Rain, Hail, and Snow (CoCoRaHS)	Community Collaborative Rain, Hail & Snow Network
+Community Compliance	Cape Fear Community Compliance Staff
+Cooper	Roy Cooper
+CP&L	Carolina Power and Light
+CRC	Coastal Resources Commission
+CSX Transportation	CSX Transportation
+Daniel E. Dawson (EMC)	Daniel E. Dawson
+Danny Costin	Danny Costin
+Dave Mayes	David Mayes
+David Anderson (EMC)	David Anderson
+David Mayes	David Mayes
+David O’Neal	North Carolina Wildlife Resources Commission
+David Schiller	David Schiller
+DCM	North Carolina Division of Coastal Management
+Department of Environment and Natural Resources	North Carolina Department of Environmental and Natural Resources
+Department of Environment and Natural Resources’ (DENR) Division of Waste Management (DWM)	North Carolina Department of Environmental and Natural Resources Division of Waste Management
+Department of Environmental Quality	North Carolina Department of Environmental Quality
+Department of Geological Sciences, East Carolina University	East Carolina University
+Department of Water Quality (DWQ)	North Carolina Division of Water Quality
+Dept. of Environmental Health Sciences	North Carolina Department of Environmental Health
+DEQ	North Carolina Department of Environmental Quality
+DEWS	Coastal Carolinas Drought Early Warning System
+Dexter Hayes	Dexter Hayes
+Dial Cordy & Associates (Environmental Consultants)	Dial Cordy & Associates
+Dick Loeffert	Dick Loeffert
+Division of Coastal Management	North Carolina Division of Coastal Management
+Division of Coastal Management (DCM)	North Carolina Division of Coastal Management
+Division of Land Resources	North Carolina Division of Energy, Mineral, and Land Resources
+Division of Water Quality	North Carolina Division of Water Quality
+Division of Water Quality (DWQ)	North Carolina Division of Water Quality
+DOI Southeast Climate Science Center	Southeast Climate Adaptation Science Center
+Don Bennett	Don Bennett
+Don Cooke	Don Cooke
+Dr. Charles "Pete" Peterson	Charles Peterson
+Dr. Christopher Dumas (Professor of Economics, University of North Carolina, Wilmington)	Christopher Dumas
+Dr. Duncan FitzGerald (Professor of Department of Earth Sciences – Coastal Marine Geology, Boston University)	Duncan Fitzgerald
+Dr. Elizabeth Judge Sciaudone, P.E.	Elizabeth Judge Sciaudone
+Dr. Margery Overton	Margery Overton
+Dr. Mike Mallin	Mike Mallin
+Dr. Stanley R. Riggs	Stanley R. Riggs
+Dr. William Cleary	William Cleary
+DSD	New Hanover County Development Services Division
+Duke Energy North Carolina	Duke Energy
+Duke Energy's Brunswick and Harris nuclear plants	Duke Energy
+DWQ	North Carolina Division of Water Quality
+DWQ (Division of Water Quality)	North Carolina Division of Water Quality
+DWR Wilmington Regional Office	North Carolina Division of Water Quality
+East Carolina University	East Carolina University
+ECS Southeast, LLP (ECS)	ECS Southeast, LLP
+Edison Electric Institute	Edison Electric Institute
+Emergency Management	North Carolina Emergency Management Division
+Emergency Management Director Mike Sprayberry	North Carolina Emergency Management Division
+Environmental and Safety Management Department	Cape Fear Public Utility Authority Environmental Safety and Management Department
+Environmental Management Commission’s (EMC)	North Carolina Environmental Management Commission
+Environmental Management Program	New Hanover County Department of Environmental Management
+Environmental Protection Agency (EPA)	US Environmental Protection Agency
+ENVIRONMENTAL REVIEW COMMISSION	Environmental Review Commission
+ENVIRONMENTAL REVIEW COMMISSION	North Carolina Environmental Review Commission
+ESM	Cape Fear Public Utility Authority Environmental Safety and Management Department
+Family YMCA	Wilmington Family YMCA
+Federal Emergency	Federal Emergency Management Agency
+Federal Emergency Management Agency	Federal Emergency Management Agency
+Federal Emergency Management Agency (FEMA)	Federal Emergency Management Agency
+FEMA	Federal Emergency Management Agency
+FEMA Regional Administrator Grazia Szczech	Federal Emergency Management Agency
+GE	General Electric
+General Assembly	North Carolina General Assembly
+GE™s	General Electric
+GE™s Evandale, Ohio aircraft facility	General Electric
+Gordon Cashin	Gordon Cashin
+Gov. Cooper	Roy Cooper
+Gov. Cooper	Roy Cooper
+Gov. Easley	Mike Easley
+Gov. Roy Cooper	Roy Cooper
+Governor’s Office	Roy Cooper
+Greg Walker	Greg Walker
+GTV	GTV
+Gullah/Geechee Nation	Gullah/Geechee Nation
+Harvey London	Harvey London
+Hip Hop Caucus	Hip Hop Caucus
+Hollis Briggs	Hollis Briggs
+Honorable Chuck McGrady	Chuck McGrady
+Honorable Jimmy Dixon	Jimmy Dixon
+Institute of Marine Sciences, University of North Carolina at Chapel Hill	Institute of Marine Sciences, University of North Carolina at Chapel Hill
+Jabe Hardee	Jabe Hardee
+Jay Carter	Jay Carter
+Jennifer Butler	Jennifer Butler
+Jennifer Butler	Jennifer Butler 
+Jim Bordeaux	Castle Hayne Steering Committee
+Jimmy Johnson	Jimmy Johnson
+JoAnne Hanson	JoAnne Hanson
+Joanne Steenhuis	Joanne Steenhuis
+Joe Blair	Joe Blair
+Joey Ledford	Joey Ledford
+John Snipes (CRC)	John Snipes
+Kathy Jacobs	Kathy Jacobs
+KCI	KCI Associates of North Carolina PA
+KCI Associates of North Carolina P.A. (KCI)	KCI Associates of North Carolina PA
+Larry Baldwin (CRC)	Larry Baldwin
+Larry Hobbs	Larry Hobbs
+Local Watershd Group	New Hanover Local Watershed Group
+Local Watershed Group	Cape Fear River Watch
+Local Watershed Group	Cape Fear Sierra Club
+Local Watershed Group	New Hanover Local Watershed Group
+Lower Cape Fear River Program	Lower Cape Fear River Program
+Lower Cape Fear River Program (LCFRP)	Lower Cape Fear River Program
+Lower Cape Fear River Program Staff	Lower Cape Fear River Program
+Lumbee Tribe of North Carolina	Lumbee Tribe of North Carolina
+Management (OCRM)	Office of Ocean and Coastal Resource Management
+Marian McPhaul	Marian McPhaul
+Marilyn Meares Stowell	Marilyn Meares Stowell
+Marine Fisheries Commission Advisory Committees	Marine Fisheries Commission
+Martin Luther King Jr., Community Center	Martin Luther King Jr., Community Center
+Martin Luther King, JR. Community Center	Martin Luther King Jr., Community Center
+Matt Hayes	Matt Hayes
+Megan Thorpe	Megan Thorpe
+Michael Jordan	Michael Jordan
+Michael Pope	Michael Pope
+Mike Wicker (MFC)	Mike Wicker
+Miles Firm	Miles Firm
+Moffatt & Nichol (M&N)	Moffatt and Nichol
+Mollie Young, Director of Legislative Affairs	North Carolina Department of Environmental Quality
+Mr. Greg “Rudi” Rudolph	Greg Rudolph
+Mr. Jim Bateson	North Carolina Department of Environmental Quality
+Mr. Jim Quinna	Jim Quinna
+Mr. Jordan Garrard	Jordan Garrard
+Mr. Spencer Rogers	Spencer Rogers 
+Mr. Stephen Benton	Stephen Benton
+Mr. Tom Jarrett	Tom Jarrett
+Mr. William Birkemeier	William Birkemeier
+N.C. Basinwide Planning	North Carolina Basinwide Planning Branch
+N.C. Clean Water Management Trust Fund	North Carolina Clean Water Management Trust Fund
+N.C. Coastal Federation (NCCF)	North Carolina Coastal Federation
+N.C. Coastal Land Trust	North Carolina Coastal Land Trust
+N.C. Coastal Resources Commission	Coastal Resources Commission
+N.C. Cooperative Extension Service	North Carolina Cooperative Extension
+N.C. Department of Transportation	North Carolina Department of Transportation
+N.C. Department of Transportation’s Planning	North Carolina Department of Transportation Planning Division
+N.C. Division of Air Quality	North Carolina Division of Air Quality
+N.C. Division of Coastal Management	North Carolina Division of Coastal Management
+N.C. Division of Water Quality	North Carolina Division of Water Quality
+N.C. Emergency Management	North Carolina Emergency Management Division
+N.C. General Assembly	North Carolina General Assembly
+N.C. governor	Roy Cooper
+N.C. Natural Heritage Program	North Carolina Natural Heritage Program
+N.C. State University	North Carolina State University
+N.C. State University, Raleigh	North Carolina State University
+N.C. Wetlands Restoration Program	North Carolina Wetlands Restoration Program
+National Association for the Advancement of Colored People (NAACP)	National Association for the Advancement of Colored People
+National Climatic Data Center	National Climatic Data Center
+National Drought Mitigation Center	National Climatic Data Center
+National Drought Mitigation Center (NDMC)	National Drought Mitigation Center
+National Guard	US National Guard
+National Hurricane Center	National Hurricane Center
+National Integrated Drought Information System (NIDIS)	National Integrated Drought Information System
+National Integrated Drought Information System (NIDIS)	National Oceanic and Atmospheric Administration
+National Oceanic and Atmospheric Administration	National Oceanic and Atmospheric Administration
+National Oceanic and Atmospheric Administration(NOAA)	National Oceanic and Atmospheric Administration
+NATIONAL WEATHER SERVICE	National Weather Service
+Natural Resources Conservation Service	Natural Resources Conservation Service
+NC Clean Water Management Trust Fund	North Carolina Clean Water Management Trust Fund
+NC Coastal Reserve & National Estuarine Research Reserve	North Carolina Coastal Reserve and Natural Estuarine Research Reserve
+NC Cooperative Extension Service	North Carolina Cooperative Extension
+NC DENR, Division of Coastal Management	North Carolina Division of Coastal Management
+NC DENR, Division of Water Resources	North Carolina Divison of Water Resources
+NC Department of Environment and Natural Resources (DENR)	North Carolina Department of Natural and Environmental Resources
+NC Department of Environmental Quality	North Carolina Department of Environmental Quality
+NC Department of Health & Human Services, Division of Public Health	North Carolina Division of Public Health
+NC Department of Public Safety, Division of Emergency Management	North Carolina Division of Emergency Management
+NC Department of Transportation (DOT)	North Carolina Department of Transportation
+NC Division of Marine Fisheries Coastal Habitat Protection Planning	North Carolina Division of Marine Fisheries Coastal Habitat Protection Planning
+NC Division of Water Quality Wilmington Regional Office	North Carolina Division of Water Quality
+NC Division of Water Resources	North Carolina Division of Water Resources
+NC DOT Division of Highways	North Carolina Department of Transportation Division of Highways
+NC Ecosystem Enhancement Program (NCEEP)	NC Ecosystem Enhancement Program
+NC Sea Grant	North Carolina Sea Grant
+NC State Climate Office	North Carolina Climate Office
+NC Water Resources Research Institute	North Carolina Water Resources Research Institute
+NC Wetlands Restoration Program	North Carolina Wetlands Restoration Program
+NC Wildlife Resources Commission	North Carolina Wildlife Resources Commission
+NCAA	North Carolina Airports Association
+NCDENR Public Water Supply Section	North Carolina Department of Environment and Natural Resources Public Water Supply Section
+NCDOT	North Carolina Department of Transportation
+NCDWQ	North Carolina Division of Water Quality
+NCDWQ’s	North Carolina Division of Water Quality
+NCEM	North Carolina Emergency Management Division
+NCSU	North Carolina State University
+NCSU project team	North Carolina State University
+NCSU staff	North Carolina State University
+NCWaterWARN	NCWaterWARN
+NCWRP	North Carolina Wetland Reserve Program
+New Hanover County	New Hanover County
+New Hanover County Building Inspections, Planning, and Health Departments	New Hanover County Building Safety
+New Hanover County Building Inspections, Planning, and Health Departments	New Hanover County Health Department
+New Hanover County Building Inspections, Planning, and Health Departments	New Hanover County Planning and Land Use
+New Hanover County Government	New Hanover County
+New Hanover County Local Emergency Planning Committee (LEPC)	New Hanover County Local Emergency Planning Committee
+New Hanover County Local Watershed Group	Cape Fear River Watch
+New Hanover County Local Watershed Group	Cape Fear Sierra Club
+New Hanover County Local Watershed Group	New Hanover County Government
+New Hanover County Local Watershed Group	New Hanover County Local Watershed Group
+New Hanover County Local Watershed Group	New Hanover Local Watershed Group
+New Hanover County Planning	New Hanover County Planning and Land Use
+New Hanover County™s board of commissioners	New Hanover County Board of Commissioners
+New Hanover Local Watershed PlanningGroup	New Hanover County Local Watershed Group
+New Hanovery County Planning	New Hanover County Planning and Land Use
+NFIP’s Community Ratings System	National Flood Insurance Program
+NHC Environmental Health	New Hanover County Health Department
+NHCTV	NHCTV
+NIDIS	National Integrated Drought Information System
+NOAA	National Oceanic and Atmospheric Administration
+NOAA Center for Coastal Environmental Health & Biomolecular Research	National Oceanic and Atmospheric Administration
+NOAA Fisheries, Southeast Regional Office	National Oceanic and Atmospheric Administration
+NOAA National Centers for Coastal Ocean Science, Center for Human Health Risk	National Oceanic and Atmospheric Administration
+NOAA National Ocean Service Center for Operational Oceanographic Products and Services	National Oceanic and Atmospheric Administration Center for Operational Oceanographic Products and Services
+NOAA National Weather Service	National Oceanic and Atmospheric Administration National Weather Service
+NOAA Regional Climate Services, Eastern Region	National Oceanic and Atmospheric Administration Regional Climate Services
+NOAA Southeast and Caribbean Regional Team	National Oceanic and Atmospheric Administration
+NOAA, Center for Coastal Environmental Health & Biomolecular Research	National Oceanic and Atmospheric Administration Coastal Environmental Health and Biomolecular Research
+NOAA’s Southeast and Caribbean Regional Team (SECART)	National Oceanic and Atmospheric Administration
+North Carolina Airports Association (NCAA)	North Carolina Airports Association
+North Carolina American Water Works Association –Water Environment Association (NC AWWA –WEA)	North Carolina American Water Works Association
+North Carolina and South Carolina Sea Grant programs	North Carolina Sea Grant
+North Carolina and South Carolina Sea Grant programs	South Carolina Sea Grant Consortium
+North Carolina Coastal Federation	North Carolina Coastal Federation
+North Carolina Department of Environment and Natural Resources (DENR)	North Carolina Department of Environment and Natural Resources
+North Carolina Department of Environmental Quality	North Carolina Department of Environmental Quality
+North Carolina Department of Environmental Quality (DEQ)	North Carolina Department of Environmental Quality
+North Carolina Department of Transportation Division of Aviation (NCDOA)	North Carolina Department of Transportation Division of Aviation
+North Carolina Disaster Relief Fund	North Carolina Disaster Relief Fund
+North Carolina Division of Coastal Management	North Carolina Division of Coastal Management
+North Carolina Division of Emergency Management	North Carolina Emergency Management Division
+North Carolina Environmental Justice Network	North Carolina Environmental Justice Network
+North Carolina Interfaith Power and Light	North Carolina Interfaith Power and Light
+North Carolina Ports	North Carolina State Ports Authority
+North Carolina Rural Water Association (NCRWA)	North Carolina Rural Water Association
+North Carolina Sea Grant	North Carolina Sea Grant
+North Carolina State Climate Office	North Carolina State Climate Office
+North Carolina State University (NCSU)	North Carolina State University
+North Carolina Wildlife Resources Commission (WRC)	North Carolina Wildlife Resources Commission
+North Inlet -Winyah Bay National Estuarine Research Reserve	North Carolina Coastal Reserve and Natural Estuarine Research Reserve
+Northeast and Southeast Regional Climate Centers	Northeast Regional Climate Center
+Northeast and Southeast Regional Climate Centers	Southeast Regional Climate Center
+Northeast Regional Climate Center (NERCC)	Northeast Regional Climate Center
+Northeast Regional Climate Center•Assessment	Northeast Regional Climate Center
+NRC	US Nuclear Regulatory Commission
+NRCS, RC&D	United States Department of Agriculture Natural Resources Conservation Service
+Nuclear Regulatory Commission	US Nuclear Regulatory Commission
+Office of Ocean and Coastal Resource	Office of Ocean and Coastal Resource Management
+Old Dominion University	Old Dominion University 
+Parsons	Parsons
+Patrick Beggs	Patrick Beggs
+Penny Tysinger	Cape Fear Council of Governments
+Phil Prete	Phil Prete
+Pine Valley Golf Course	Pine Valley Golf Course
+plants in North and South Carolina	NA
+Pocosin Lakes National Wildlife Refuge	Pocosin Lakes National Wildlife Refuge
+Ports of Wilmington	Ports of Wilmington
+President David Fountain	David Fountain
+President Donald Trump	Donald Trump
+President Trump	Donald Trump
+Purdue University	Purdue University
+Randy Turner	Randy Turner
+Research Facility, ERDC/CHL, US Army Corps of Engineers	US Army Corps of Engineers
+RISA programs (CLIMAS, SCIPP, SECC)	National Oceanic and Atmospheric Administration
+RISAs	National Oceanic and Atmospheric Administration
+Robinson plant	Robinson Plant
+Ron Ferrell	Ron Ferrell
+SC Coastal Program	South Carolina Coastal Program
+SC Department of Natural Resources	South Carolina Department of Natural Resources
+SC Sea Grant Consortium	South Carolina Sea Grant Consortium
+SC State Climate Office	South Carolina State Climatology Office
+SC Water Science Center	South Carolina Water Science Center
+Science Panel	Carteret County Shore Protection Office
+Science Panel	Coastal Resources Commission Science Panel
+Science Panel	North Carolina Sea Grant
+Science Panel	North Carolina State University
+Science Panel	University of North Carolina Chapel Hill
+Science Panel	University of North Carolina Wilmington
+Science Panel on Coastal Hazards	Science Panel on Coastal Hazards
+SCIPP	National Ocean and Atmospheric Administration Southern Climate Impacts Planning Program
+SCIPP	Southern Climate Impacts Planning Program
+Scott Logal	Cape Fear Council of Governments
+Scott McLendon	Scott McLendon
+Scott McLendon	US Army Corps of Engineers
+Scott Pohlman	Scott Pohlman
+Sea Grant programs in Florida, Georgia, Puerto Rico, and Virginia	Florida Sea Grant
+Sea Grant programs in Florida, Georgia, Puerto Rico, and Virginia	Georgia Sea Grant
+Sea Grant programs in Florida, Georgia, Puerto Rico, and Virginia	Puerto Rico Sea Grant
+Sea Grant programs in Florida, Georgia, Puerto Rico, and Virginia	Virginia Sea Grant
+Seahawk Village Loop	Seahawk Village Loop
+SECC	State Emergency Communications Committee
+Sen. Richard Burr of North Carolina	Richard Burr
+SERCC	Southeast Regional Climate Center
+Sharon Fitzgerald	Sharon Fitzgerald
+Shore Protection Office, Carteret County	Carteret County Shore Protection
+Sierra Club/ Wrightsboro County	Sierra Club, Wrightsboro County
+South Atlantic Landscape Conservation Cooperative	South Atlantic Landscape Conservation Cooperative
+South Atlantic Water Science Center	US Geological Survey South Atlantic Water Science Center
+South Carolina State Climate Office	South Carolina State Climatology Office
+South Carolina State Climatology Office	South Carolina State Climatology Office
+South Carolina State Climatology Office of the South Carolina Department of Natural Resources (SC DNR)	South Carolina State Climatology Office
+South Carolina’s 4th congressional district	South Carolina Congress
+Southeast and Caribbean Climate Community of Practice	Southeast and Caribbean Climate Community of Practice
+Southeast Regional Climate Cent	Southeast Regional Climate Center
+Southeast Regional Climate Center	Southeast Regional Climate Center
+Southeast Regional Climate Center	Southeast Regional Climate Center
+Southeast Regional Climate Center (SERCC)	Southeast Regional Climate Center
+Southeast Regional Climate Science Center	Southeast Regional Climate Center
+Southwest Climate Science Center	Southwest Climate Science Center
+Stan Riggs	Stan Riggs
+State Climate Office of North Carolina	North Carolina State Climate Office
+Suraiya Rashid	Suraiya Rashid
+Sutton Steam Plant	Sutton Steam Plant
+Tara Murphy	Tara Murphy
+Texas A&M University	Texas A&M University
+The governor	Governor
+The Honorable Jimmy Dixon	Jimmy Dixon
+The Nature Conservancy	The Nature Conservancy
+Third National Climate Assessment	National Climate Assessment
+Todd Davis	Todd Davis
+Tommy Tew	Tommy Tew
+Transportation Secretary Jim Trogdon	Jim Trogdon
+Trodgon	Jim Trogdon
+Trump	Donald Trump
+U.S. Army Corps of Engineers	US Army Corps of Engineers
+U.S. Army Corps of Engineers (Retired)	US Army Corps of Engineers
+U.S. Army Corps of Engineers Wetlands Regulations	US Army Corps of Engineers
+U.S. Coast Guard	US Coast Guard
+U.S. Environmental Protection Agency	US Environmental Protection Agency
+U.S. Geological Service	US Geological Survey
+U.S. Nuclear Regulatory Commission	US Nuclear Regulatory Commission
+UNC Wilmington	University of North Carolina Wilmington
+UNC Wilmington, Center for Marine Science	University of North Carolina Wilmington
+UNC-Wilmington	University of North Carolina Wilmington
+UNC-Wilmington Center for Marine Science	University of North Carolina Wilmington
+UNC-Wilmington Women’s Rugby Team	University of North Carolina Wilmington
+UNCW in Wilmington	University of North Carolina Wilmington
+United States Army Corps of Engineers (USACE)	US Army Corps of Engineers
+US Army Corps of Engineers	US Army Corps of Engineers
+US Department of Agriculture Resource Conservation and Development Council	US Department of Agriculture Resource Conservation and Development Council
+US Department of Homeland Security	US Department of Homeland Security
+US Drought Monitor	US Drought Monitor
+US Environmental Protection Agency	US Environmental Protection Agency
+US EPA, Region 4	US Environmental Protection Agency
+US Fish & Wildlife Service	US Fish and Wildlife Service
+US Fish & Wildlife Services, SC Lowcountry Refuges Comple	US Fish and Wildlife Service
+US Geological Survey (USGS)	US Geological Survey
+US Marine Corps, Camp Lejeune	US Marine Corps
+USC Public Health Research Center	University of South Carolina Public Health Research Center
+USEPA	US Environmental Protection Agency
+USGS	US Geological Survey
+USGS NC Water Science Center	US Geological Survey North Carolina Water Science Center
+USGS SC Water Science Center	US Geological Survey South Carolina Water Science Center
+Vice Chairman Blanchard	Norwood Blanchard
+W.D. Gilmore	WD Gilmore
+Waffle House	Waffle House
+Wastewater Treatment Division	Cape Fear Water Treatment Division
+Watershed Education for Communities and Local Officials (WECO)	North Carolina State University
+Watershed Education for Communities andLocal Officials (WECO)	North Carolina State University
+WECO	North Carolina State University
+Wilmington MPO (Metropolitan Planning organization)	City of Wilmington Metropolitan Planning Organization
+WK Dickson	WK Dickson
+Woodberry & Associates/Kingdom Living Temple	Woodberry & Associates/Kingdom Living Temple
+wway-tv	WWAY-TV
+˜e Division of Water Quality	North Carolina Department of Environmental Quality Division of Water Resources

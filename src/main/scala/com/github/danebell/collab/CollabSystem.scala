@@ -25,12 +25,12 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
     val doc = proc.mkDocument(text, keepText)
     val relevant = doc
       .sentences
-      .filter(_.getSentenceText.toLowerCase.contains("consult"))
+      //.filter(_.getSentenceText.toLowerCase.contains("consult"))
       .map(_.getSentenceText)
       .mkString(" ")
     val relevantDoc = proc.mkDocument(relevant, keepText)
 
-    if(relevantDoc.sentences.nonEmpty) try {
+    if(relevantDoc.sentences.nonEmpty) {
       proc.annotate(relevantDoc)
     }
 
@@ -51,10 +51,15 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
       Nil
     }
     val events = eventEngine.extractFrom(doc, State(entities))
+    // println(s"${events.length} events")
     val split = CollabActions.splitEvents(events, State(events))
+    // println(s"${split.length} events")
     val nonOverlapping = MentionFilter.nonIdenticalArgs(split)
+    // println(s"${nonOverlapping.length} events")
     val mostSpecific = MentionFilter.keepMostSpecific(nonOverlapping)
+    // println(s"${mostSpecific.length} events")
     val nonDuplicates = MentionFilter.keepFirst(mostSpecific)
+    // println(s"${nonDuplicates.length} events")
 
     nonDuplicates.map(_.toCollabMention)
   }
