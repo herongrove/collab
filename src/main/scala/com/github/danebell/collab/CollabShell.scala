@@ -7,6 +7,7 @@ import jline.console.ConsoleReader
 import jline.console.history.FileHistory
 
 import com.github.danebell.collab.utils.DisplayUtils._
+import com.github.danebell.collab.korrect.KorrectDocuments
 
 /**
   * Interactive shell
@@ -32,11 +33,12 @@ object CollabShell extends App {
   )
 
   val ieSystem = new CollabSystem()
+  val korrect = KorrectDocuments()
 
   val nonceDoc = ieSystem.annotate("consulted")
   val nonceMentions = ieSystem.extract(nonceDoc)
 
-  println("\nWelcome to the Protests Shell!")
+  println("\nWelcome to the Collab Shell!")
   printCommands()
 
   var running = true
@@ -67,8 +69,10 @@ object CollabShell extends App {
   }
 
   def extractFrom(text:String): Unit = {
+    val cleaned = korrect.joinLines(text)
+
     // preprocessing
-    val doc = ieSystem.annotate(text)
+    val doc = ieSystem.annotate(cleaned)
 
     // extract mentions from annotated document
     val mentions = ieSystem.extract(doc).sortBy(m => (m.sentence, m.getClass.getSimpleName))
