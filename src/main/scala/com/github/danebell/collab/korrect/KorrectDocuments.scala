@@ -7,18 +7,26 @@ import com.typesafe.config.{Config, ConfigFactory}
 import com.github.danebell.collab.utils.FileUtils
 
 class KorrectDocuments(val config: Config) {
-  val dict: Set[String] = FileUtils.getTextFromResource(config.getString("collab.dict"))
-    .split("\n+")
-    .map(_.trim.toLowerCase)
-    .toSet
+//  val dict: Set[String] = FileUtils.getTextFromResource(config.getString("collab.dict"))
+//    .split("\n+")
+//    .map(_.trim.toLowerCase)
+//    .toSet
 
   def subChars(text: String): String = {
     text
       .replaceAll("™", "'")
+      .replaceAll("í", "'")
       .replaceAll("ﬂ|ﬁ", "\"")
       .replaceAll("Œ", "-")
       .replaceAll("Ł", "")
       .replaceAll("\uF0B7", "")
+      .replaceAll("˜", "Th")
+      .replaceAll("(?<![0-9])˚", "fi")
+      .replaceAll("˝", "fl")
+      .replaceAll("˙", "ff")
+      .replaceAll("•", " ")
+      .replaceAll("\uF07D", " ")
+      .replaceAll("\uF0A7", " ")
   }
 
   def cutHeaders(text: String): String =
