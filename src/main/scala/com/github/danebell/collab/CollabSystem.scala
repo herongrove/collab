@@ -50,7 +50,8 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
       logger.error(doc.id + " failed because it didn't have entities!")
       Nil
     }
-    val events = eventEngine.extractFrom(doc, State(entities))
+    val npEntities = MentionFilter.keepNpEntities(entities)
+    val events = eventEngine.extractFrom(doc, State(npEntities))
     // println(s"${events.length} events")
     val split = CollabActions.splitEvents(events, State(events))
     // println(s"${split.length} events")

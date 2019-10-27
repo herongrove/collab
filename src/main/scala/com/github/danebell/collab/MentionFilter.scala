@@ -8,6 +8,15 @@ object MentionFilter {
 
 
   /**
+    * Returns the same mentions, filtering out entities that are only good for building other
+    * entities.
+    */
+  def keepNpEntities(ms: Seq[Mention]): Seq[Mention] = {
+    val disallowed = Set("VerbPhrase", "PrepPhrase", "WhPhrase", "SentencePhrase")
+    ms.filterNot{ m => disallowed contains m.label }
+  }
+
+  /**
     * Returns the same mentions, filtering out repeats of events with the same arguments (preferring
     * [[EventMention]]s over [[RelationMention]]s.
     */
