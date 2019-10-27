@@ -32,8 +32,9 @@ object CollabActions {
 
     val args = mention.arguments
     // sanity checks
-    if (args.values.flatten.toSeq.length < 3) return Seq(mention)
-    if (args.contains("actor1") && args.contains("actor2")) {
+    val numArgs = args.values.flatten.toSeq.length
+    if (numArgs < 2) return Nil
+    if (numArgs > 2 & args.contains("actor1") && args.contains("actor2")) {
       for {
         actor1 <- args("actor1")
         actor2 <- args("actor2")
@@ -57,7 +58,7 @@ object CollabActions {
         .flatten
         .toSeq
       for (actorPair <- actorKeys.combinations(2).toSeq) yield {
-        val actorArgs = Map("actor" -> actorPair)
+        val actorArgs = Map("actor1" -> Seq(actorPair.head), "actor2" -> Seq(actorPair.last))
         val newArgs = (args - "actor") ++ actorArgs
         mention match {
           case em: EventMention =>

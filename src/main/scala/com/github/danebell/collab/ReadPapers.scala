@@ -25,7 +25,7 @@ object ReadPapers extends App with LazyLogging {
 
   papers.par.foreach { file =>
     val txt = getTextFromFile(file)
-    val lines = if (txt.trim.nonEmpty && txt.contains("consult")) {
+    val lines = if (txt.trim.nonEmpty & txt.matches()) {
       val doc = system.annotate(txt, keepText = false)
       doc.id = Option(FilenameUtils.getBaseName(file.getName))
       val mentions = system.extract(doc) filterNot (_.isInstanceOf[TextBoundMention])

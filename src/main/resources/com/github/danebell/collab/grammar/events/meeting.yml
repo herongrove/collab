@@ -26,7 +26,7 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/^(${trigger})/ & tag=/^N/]
-    actor:Entity+ = >nmod_between >nmod_of? /${continuance}/{,2}
+    actor:Entity+ = >/nmod_between/ >nmod_of? /${continuance}/{,2}
 
 - name: "${label}-syntax-verb-1"
   example: "CFRW staff, board members and volunteers attended an event at the Family YMCA"
