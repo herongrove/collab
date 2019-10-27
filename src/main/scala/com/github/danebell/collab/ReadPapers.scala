@@ -18,7 +18,9 @@ object ReadPapers extends App with LazyLogging {
   system.extract(nonce)
 
   val papersDir = config.getString("collab.clean")
+  logger.info(s"Reading from $papersDir")
   val outDir = config.getString("collab.mentions")
+  logger.info(s"Writing to $outDir")
 
   val alreadyDone = listFilesRecursively(outDir).map(_.getName)
   val papers = listFilesRecursively(papersDir).filterNot{ f => alreadyDone.contains(f.getName) }
@@ -31,9 +33,12 @@ object ReadPapers extends App with LazyLogging {
       val doc = system.annotate(txt, keepText = false)
       doc.id = Option(FilenameUtils.getBaseName(file.getName))
       val mentions = system.extract(doc) filterNot (_.isInstanceOf[TextBoundMention])
-      logger.debug(s"${mentions.length} event mentions in $file")
+      logger.debug(s"${mentions.length} event mentions in ${file.getName}")
       mentions.map{ m => mentionToTabular(m, "actor1", "actor2") }
-    } else Nil
+    } else {
+      logger.debug(s"no relevant triggers in ${file.getName}")
+      Nil
+    }
     val outFile = Paths.get(outDir, file.getName).toFile
     writeTextToFile(outFile, lines.mkString("\n"))
   }
