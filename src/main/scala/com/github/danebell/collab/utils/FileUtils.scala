@@ -42,12 +42,12 @@ object FileUtils extends LazyLogging {
 
     if (url == null)
       throw newFileNotFoundException(path)
-    logger.info("Sourcing resource " + url.getPath())
+    //logger.info("Sourcing resource " + url.getPath())
     Source.fromURL(url, utf8)
   }
 
   def sourceFromFile(file: File): BufferedSource = {
-    logger.info("Sourcing file " + file.getPath())
+    //logger.info("Sourcing file " + file.getPath())
     Source.fromFile(file, utf8)
   }
 
