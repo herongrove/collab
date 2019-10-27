@@ -47,9 +47,11 @@ class KorrectDocuments(val config: Config) {
       // italics
       .replaceAll("_([^_]+)_", "$1")
       // remaining square brackets
-      .replaceAll("\\[([^_]+)\\]", "$1")
+      .replaceAll("[\\[\\]]", "$1")
       // headers and bullets
-      .replaceAll("(?<=\n) +[#*]+", "")
+      .replaceAll("(?<=\n) *[#*]+", "")
+      // headers and bullets
+      .replaceAll("^ *[#*]+", "")
   }
 
   def addSpace(text: String): String =
