@@ -29,6 +29,18 @@ object MentionFilter {
   }
 
   /**
+    * Returns true if the argument [[Mention]]'s token [[Interval]] overlaps with that of the mention
+    * [[Mention]]'s trigger
+    */
+  def overlapsTrigger(mention: Mention, argument: Mention): Boolean = {
+    mention.isInstanceOf[EventMention] &&
+      mention.asInstanceOf[EventMention]
+        .trigger
+        .tokenInterval
+        .overlaps(argument.tokenInterval)
+  }
+
+  /**
     * Returns the same mentions, filtering out mentions whose arguments overlap. For example,
     * "John consulted daily" should never link John to John.
     */
@@ -38,10 +50,15 @@ object MentionFilter {
       val argSet = argList.toSet
       // same mention used twice
       argList.length > argSet.size ||
-        // different mentions with overlapping intervals
+        // any mentions with overlapping intervals?
         argSet.exists{ a1 =>
+          // can't overlap with trigger either
+          overlapsTrigger(m, a1) ||
+          // any mention that overlaps with this one?
           (argSet - a1).exists{ a2 =>
-            a1.tokenInterval overlaps a2.tokenInterval
+            (a1.tokenInterval overlaps a2.tokenInterval) ||
+              // or do they have the same text exactly?
+              (a1.text == a2.text)
           }
         }
       }
