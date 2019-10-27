@@ -27,10 +27,27 @@ class KorrectDocuments(val config: Config) {
       .replaceAll("•", " ")
       .replaceAll("\uF07D", " ")
       .replaceAll("\uF0A7", " ")
+      .replaceAll("˛", "")
+      .replaceAll("\\|", "")
+      .replaceAll("[⁰¹²³⁴⁵⁶⁷⁸⁹]+", "")
   }
 
   def cutHeaders(text: String): String =
     text.replaceAll("(?i)page\\s+\\d+(\\s*(of)|/\\s*\\d+|\\s+cont(inue|')d)?", "")
+
+  def cutLinks(text: String): String = {
+    text
+      // image links
+      .replaceAll("(\\* +)?!\\[([^\\]]*)\\]\\([^)]*\\)", "")
+      // text links
+      .replaceAll("\\[([^\\]]*)\\]\\([^)]*\\)", "$1")
+      // bold
+      .replaceAll("\\*\\*([^*]+)\\*\\*", "$1")
+      // italics
+      .replaceAll("_([^_]+)_", "$1")
+      // remaining square brackets
+      .replaceAll("\\[([^_]+)\\]", "$1")
+  }
 
   def addSpace(text: String): String =
     text
@@ -40,6 +57,10 @@ class KorrectDocuments(val config: Config) {
       .replaceAll("X([A-Z])", "$1")
       .replaceAll("([!?:\\.”])([A-Za-z])", "$1 $2")
       .replaceAll("([A-Za-z])/([A-Za-z])", "$1 / $2")
+
+  def removeNewlines(text: String): String = {
+    text.replaceAll("(?<=\n)([^ #*\n][^\r\n]+)\r?\n", "$1")
+  }
 
   def addNewlines(text: String): String =
     text//.replaceAll("(?<!\\.) *(\\d+\\))", "\n$1")
@@ -96,8 +117,9 @@ class KorrectDocuments(val config: Config) {
 */
     val noHeaders = cutHeaders(text)
     val goodChars = subChars(noHeaders)
-    val noNL = goodChars.replaceAll("\r?\n", "")
-    val extraSpaces = addSpace(noNL)
+    val noNL = removeNewlines(goodChars)
+    val noLinks = cutLinks(noNL)
+    val extraSpaces = addSpace(noLinks)
     val extraNewlines = addNewlines(extraSpaces)
 
     extraNewlines.replaceAll("  +", " ")
