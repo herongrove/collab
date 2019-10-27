@@ -30,6 +30,7 @@ class KorrectDocuments(val config: Config) {
       .replaceAll("˛", "")
       .replaceAll("\\|", "")
       .replaceAll("[⁰¹²³⁴⁵⁶⁷⁸⁹]+", "")
+      .replaceAll("\\d{10,}", "<BIG_NUMBER>")
   }
 
   def cutHeaders(text: String): String =
@@ -47,6 +48,8 @@ class KorrectDocuments(val config: Config) {
       .replaceAll("_([^_]+)_", "$1")
       // remaining square brackets
       .replaceAll("\\[([^_]+)\\]", "$1")
+      // headers and bullets
+      .replaceAll("(?<=\n) +[#*]+", "")
   }
 
   def addSpace(text: String): String =
