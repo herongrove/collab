@@ -33,14 +33,14 @@ object CollabActions {
     val args = mention.arguments
     // sanity checks
     val numArgs = args.values.flatten.toSeq.length
-    if (numArgs < 2) return Nil
-    if (numArgs > 2 & args.contains("actor1") && args.contains("actor2")) {
+    if (numArgs < 2) {
+      Nil
+    } else if (numArgs > 2 && args.contains("actor1") && args.contains("actor2")) {
       for {
         actor1 <- args("actor1")
         actor2 <- args("actor2")
       } yield {
-        //println(s"\tactor1: ${actor1.text}, actor2: ${actor2.text}")
-        val actorArgs = Map("actor" -> Seq(actor1, actor2))
+        val actorArgs = Map("actor1" -> Seq(actor1), "actor2" -> Seq(actor2))
         val newArgs = (args - "actor1" - "actor2") ++ actorArgs
         mention match {
           case em: EventMention =>
@@ -52,14 +52,14 @@ object CollabActions {
         }
       }
     } else if (args.contains("actor") || args.contains("actor1")) {
-      val actorKeys = args
+      val actors = args
         .filterKeys(_.startsWith("actor"))
         .values
         .flatten
         .toSeq
-      for (actorPair <- actorKeys.combinations(2).toSeq) yield {
+      for (actorPair <- actors.combinations(2).toSeq) yield {
         val actorArgs = Map("actor1" -> Seq(actorPair.head), "actor2" -> Seq(actorPair.last))
-        val newArgs = (args - "actor") ++ actorArgs
+        val newArgs = args.filterKeys(!_.startsWith("actor")) ++ actorArgs
         mention match {
           case em: EventMention =>
             val interval = mkTokenInterval(trigger = em.trigger, arguments = newArgs)

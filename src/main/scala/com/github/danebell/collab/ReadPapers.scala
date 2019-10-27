@@ -24,16 +24,17 @@ object ReadPapers extends App with LazyLogging {
 
   val alreadyDone = listFilesRecursively(outDir).map(_.getName)
   val papers = listFilesRecursively(papersDir).filterNot{ f => alreadyDone.contains(f.getName) }
+  val numPapers = papers.length
 
   val triggers = "activat|advi[cs]|agree|analy[sz]|assess|assist|attend|collaborat|command|consult|contract|cooperat|coordinat|determin|direct|discuss|evaluat|host|meet|order|partner|sign|support|talk|team|work".r
 
-  papers.par.foreach { file =>
+  papers.par.zipWithIndex.foreach { case (file, i) =>
     val txt = getTextFromFile(file)
     val lines = if (txt.trim.nonEmpty & triggers.findFirstIn(txt).nonEmpty) {
       val doc = system.annotate(txt, keepText = false)
       doc.id = Option(FilenameUtils.getBaseName(file.getName))
       val mentions = system.extract(doc) filterNot (_.isInstanceOf[TextBoundMention])
-      logger.debug(s"${mentions.length} event mentions in ${file.getName}")
+      logger.debug(s"${mentions.length} event mentions in ${file.getName} ($i / $numPapers)")
       mentions.map{ m => mentionToTabular(m, "actor1", "actor2") }
     } else {
       logger.debug(s"no relevant triggers in ${file.getName}")
