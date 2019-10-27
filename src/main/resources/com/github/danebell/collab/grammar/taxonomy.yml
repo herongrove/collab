@@ -21,14 +21,14 @@
       - State
       - City
 - Event:
-  - Collaboration
-  - Consultation
-  - Legislate:
-    - Propose
-    - Second
-    - Pass
-  - Communication:
-    - Declarative
-    - Interrogative
-    - Imperative
-  - Meeting
+  - Collaboration:
+    - Agreement
+    - Assessment
+    - CoLead
+    - Coordination
+    - Directive
+    - Information
+    - JointResearch
+    - Meeting
+    - Resources
+    - Support

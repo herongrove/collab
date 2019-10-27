@@ -2,67 +2,32 @@
 # DEPENDENCY RULES #
 ####################
 
-- name: "collaboration-syntax-noun-team-1"
+- name: "${label}-syntax-noun-team-1"
   example: "A   team   of   resource   professionals,   including representatives  from  the Cape  Fear  River  Watch and  UNC  Wilmington conducted  a  follow-up  field investigation of the identified degradation issues."
   example: "A team including UNC and the FDA."
   label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/^(${trigger})/ & tag=/^N/]
-    actor:Entity+ = >/nmod_(of|between)/? >/nmod_(including|including)/{,2} /${continuance}/{,2}
+    actor:Entity+ = >/nmod_(of|between)/? >/nmod_(from|including)/{,2} /${continuance}/{,2}
 
-- name: "collaboration-syntax-noun-counsel-1"
-  example: "The Miles  Firm is legal counsel to the Authority Board and continues to  advise  staff  regarding  in-house  legal  issues."
-  label: ${label}
-  action: ${eventAction}
-  pattern: |
-    trigger = [lemma=counsel & tag=/^N/]
-    actor1:Entity+ = >nsubj /${continuance}/{,2}
-    actor2:Entity+ = >/nmod_(for|of|to)/ /${continuance}/{,2}
-
-- name: "collaboration-syntax-noun-meet-1"
-  example: "Parsons had discussions with the US Army Corps of Engineers."
-  label: ${label}
-  action: ${eventAction}
-  pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
-    actor1:Entity+ = <dobj [lemma=/^(call|lead|have)$/] >nsubj /${continuance}/{,2}
-    actor2:Entity+ = <dobj? >nmod_with? >nmod_at? >nmod_of? /${continuance}/{,2}
-
-- name: "collaboration-syntax-noun-talks-between-1"
-  example: "Talks between the City of Wilmington and CFRW continue regarding maintenance of public BMPs."
+- name: "${label}-syntax-noun-talks-between-1"
+  example: "Cooperation between the City of Wilmington and CFRW continues regarding maintenance of public BMPs."
   label: ${label}
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/^(${trigger})/ & tag=/^N/]
     actor:Entity+ = >nmod_between >nmod_of? /${continuance}/{,2}
 
-- name: "collaboration-syntax-noun-agreement-1"
-  example: "The City of Wilmington responded, entering into an o˙cial agreement with the Division of Water Quality in which they committed to ˚xing the problems along Hewlett™s Creek."
-  label: ${label}
-  action: ${eventAction}
-  pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
-    actor1:Entity+ = <nmod_into <advcl? >nsubj /${continuance}/{,2}
-    actor2:Entity+ = <nmod_into? <advcl? >nmod_with /${continuance}/{,2}
-
-- name: "collaboration-syntax-noun-agreement-2"
-  example: "The City of Wilmington and the Division of Water Quality entered into an o˙cial agreement"
-  label: ${label}
-  action: ${eventAction}
-  pattern: |
-    trigger = [lemma=agreement & tag=/^N/]
-    actor:Entity+ = <nmod_into? <advcl? >nsubj >nmod_of /${continuance}/{,2}
-
-- name: "collaboration-syntax-verb-represent-1a"
+- name: "${label}-syntax-verb-represent-1a"
   example: "Participants represented the National Drought Mitigation Center and NIDIS."
   label: ${label}
   action: ${eventAction}
   pattern: |
-    trigger = (?<= [lemma=participant]) [lemma=/(?i)^represent$/ & tag=/^V/]
+    trigger = (?<= [lemma=participant]) [lemma=/^represent$/ & tag=/^V/]
     actor:Entity+ = >dobj /${continuance}/{,2}
 
-- name: "collaboration-syntax-verb-represent-1b"
+- name: "${label}-syntax-verb-represent-1b"
   example: "The National Drought Mitigation Center and NIDIS were represented."
   label: ${label}
   action: ${eventAction}
@@ -70,82 +35,47 @@
     trigger = [lemma=represent & tag=/^VB[DN]/]
     actor:Entity+ = >nsubjpass /${continuance}/{,2}
 
-- name: "collaboration-syntax-verb-work-1"
+- name: "${label}-syntax-verb-with-1"
   example: "DCM  is  also working with  FEMA, the NSF, and Governor  Kilgrave"
   label: ${label}
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^V/]
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
     actor1:Entity+ = >nmod_with /${continuance}/{,2}
-    actor2:Entity+ = >nsubj /${continuance}/{,2}
+    actor2:Entity+ = (<xcomp /${pos_verbs}/)? >nsubj /${continuance}/{,2}
 
-- name: "collaboration-syntax-verb-advises-1"
+- name: "${label}-syntax-verb-1"
   example: "She is a member  of  the  Science  Panel  on  Coastal  Hazards, which  advises  the  CRC  and  DCM"
   label: ${label}
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^V/]
-    actor1:Entity+ = >nsubj /${continuance}/{,2}
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor1:Entity+ = (<xcomp /${pos_verbs}/)? >nsubj /${continuance}/{,2}
     actor2:Entity+ = >dobj /${continuance}/{,2}
 
-- name: "collaboration-syntax-verb-work-2"
+- name: "${label}-syntax-verb-2"
+  example: "She is a member  of  the  CRC, which is advised by the Science  Panel  on  Coastal  Hazards"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor1:Entity+ = >/nmod_(by|agent)/ /${continuance}/{,2}
+    actor2:Entity+ = (<xcomp /${pos_verbs}/)? >/nsubj(pass)?/ /${continuance}/{,2}
+
+- name: "${label}-syntax-verb-3"
   example: "DCM  and FEMA are working together to kill the moon"
   label: ${label}
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/(?i)^(${trigger})/ & tag=/^V/]
-    actor:Entity+ = >nsubj /${continuance}/{,2}
-
-- name: "collaboration-syntax-verb-act-1"
-  example: "The Miles  Firm acts as legal counsel to the Authority Board and continues to  advise  staff  regarding  in-house  legal  issues."
-  label: ${label}
-  action: ${eventAction}
-  pattern: |
-    trigger = [lemma=act & tag=/^V/]
-    actor1:Entity+ = >nsubj /${continuance}/{,2}
-    actor2:Entity+ = (?= >nmod_as) >nmod_as? >/nmod_(for|of|to)/ /${continuance}/{,2}
-
-- name: "collaboration-syntax-verb-attend-1"
-  example: "CFRW staff, board members and volunteers attended an event at the Family YMCA"
-  label: ${label}
-  action: ${eventAction}
-  pattern: |
-    trigger = [lemma=attend & tag=/^V/]
-    actor1:Entity+ = >nsubj /${continuance}/{,2}
-    actor2:Entity+ = >dobj >nmod_at? /${continuance}/{,2}
-
-- name: "collaboration-syntax-verb-signed-1"
-  example: "The NSF and the DEA signed a Memorandum of Understanding (MOU)."
-  label: ${label}
-  action: ${eventAction}
-  pattern: |
-    trigger = [lemma=sign & tag=/^V/]
-    actor:Entity+ = >nsubj >nmod_of? /${continuance}/{,2}
-
-- name: "collaboration-syntax-verb-sent-inspectors-1"
-  example: "The NRC sent additional inspectors to Duke Energy's Brunswick and Harris nuclear plants in North Carolina, as well as its Robinson plant in South Carolina"
-  label: ${label}
-  action: ${eventAction}
-  pattern: |
-    trigger = [lemma=send & tag=/^V/] [tag=/(JJ|DT)/]* [lemma=inspector]
-    actor1:Entity+ = >nsubj /${continuance}/{,2}
-    actor2:Entity? = >dobj? >nmod_to >nmod:poss? /${continuance}/{,2}
-
-- name: "collaboration-syntax-verb-activate-1"
-  example: "The governor also activated more National Guard soldiers."
-  label: ${label}
-  action: ${eventAction}
-  pattern: |
-    trigger = [lemma=activate & tag=/^V/]
-    actor1:Entity+ = >nsubj /${continuance}/{,2}
-    actor2:Entity? = >dobj /${continuance}/{,2}
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor:Entity+ = (<xcomp /${pos_verbs}/)? >nsubj /${continuance}/{,2}
 
 
 ###############
 # TOKEN RULES #
 ###############
 
-- name: "collaboration-token-noun-team-1"
+- name: "${label}-token-noun-team-1"
   example: "A team of resource professionals from the Cape  Fear  River  Watch and  UNC  Wilmington conducted  a  follow-up  field investigation of the identified degradation issues."
   type: token
   label: ${label}
@@ -158,7 +88,7 @@
     (("," [tag=DT]* @actor:Entity)*
     ","? (and | as well as) [tag=DT]* @actor:Entity)?
 
-- name: "collaboration-token-verb-represent-1a"
+- name: "${label}-token-verb-represent-1a"
   example: "Participants represented the National Drought Mitigation Center and NIDIS."
   type: token
   label: ${label}
@@ -169,7 +99,7 @@
     (("," [tag=DT]* @actor:Entity)*
     ","? (and | as well as) [tag=DT]* @actor:Entity)?
 
-- name: "collaboration-token-verb-represent-1b"
+- name: "${label}-token-verb-represent-1b"
   example: "The National Drought Mitigation Center and NIDIS were represented by the participants."
   type: token
   label: ${label}
@@ -180,19 +110,6 @@
     ","? (and | as well as) [tag=DT]* @actor:Entity)?
     [lemma=be & tag=/^VBD/] (?<trigger> [lemma=represent & tag=/^VB[DN]/])
     by the? [lemma=participant]
-
-- name: "in-consultation-token"
-  example: "It directed  the  Coastal  Resources  Commission  (CRC)  in  consultation  with  the  Division  of Coastal  Management  (DCM),  Division  of  Land  Resources,  and  the  Coastal  Resources Advisory  Council  (CRAC)  to  study  the  use  and  applicability  of  a  terminal  groin  as  an erosion  control  device."
-  label: ${label}
-  action: ${eventAction}
-  type: token
-  pattern: |
-    @actor:Entity
-    in [lemma=/^(${trigger})/ & tag=/^N/]
-    with
-    @actor:Entity
-    (("," [tag=DT]* @actor:Entity)*
-    ","? (and | as well as) [tag=DT]* @actor:Entity)?
 
 - name: "partners-token"
   example: "Partners: East Carolina University, NC Sea Grant"

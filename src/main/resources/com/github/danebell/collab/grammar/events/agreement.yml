@@ -1,0 +1,49 @@
+####################
+# DEPENDENCY RULES #
+####################
+
+- name: "${label}-syntax-noun-agreement-1"
+  example: "The City of Wilmington responded, entering into an o˙cial agreement with the Division of Water Quality in which they committed to ˚xing the problems along Hewlett™s Creek."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity+ = <nmod_into <advcl? >nsubj /${continuance}/{,2}
+    actor2:Entity+ = <nmod_into? <advcl? >nmod_with /${continuance}/{,2}
+
+- name: "${label}-syntax-noun-agreement-2"
+  example: "The City of Wilmington and the Division of Water Quality entered into an o˙cial agreement"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor:Entity+ = <nmod_into? <advcl? >nsubj >nmod_of /${continuance}/{,2}
+
+- name: "${label}-syntax-verb-1"
+  example: "The NSF and the DEA signed a Memorandum of Understanding (MOU)."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor:Entity+ = >nsubj >nmod_of? /${continuance}/{,2}
+
+- name: "${label}-syntax-verb-2"
+  example: "A Memorandum of Understanding (MOU) was signed by The NSF and the DEA."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor:Entity+ = >nsubjpass >nmod_of? /${continuance}/{,2}
+
+- name: "${label}-syntax-verb-3"
+  example: "The NSF and the DEA signed a Memorandum of Understanding (MOU) with the governor."
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor1:Entity+ = >nsubj >nmod_of? /${continuance}/{,2}
+    actor2:Entity+ = >dobj? >nmod_with >nmod_of? /${continuance}/{,2}
+
+###############
+# TOKEN RULES #
+###############

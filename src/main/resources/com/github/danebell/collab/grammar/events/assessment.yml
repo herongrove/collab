@@ -1,0 +1,34 @@
+####################
+# DEPENDENCY RULES #
+####################
+
+- name: "${label}-syntax-verb-sent-inspectors-1"
+  example: "The NRC sent additional inspectors to Duke Energy's Brunswick and Harris nuclear plants in North Carolina, as well as its Robinson plant in South Carolina"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=send & tag=/^V/] [tag=/(JJ|DT)/]* [lemma=inspector]
+    actor1:Entity+ = (<xcomp /${pos_verbs}/)? >nsubj /${continuance}/{,2}
+    actor2:Entity+ = >dobj? >nmod_to >nmod:poss? /${continuance}/{,2}
+
+- name: "${label}-syntax-verb-1"
+  example: "The NRC assessed Duke Energy's plants"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor1:Entity+ = (<xcomp /${pos_verbs}/)? >nsubj /${continuance}/{,2}
+    actor2:Entity+ = >dobj >nmod:poss? /${continuance}/{,2}
+
+- name: "${label}-syntax-verb-2"
+  example: "Duke Energy's plants were assessed by the NRC"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor1:Entity+ = >/nmod_(by|agent)/ >nmod:poss? /${continuance}/{,2}
+    actor2:Entity+ = (<xcomp /${pos_verbs}/)? >/nsubj(pass)?/ >nmod:poss? /${continuance}/{,2}
+
+###############
+# TOKEN RULES #
+###############

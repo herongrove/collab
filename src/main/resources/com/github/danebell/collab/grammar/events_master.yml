@@ -2,9 +2,14 @@ taxonomy: com/github/danebell/collab/grammar/taxonomy.yml
 
 vars:
   event_action: "mkCollabMention"
-  consult_triggers: "consult"
-  collaboration_triggers: "collaborat|work|cooperat|contract|meet|talk|partner|team|advi[cs]|discuss|assist"
-  pos_verbs: "(re)?initiat|beg[ai]n|(re)?start|continu|(re)?launch|undertak|(re)?establish|institut"
+  collaboration_triggers: "collaborat|contract|cooperat|coordinat|partner|team|work"
+  agree_triggers: "agree|sign"
+  assess_triggers: "assess|determin|evaluat|analy[sz]"
+  directive_triggers: "activat|direct|command|order"
+  info_triggers: "discuss|talk|advi[cs]|consult"
+  meeting_triggers: "attend|meet"
+  support_triggers: "assist|support"
+  pos_verbs: "(re)?initiat|begin|(re)?start|continu|(re)?launch|undertak|(re)?establish|institut"
   continuance_deps: "conj|compound|amod|nmod_(such_as|including)|appos"
 
 rules:
@@ -16,10 +21,51 @@ rules:
       posVerbs: ${pos_verbs}
       continuance: ${continuance_deps}
 
-  - import: com/github/danebell/collab/grammar/events/consultation.yml
+  - import: com/github/danebell/collab/grammar/events/agreement.yml
     vars:
       eventAction: ${event_action}
-      trigger: ${consult_triggers}
-      label: "Collaboration"
+      trigger: ${agree_triggers}
+      label: "Agreement"
       posVerbs: ${pos_verbs}
       continuance: ${continuance_deps}
+
+  - import: com/github/danebell/collab/grammar/events/assessment.yml
+    vars:
+      eventAction: ${event_action}
+      trigger: ${assess_triggers}
+      label: "Assessment"
+      posVerbs: ${pos_verbs}
+      continuance: ${continuance_deps}
+
+  - import: com/github/danebell/collab/grammar/events/directive.yml
+    vars:
+      eventAction: ${event_action}
+      trigger: ${directive_triggers}
+      label: "Directive"
+      posVerbs: ${pos_verbs}
+      continuance: ${continuance_deps}
+
+  - import: com/github/danebell/collab/grammar/events/information.yml
+    vars:
+      eventAction: ${event_action}
+      trigger: ${info_triggers}
+      label: "Information"
+      posVerbs: ${pos_verbs}
+      continuance: ${continuance_deps}
+
+  - import: com/github/danebell/collab/grammar/events/meeting.yml
+    vars:
+      eventAction: ${event_action}
+      trigger: ${meeting_triggers}
+      label: "Meeting"
+      posVerbs: ${pos_verbs}
+      continuance: ${continuance_deps}
+
+  - import: com/github/danebell/collab/grammar/events/support.yml
+    vars:
+      eventAction: ${event_action}
+      trigger: ${support_triggers}
+      label: "Support"
+      posVerbs: ${pos_verbs}
+      continuance: ${continuance_deps}
+
