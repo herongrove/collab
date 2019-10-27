@@ -1,13 +1,9 @@
 package com.github.danebell.collab.utils
 
-import com.github.danebell.collab.mentions.{
-  CollabMention,
-  CollabTextBoundMention,
-  CollabRelationMention,
-  CollabEventMention
-}
+import com.github.danebell.collab.mentions.{CollabEventMention, CollabMention, CollabRelationMention, CollabTextBoundMention}
 import com.github.nscala_time.time.StaticDateTimeFormat
 import com.typesafe.scalalogging.LazyLogging
+import org.clulab.odin.Mention
 
 object ExportUtils extends LazyLogging {
   // Format
@@ -25,9 +21,10 @@ object ExportUtils extends LazyLogging {
     val argument2 = stringifyArg(mention, arg2)
     //val date = mention.date.map(d => d.toString(StaticDateTimeFormat.forPattern("yyyy-MM-dd")))
     val docId = mention.document.id.getOrElse("")
-    val sentenceText = mention.document.sentences(mention.sentence).getSentenceText
 
-    s"$lbl\t$argument1\t$argument2\t$docId\t${mention.foundBy}\t$sentenceText"
+    val context = getContext(mention)
+
+    s"$lbl\t$argument1\t$argument2\t$docId\t${mention.foundBy}\t${mention.text}\t$context"
   }
 
   def stringifyArg(mention: CollabMention, arg: String): String =
@@ -37,4 +34,13 @@ object ExportUtils extends LazyLogging {
       .map{ a => s"${a.text}\t${a.label}" }
       .headOption
       .getOrElse("<NULL>\t<NULL>")
+
+  private def getContext(mention: Mention): String = {
+    if (mention.sentence == 0) {
+      mention.sentenceObj.getSentenceText
+    } else {
+      mention.document.sentences(mention.sentence - 1).getSentenceText + " " +
+        mention.sentenceObj.getSentenceText
+    }
+  }
 }

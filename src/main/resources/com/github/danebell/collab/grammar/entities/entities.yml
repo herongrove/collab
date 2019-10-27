@@ -57,13 +57,13 @@
 #  pattern: |
 #    /NN|NNP|ADJ/* /NN|NNP/+
 
-- name: "1PL"
-  label: FirstPerson
-  priority: 3
-  type: token
-  #action: convertToConcept
-  pattern: |
-    [lemma=/^(we|us)$/]
+#- name: "pronouns"
+#  label: FirstPerson
+#  priority: 3
+#  type: token
+#  #action: convertToConcept
+#  pattern: |
+#    [lemma=/^(we|us)$/]
 
 - name: "proper-noun"
   label: ProperNoun
@@ -99,6 +99,15 @@
   unit: "tag"
   pattern: |
     /DT|NNPS?|JJ/* /NNPS?/ /DT|NNPS?|JJ/*
+
+- name: "noun-phrase-pro"
+  label: NounPhrase
+  priority: 3
+  type: token
+  #action: convertToConcept
+  unit: "tag"
+  pattern: |
+    PRP | PRP$
 
 - name: "prep-phrase"
   label: PrepPhrase
@@ -139,6 +148,13 @@
   type: token
   pattern: |
     "Department" "of" @NounPhrase
+
+- name: city-of-X
+  label: Organization
+  priority: 8
+  type: token
+  pattern: |
+    "City" "of" @NounPhrase
 
 #- name: "verb-phrase-1"
 #  label: VerbPhrase

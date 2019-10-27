@@ -49,4 +49,5 @@ package object mentions {
     arguments.transform {
       case (k, v) => v.map(_.toCollabMention)
     }
+
 }
