@@ -48,76 +48,78 @@ object MentionFilter {
   }
 
   /**
-    * Returns the same mentions, keeping mentions with more specific (e.g., Organization) arguments
-    * over less specific (e.g., NounPhrase) arguments when available.
+    * Returns the same mentions, keeping mentions with more specific (e.g., Organization) labels
+    * over less specific (e.g., NounPhrase) labels when available.
     */
   def keepMostSpecific(ms: Seq[Mention]): Seq[Mention] = {
+    // apply to TextBoundMentions (there should be no non-TBMs at this time, so ignore any)
     val (tbms, ems) = ms.partition(_.isInstanceOf[TextBoundMention])
-    // keep track of what mentions' arguments overlap (with the same arg label)
-    val emArgIntervals: Seq[(Mention, Map[String, Seq[Interval]])] = ems.map{ m =>
-      m -> m.arguments.map{ case (lbl, args) =>
-        lbl -> args.map(_.tokenInterval)
-      }
-    }
+    // keep track of what mentions' intervals overlap
+    val intervals = tbms.map{ m => (m, m.tokenInterval) }.toMap
+    // for each mention, keep only if it's the most specifically labeled among its overlappers
     val mostSpecific = for {
-      (m, intervals) <- emArgIntervals
-      competitors = emArgIntervals.filter{ other => isOverlapping(intervals, other._2) }.map(_._1)
+      (m, interval) <- intervals
+      competitors = (intervals - m).filter{ other => interval.overlaps(other._2) }.keys.toSeq
       //_ = println(s"==========\nMAIN: ${briefDesc(m)}\n==========\n${competitors.map(briefDesc).mkString("\n")}\n==========\n")
-      if isMostSpecific(m, competitors)
+      if isMostSpecific(m.label, competitors.map(_.label))
     } yield m
-    tbms ++ mostSpecific
+    mostSpecific.toSeq ++ ems
   }
 
-  def briefDesc(m: Mention): String = {
-    val arguments = m.arguments.flatMap{ case (lbl, args) =>
-        args.map(arg => s"""$lbl = "${arg.text}"""")
-    }
-    s"${m.label} (${arguments.mkString(", ")})"
-  }
+//  def briefDesc(m: Mention): String = {
+//    val arguments = m.arguments.flatMap{ case (lbl, args) =>
+//        args.map(arg => s"""$lbl = "${arg.text}"""")
+//    }
+//    s"${m.label} (${arguments.mkString(", ")})"
+//  }
 
-  /**
-    * Returns true if for every argument in a, there's an argument in b with the same label that
-    * overlaps it, and vice versa.
-    * NB: inefficient
-    */
-  def isOverlapping(a: Map[String, Seq[Interval]], b: Map[String, Seq[Interval]]): Boolean = {
-    if(a.keys.toSet != b.keys.toSet) return false
+//  /**
+//    * Returns true if for every argument in a, there's an argument in b with the same label that
+//    * overlaps it, and vice versa.
+//    * NB: inefficient
+//    */
+//  def isOverlapping(a: Map[String, Seq[Interval]], b: Map[String, Seq[Interval]]): Boolean = {
+//    if(a.keys.toSet != b.keys.toSet) return false
+//
+//    val aAccountedFor = a.forall{ case (aLbl, aIntervals) =>
+//      aIntervals.forall{ aInterval =>
+//        b.exists{ case (bLbl, bIntervals) =>
+//          aLbl == bLbl && bIntervals.exists(_ overlaps aInterval)
+//        }
+//      }
+//    }
+//    val bAccountedFor = b.forall{ case (bLbl, bIntervals) =>
+//      bIntervals.forall{ bInterval =>
+//        a.exists{ case (aLbl, aIntervals) =>
+//          bLbl == aLbl && aIntervals.exists(_ overlaps bInterval)
+//        }
+//      }
+//    }
+//
+//    aAccountedFor && bAccountedFor
+//  }
 
-    val aAccountedFor = a.forall{ case (aLbl, aIntervals) =>
-      aIntervals.forall{ aInterval =>
-        b.exists{ case (bLbl, bIntervals) =>
-          aLbl == bLbl && bIntervals.exists(_ overlaps aInterval)
-        }
-      }
-    }
-    val bAccountedFor = b.forall{ case (bLbl, bIntervals) =>
-      bIntervals.forall{ bInterval =>
-        a.exists{ case (aLbl, aIntervals) =>
-          bLbl == aLbl && aIntervals.exists(_ overlaps bInterval)
-        }
-      }
-    }
+//  def isMostSpecific(mention: Mention, competitors: Seq[Mention]): Boolean = {
+//    competitors.forall{ competitor =>
+//      isMoreSpecific(mention.arguments, competitor.arguments)
+//    }
+//  }
+//
+//  def isMoreSpecific(a: Map[String, Seq[Mention]], b: Map[String, Seq[Mention]]): Boolean = {
+//    (a.keys ++ b.keys).forall{ lbl =>
+//      a.getOrElse(lbl, Nil).forall{ am =>
+//        b
+//          .getOrElse(lbl, Nil)
+//          .filter(_.tokenInterval overlaps am.tokenInterval)
+//          .forall{ bm =>
+//            isMoreSpecific(am.label, bm.label)
+//          }
+//      }
+//    }
+//  }
 
-    aAccountedFor && bAccountedFor
-  }
-
-  def isMostSpecific(mention: Mention, competitors: Seq[Mention]): Boolean = {
-    competitors.forall{ competitor =>
-      isMoreSpecific(mention.arguments, competitor.arguments)
-    }
-  }
-
-  def isMoreSpecific(a: Map[String, Seq[Mention]], b: Map[String, Seq[Mention]]): Boolean = {
-    (a.keys ++ b.keys).forall{ lbl =>
-      a.getOrElse(lbl, Nil).forall{ am =>
-        b
-          .getOrElse(lbl, Nil)
-          .filter(_.tokenInterval overlaps am.tokenInterval)
-          .forall{ bm =>
-            isMoreSpecific(am.label, bm.label)
-          }
-      }
-    }
+  def isMostSpecific(mentionLabel: String, competitors: Seq[String]): Boolean = {
+    competitors.forall{ c => isMoreSpecific(mentionLabel, c) }
   }
 
   def isMoreSpecific(a: String, b: String): Boolean = {
@@ -137,4 +139,9 @@ object MentionFilter {
     res
   }
 
+  def keepMultipleArgs(ms: Seq[Mention]): Seq[Mention] = {
+    val (tbms, ems) = ms.partition(_.isInstanceOf[TextBoundMention])
+    val emsMultipleArgs = ems.filter{ m => m.arguments.values.flatten.size > 1 }
+    tbms ++ emsMultipleArgs
+  }
 }

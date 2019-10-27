@@ -51,16 +51,12 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
       Nil
     }
     val npEntities = MentionFilter.keepNpEntities(entities)
-    val events = eventEngine.extractFrom(doc, State(npEntities))
-    // println(s"${events.length} events")
+    val mostSpecific = MentionFilter.keepMostSpecific(npEntities)
+    val events = eventEngine.extractFrom(doc, State(mostSpecific))
     val split = CollabActions.splitEvents(events, State(events))
-    // println(s"${split.length} events")
-    val nonOverlapping = MentionFilter.nonIdenticalArgs(split)
-    // println(s"${nonOverlapping.length} events")
-    val mostSpecific = MentionFilter.keepMostSpecific(nonOverlapping)
-    // println(s"${mostSpecific.length} events")
-    val nonDuplicates = MentionFilter.keepFirst(mostSpecific)
-    // println(s"${nonDuplicates.length} events")
+    val multipleArgs = MentionFilter.keepMultipleArgs(split)
+    val nonOverlapping = MentionFilter.nonIdenticalArgs(multipleArgs)
+    val nonDuplicates = MentionFilter.keepFirst(nonOverlapping)
 
     nonDuplicates.map(_.toCollabMention)
   }
