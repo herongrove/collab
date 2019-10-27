@@ -59,7 +59,7 @@ class KorrectDocuments(val config: Config) {
       .replaceAll("([A-Za-z])/([A-Za-z])", "$1 / $2")
 
   def removeNewlines(text: String): String = {
-    text.replaceAll("(?<=\n)([^ #*\n][^\r\n]+)\r?\n", "$1")
+    text.replaceAll("(?<=\n)([^ #*\n][^\r\n]+)\r?\n", "$1 ")
   }
 
   def addNewlines(text: String): String =
