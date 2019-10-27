@@ -3,8 +3,9 @@ taxonomy: com/github/danebell/collab/grammar/taxonomy.yml
 vars:
   event_action: "mkCollabMention"
   consult_triggers: "consult"
-  collaboration_triggers: "collaborat|work|cooperat|contract|meet|talk|discuss|partner"
+  collaboration_triggers: "collaborat|work|cooperat|contract|meet|talk|partner|team|advi[cs]|discuss|assist"
   pos_verbs: "(re)?initiat|beg[ai]n|(re)?start|continu|(re)?launch|undertak|(re)?establish|institut"
+  continuance_deps: "conj|compound|amod|nmod_(such_as|including)|appos"
 
 rules:
   - import: com/github/danebell/collab/grammar/events/collaboration.yml
@@ -13,6 +14,7 @@ rules:
       trigger: ${collaboration_triggers}
       label: "Collaboration"
       posVerbs: ${pos_verbs}
+      continuance: ${continuance_deps}
 
   - import: com/github/danebell/collab/grammar/events/consultation.yml
     vars:
@@ -20,3 +22,4 @@ rules:
       trigger: ${consult_triggers}
       label: "Collaboration"
       posVerbs: ${pos_verbs}
+      continuance: ${continuance_deps}
