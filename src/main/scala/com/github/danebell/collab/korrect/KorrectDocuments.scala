@@ -34,12 +34,11 @@ class KorrectDocuments(val config: Config) {
 
   def addSpace(text: String): String =
     text
-      .replaceAll("([A-Za-z])\\.(\\d)", "$1. $2")
-      .replaceAll("([A-Za-z])(\\d)", "$1 $2")
+      .replaceAll("([A-Za-z][!?:\\.”]*)(\\d)", "$1 $2")
       .replaceAll("(\\d)([A-Za-z])", "$1 $2")
       .replaceAll("([a-z])([A-Z])", "$1 $2")
       .replaceAll("X([A-Z])", "$1")
-      .replaceAll("""([?:\\.”])([A-Za-z])""", "$1 $2")
+      .replaceAll("([!?:\\.”])([A-Za-z])", "$1 $2")
       .replaceAll("([A-Za-z])/([A-Za-z])", "$1 / $2")
 
   def addNewlines(text: String): String =
