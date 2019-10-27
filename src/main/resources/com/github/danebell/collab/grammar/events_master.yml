@@ -7,7 +7,7 @@ vars:
   assess_triggers: "assess|determin|evaluat|analy[sz]"
   directive_triggers: "activat|direct|command|order"
   info_triggers: "discuss|talk|advi[cs]|consult"
-  meeting_triggers: "attend|meet"
+  meeting_triggers: "attend|meet|host"
   support_triggers: "assist|support"
   pos_verbs: "(re)?initiat|begin|(re)?start|continu|(re)?launch|undertak|(re)?establish|institut"
   continuance_deps: "conj|compound|amod|nmod_(such_as|including)|appos"

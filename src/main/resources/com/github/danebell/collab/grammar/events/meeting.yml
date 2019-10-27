@@ -28,7 +28,7 @@
     trigger = [lemma=/^(${trigger})/ & tag=/^N/]
     actor:Entity+ = >nmod_between >nmod_of? /${continuance}/{,2}
 
-- name: "${label}-syntax-verb-attend-1"
+- name: "${label}-syntax-verb-1"
   example: "CFRW staff, board members and volunteers attended an event at the Family YMCA"
   label: ${label}
   action: ${eventAction}
@@ -36,6 +36,24 @@
     trigger = [lemma=attend & tag=/^V/]
     actor1:Entity+ = >nsubj /${continuance}/{,2}
     actor2:Entity+ = >dobj >nmod_at? /${continuance}/{,2}
+
+- name: "${label}-syntax-verb-2"
+  example: "CFRW will host a meeting of the YMCA members, including the governor and the City of Wilmington"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor1:Entity+ = >nsubj /${continuance}/{,2}
+    actor2:Entity+ = >dobj >/nmod_(including|of)/{,2} /${continuance}/{,2}
+
+- name: "${label}-syntax-verb-3"
+  example: "CFRW is planning to host a meeting of the YMCA members, including the governor and the City of Wilmington"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor1:Entity+ = <xcomp? >/nsubj(pass)/ /${continuance}/{,2}
+    actor2:Entity+ = <xcomp? >dobj? >/nmod_(including|of)/{,2} /${continuance}/{,2}
 
 ###############
 # TOKEN RULES #
