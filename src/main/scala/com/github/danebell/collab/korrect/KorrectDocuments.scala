@@ -51,7 +51,7 @@ class KorrectDocuments(val config: Config) {
       // headers and bullets
       .replaceAll("(?<=\n) *[#*]+", "")
       // headers and bullets
-      .replaceAll("^ *[#*]+", "")
+      .replaceAll("^ *[#*]+ *", "")
   }
 
   def addSpace(text: String): String =
