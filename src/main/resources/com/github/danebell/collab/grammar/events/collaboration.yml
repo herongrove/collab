@@ -9,7 +9,7 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/^(${trigger})/ & tag=/^N/]
-    actor:Entity+ = >/nmod_(of|between)/? >nmod_including? >nmod_from? /${continuance}/{,2}
+    actor:Entity+ = >/nmod_(of|between)/? >/nmod_(including|including)/{,2} /${continuance}/{,2}
 
 - name: "collaboration-syntax-noun-counsel-1"
   example: "The Miles  Firm is legal counsel to the Authority Board and continues to  advise  staff  regarding  in-house  legal  issues."
@@ -52,7 +52,7 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=agreement & tag=/^N/]
-    actor:Entity+ = <nmod_into <advcl? >nsubj /${continuance}/{,2}
+    actor:Entity+ = <nmod_into? <advcl? >nsubj >nmod_of /${continuance}/{,2}
 
 - name: "collaboration-syntax-verb-represent-1a"
   example: "Participants represented the National Drought Mitigation Center and NIDIS."
@@ -63,11 +63,11 @@
     actor:Entity+ = >dobj /${continuance}/{,2}
 
 - name: "collaboration-syntax-verb-represent-1b"
-  example: "Participants represented the National Drought Mitigation Center and NIDIS."
+  example: "The National Drought Mitigation Center and NIDIS were represented."
   label: ${label}
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=represent & tag=/^VB[DN]/] (?= by the? [lemma=/(?i)^participant$/])
+    trigger = [lemma=represent & tag=/^VB[DN]/]
     actor:Entity+ = >nsubjpass /${continuance}/{,2}
 
 - name: "collaboration-syntax-verb-work-1"
