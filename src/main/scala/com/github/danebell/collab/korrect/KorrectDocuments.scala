@@ -47,7 +47,7 @@ class KorrectDocuments(val config: Config) {
       // italics
       .replaceAll("_([^_]+)_", "$1")
       // remaining square brackets
-      .replaceAll("[\\[\\]]", "$1")
+      .replaceAll("[\\[\\]]", "")
       // headers and bullets
       .replaceAll("(?<=\n) *[#*]+", "")
       // headers and bullets
