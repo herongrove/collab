@@ -18,14 +18,22 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
   var entityEngine = ExtractorEngine(entityRules, actions)
   var eventEngine = ExtractorEngine(eventRules, actions)
 
+  val triggers = "(?i)\\b(activat|advi[cs]|agree|analy[sz]|assess|assist|attend|collaborat|command|consult|contract|cooperat|coordinat|determin|direct|discuss|evaluat|host|meet|order|partner|sign|support|talk|team|work)".r
+
   def allRules: String =
     Seq(entityRules, eventRules).mkString("\n\n")
 
   def annotate(text: String, keepText: Boolean = true): Document = {
     val doc = proc.mkDocument(text, keepText)
-    val relevant = doc
-      .sentences
-      //.filter(_.getSentenceText.toLowerCase.contains("consult"))
+    val relevantSentenceIndices = for {
+      (s, i) <- doc.sentences.zipWithIndex
+      if triggers.findFirstIn(s.getSentenceText).nonEmpty
+    } yield Seq(i, i - 1)
+    val relevant = relevantSentenceIndices
+      .flatten
+      .distinct
+      .sorted
+      .map(doc.sentences)
       .map(_.getSentenceText)
       .mkString(" ")
     val relevantDoc = proc.mkDocument(relevant, keepText)

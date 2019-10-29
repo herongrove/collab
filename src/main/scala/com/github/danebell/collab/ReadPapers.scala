@@ -26,7 +26,7 @@ object ReadPapers extends App with LazyLogging {
   val papers = listFilesRecursively(papersDir).filterNot{ f => alreadyDone.contains(f.getName) }
   val numPapers = papers.length
 
-  val triggers = "activat|advi[cs]|agree|analy[sz]|assess|assist|attend|collaborat|command|consult|contract|cooperat|coordinat|determin|direct|discuss|evaluat|host|meet|order|partner|sign|support|talk|team|work".r
+  val triggers = "(?i)\\b(activat|advi[cs]|agree|analy[sz]|assess|assist|attend|collaborat|command|consult|contract|cooperat|coordinat|determin|direct|discuss|evaluat|host|meet|order|partner|sign|support|talk|team|work)".r
 
   papers.par.foreach { file =>
     val txt = getTextFromFile(file)
