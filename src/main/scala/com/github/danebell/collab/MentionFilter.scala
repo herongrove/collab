@@ -22,7 +22,7 @@ object MentionFilter {
     */
   def keepFirst(ms: Seq[Mention]): Seq[Mention] = {
     val (tbms, events) = ms.partition(_.isInstanceOf[TextBoundMention])
-    val sameArgs = events.groupBy{ m => (m.label, m.arguments) }.values
+    val sameArgs = events.groupBy{ m => (m.sentence, m.label, m.arguments) }.values
     tbms ++ sameArgs.map{ group =>
       group.maxBy(_.isInstanceOf[EventMention])
     }
@@ -76,7 +76,9 @@ object MentionFilter {
     // for each mention, keep only if it's the most specifically labeled among its overlappers
     val mostSpecific = for {
       (m, interval) <- intervals
-      competitors = (intervals - m).filter{ other => interval.overlaps(other._2) }.keys.toSeq
+      competitors = (intervals - m).filter{ other =>
+        other._1.sentence == m.sentence & interval.overlaps(other._2)
+      }.keys.toSeq
       //_ = println(s"==========\nMAIN: ${briefDesc(m)}\n==========\n${competitors.map(briefDesc).mkString("\n")}\n==========\n")
       if isMostSpecific(m.label, competitors.map(_.label))
     } yield m
