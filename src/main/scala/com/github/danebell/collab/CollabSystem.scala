@@ -27,11 +27,12 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
     val doc = proc.mkDocument(text, keepText)
     val relevantSentenceIndices = for {
       (s, i) <- doc.sentences.zipWithIndex
+      if s.getSentenceText.split("\\s+").length < 80
       if triggers.findFirstIn(s.getSentenceText).nonEmpty
     } yield Seq(i, i - 1)
     val relevant = relevantSentenceIndices
       .flatten
-      .filterNot(_ < 0)
+      .filter(_ >= 0)
       .distinct
       .sorted
       .map(doc.sentences)
