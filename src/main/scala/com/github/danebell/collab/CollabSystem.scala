@@ -31,6 +31,7 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
     } yield Seq(i, i - 1)
     val relevant = relevantSentenceIndices
       .flatten
+      .filterNot(_ < 0)
       .distinct
       .sorted
       .map(doc.sentences)
