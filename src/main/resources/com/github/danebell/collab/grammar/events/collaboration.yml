@@ -8,7 +8,7 @@
   label: ${label}
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/] | [lemma=/^(${trigger})/ & tag=/^J/] [lemma=effort]
     actor:Entity+ = >/nmod_(of|between)/? >/nmod_(from|including)/{,2} /${continuance}/{,2}
 
 - name: "${label}-syntax-noun-talks-between-1"
@@ -41,7 +41,7 @@
   action: ${eventAction}
   pattern: |
     trigger = [lemma=/^(${trigger})/ & tag=/^V/]
-    actor1:Entity+ = (<xcomp /${pos_verbs}/)? >nsubj /${continuance}/{,2}
+    actor1:Entity+ = (<xcomp /${pos_verbs}/)? (>nsubj|<acl) /${continuance}/{,2}
     actor2:Entity+ = >nmod_with /${continuance}/{,2}
 
 - name: "${label}-syntax-verb-1"
@@ -70,6 +70,31 @@
     trigger = [lemma=/^(${trigger})/ & tag=/^V/]
     actor:Entity+ = (<xcomp /${pos_verbs}/)? >nsubj /${continuance}/{,2}
 
+- name: "${label}-syntax-verb-4"
+  example: "A study was performed by BAE for NCDENR"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^V/]
+    actor1:Entity+ = (<xcomp /${pos_verbs}/)? (>/nmod_agent|nmod_by/)? >nmod_for /${continuance}/{,2}
+    actor2:Entity+ = (<xcomp /${pos_verbs}/)? (>nmod_for)? >/nmod_agent|nmod_by/ /${continuance}/{,2}
+
+- name: "${label}-syntax-establish-1"
+  example: "DCM and FEMA established a relationship"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor:Entity+ = (<dobj /${pos_verbs}/)? >nsubj /${continuance}/{,2}
+
+- name: "${label}-syntax-establish-2"
+  example: "DCM established a relationship with FEMA"
+  label: ${label}
+  action: ${eventAction}
+  pattern: |
+    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
+    actor1:Entity+ = (</.+/ | >/.+/)*
+    actor2:Entity+ = (</.+/ | >/.+/)*
 
 ###############
 # TOKEN RULES #
@@ -81,7 +106,7 @@
   label: ${label}
   action: ${eventAction}
   pattern: |
-    (?<trigger> [lemma=team & tag=/^N/])
+    (?<trigger> [lemma=/^(${trigger})/ & tag=/^N/])
     (consisting? of|including)
     ([tag=/NNS?/]+ from)?
     [tag=DT]* @actor:Entity
@@ -111,13 +136,28 @@
     [lemma=be & tag=/^VBD/] (?<trigger> [lemma=represent & tag=/^VB[DN]/])
     by the? [lemma=participant]
 
-- name: "partners-token"
+- name: "${label}-partners-token"
   example: "Partners: East Carolina University, NC Sea Grant"
   label: ${label}
   action: ${eventAction}
   type: token
   pattern: |
     (?<trigger> [lemma=/member|partner|participant/] [lemma=organization]?) (":" | [lemma=include])
+    [tag=DT]* @actor:Entity
+    (("," [tag=DT]* @actor:Entity)*
+    ","? (and | as well as)? [tag=DT]* @actor:Entity)?
+
+- name: "${label}-token-establish"
+  example: "DCM established a relationship with FEMA"
+  label: ${label}
+  action: ${eventAction}
+  type: token
+  pattern: |
+    [tag=DT]* @actor:Entity
+    (("," [tag=DT]* @actor:Entity)*
+    ","? (and | as well as)? [tag=DT]* @actor:Entity)?
+    /${pos_verbs}/ [tag=DT]* [tag=JJ]*
+    (?<trigger> [lemma=/^(${trigger})/])
     [tag=DT]* @actor:Entity
     (("," [tag=DT]* @actor:Entity)*
     ","? (and | as well as)? [tag=DT]* @actor:Entity)?

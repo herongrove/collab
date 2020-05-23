@@ -48,19 +48,38 @@ class CollabProcessor(
       //println(s"PARSING SENTENCE: ${sentence.words.mkString(", ")}")
       //println(sentence.tags.get.mkString(", "))
       //println(sentence.lemmas.get.mkString(", "))
-      val dg = depParser.parseSentence(sentence)
-
-      if (useUniversalDependencies) {
-        sentence.setDependencies(GraphMap.UNIVERSAL_BASIC, dg)
-        sentence.setDependencies(GraphMap.UNIVERSAL_ENHANCED,
-          EnhancedDependencies.generateUniversalEnhancedDependencies(sentence, dg))
-      } else {
-        sentence.setDependencies(GraphMap.STANFORD_BASIC, dg)
-        sentence.setDependencies(GraphMap.STANFORD_COLLAPSED,
-          EnhancedDependencies.generateStanfordEnhancedDependencies(sentence, dg))
+      try {
+        val dg = depParser.parseSentence(sentence)
+        if (useUniversalDependencies) {
+          sentence.setDependencies(GraphMap.UNIVERSAL_BASIC, dg)
+          sentence.setDependencies(GraphMap.UNIVERSAL_ENHANCED,
+            EnhancedDependencies.generateUniversalEnhancedDependencies(sentence, dg))
+        } else {
+          sentence.setDependencies(GraphMap.STANFORD_BASIC, dg)
+          sentence.setDependencies(GraphMap.STANFORD_COLLAPSED,
+            EnhancedDependencies.generateStanfordEnhancedDependencies(sentence, dg))
+        }
+      } catch { case e: Throwable =>
+        println(s"failed to parse '${sentence.getSentenceText}'")
       }
     }
   }
+
+  override def lemmatize(doc:Document) {
+    basicSanityCheck(doc)
+    for(sent <- doc.sentences) {
+      // println(s"Lemmatize sentence: ${sent.words.mkString(", ")}")
+      val lemmas = new Array[String](sent.size)
+      for(i <- sent.words.indices) {
+        lemmas(i) = lemmatizer.lemmatizeWord(sent.words(i))
+        if (lemmas(i).isEmpty) {
+          lemmas(i) = sent.words(i)
+        }
+      }
+      sent.lemmas = Some(lemmas)
+    }
+  }
+
 
 }
 

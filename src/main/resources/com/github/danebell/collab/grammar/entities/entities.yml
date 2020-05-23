@@ -24,14 +24,9 @@
   priority: 2
   type: token
   pattern: |
-    [entity=ORGANIZATION & ! mention=Avoid] [entity=ORGANIZATION & ! mention=Avoid]*
-
-- name: ner-org2
-  label: Organization
-  priority: 2
-  type: token
-  pattern: |
-    [entity="B-Organization" & ! mention=Avoid] [entity="I-Organization" & ! mention=Avoid]*
+    [entity=ORGANIZATION & ! mention=Avoid]*
+    [entity=/B-Organization|ORGANIZATION/ & ! mention=Avoid]
+    [entity=/I-Organization|ORGANIZATION/ & ! mention=Avoid]*
 
 - name: ner-loc
   label: Location
