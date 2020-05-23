@@ -61,3 +61,8 @@ sbt "runMain com.github.danebell.collab.utils.MergeOutput"
 ```
 For very large collections, it will be faster to use command-line functions, so a script is 
 provided at `./merge.sh`. Note that you must run this script from the `collab.data` location.
+
+## Citing
+
+If you use this repository, please cite the following work:
+> Bell, Emily V., Elizabeth A. Albright, and Dane Bell.  “Mitigating Hazard through Collaborative PolicyNetworks:  A  Study  of  Policy  Learning  in  Urban  Stormwater  Management.”   Association  for  PublicPolicy Analysis and Management Fall Research Conference, Denver, CO, November2019.
