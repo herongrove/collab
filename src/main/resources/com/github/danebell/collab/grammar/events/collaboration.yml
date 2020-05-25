@@ -92,9 +92,9 @@
   label: ${label}
   action: ${eventAction}
   pattern: |
-    trigger = [lemma=/^(${trigger})/ & tag=/^N/]
-    actor1:Entity+ = (</.+/ | >/.+/)*
-    actor2:Entity+ = (</.+/ | >/.+/)*
+    trigger = [lemma=/^(${trigger})/]
+    actor1:Entity+ = (</dobj|xcomp/ /${pos_verbs}/)? >nsubj /${continuance}/{,2}
+    actor2:Entity+ = (</dobj|xcomp/ /${pos_verbs}/)? >nmod_with /${continuance}/{,2}
 
 ###############
 # TOKEN RULES #
@@ -149,15 +149,17 @@
 
 - name: "${label}-token-establish"
   example: "DCM established a relationship with FEMA"
+  example: "The U.S. Army has agreed to participate with BAE"
   label: ${label}
   action: ${eventAction}
   type: token
   pattern: |
-    [tag=DT]* @actor:Entity
+    @actor:Entity
     (("," [tag=DT]* @actor:Entity)*
     ","? (and | as well as)? [tag=DT]* @actor:Entity)?
     /${pos_verbs}/ [tag=DT]* [tag=JJ]*
     (?<trigger> [lemma=/^(${trigger})/])
+    with
     [tag=DT]* @actor:Entity
     (("," [tag=DT]* @actor:Entity)*
     ","? (and | as well as)? [tag=DT]* @actor:Entity)?

@@ -18,7 +18,7 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
   var entityEngine = ExtractorEngine(entityRules, actions)
   var eventEngine = ExtractorEngine(eventRules, actions)
 
-  val triggers = "(?i)\\b(activat|advi[cs]|agree|analy[sz]|assess|assist|attend|collaborat|command|consult|contract|cooperat|coordinat|determin|direct|discuss|establish|evaluat|host|meet|order|partner|perform|sign|support|talk|team|work)".r
+  val triggers = "(?i)\\b(activat|advi[cs]|agree|analy[sz]|assess|assist|attend|collaborat|command|consult|contract|cooperat|coordinat|determin|direct|discuss|establish|evaluat|host|meet|order|participat|partner|perform|relation|sign|support|talk|team|work)".r
 
   def allRules: String =
     Seq(entityRules, eventRules).mkString("\n\n")
