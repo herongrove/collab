@@ -43,7 +43,7 @@ sbt "runMain com.github.danebell.collab.korrect.KorrectDocuments"
 
 Adjust `collab.out` to be the directory where you want the relation extractions printed. Then, run 
 ```
-sbt "runMain com.github.danebell.collab.ReadPapers
+sbt "runMain com.github.danebell.collab.ReadPapers"
 ```
 This is best done on a computer with many threads and lots of memory. To make use of this memory, 
 adjust `./.sbtopts` to an appropriate value, e.g. `-J-Xmx63G` for 63 GB of memory. 
@@ -65,4 +65,4 @@ provided at `./merge.sh`. Note that you must run this script from the `collab.da
 ## Citing
 
 If you use this repository, please cite the following work:
-> Bell, Emily V., Elizabeth A. Albright, and Dane Bell.  “Mitigating Hazard through Collaborative PolicyNetworks:  A  Study  of  Policy  Learning  in  Urban  Stormwater  Management.”   Association  for  PublicPolicy Analysis and Management Fall Research Conference, Denver, CO, November2019.
+> Bell, Emily V., Elizabeth A. Albright, and Dane Bell.  “Mitigating Hazard through Collaborative PolicyNetworks:  A  Study  of  Policy  Learning  in  Urban  Stormwater  Management.”   Association  for  PublicPolicy Analysis and Management Fall Research Conference, Denver, CO, November 2019.
