@@ -11,6 +11,7 @@ import scala.io.Source
 
 object FileUtils extends LazyLogging {
   val utf8 = StandardCharsets.UTF_8.toString
+//  val utf8 = StandardCharsets.ISO_8859_1.toString
 
   def listFiles(dir: String): Seq[File] = {
     listFiles(new File(dir))
@@ -44,11 +45,13 @@ object FileUtils extends LazyLogging {
       throw newFileNotFoundException(path)
     //logger.info("Sourcing resource " + url.getPath())
     Source.fromURL(url, utf8)
+//    Source.fromURL(url, iso)
   }
 
   def sourceFromFile(file: File): BufferedSource = {
     //logger.info("Sourcing file " + file.getPath())
     Source.fromFile(file, utf8)
+//    Source.fromFile(file, iso)
   }
 
   def sourceFromFile(path: String): BufferedSource = sourceFromFile(new File(path))
@@ -64,6 +67,9 @@ object FileUtils extends LazyLogging {
   protected def getTextFromSource(source: Source): String = {
     try {
       source.mkString
+    } catch { case e: Exception =>
+      println(source.descr)
+      ""
     }
     finally {
       source.close()
