@@ -58,4 +58,18 @@ class TestEvents extends FlatSpec with Matchers {
     val less = ms filter (_ matches "Collaboration")
     less should have length (1)
   }
+
+  it should "find collaboration in 'X and Y discussed Z'" in {
+    val s = "DCM  and FEMA discussed killing the moon"
+    val ms = getMentions(s)
+    val less = ms filter (_ matches "Collaboration")
+    less should have length (1)
+  }
+
+  it should "find collaboration in ''" in {
+    val s = "DCM  and FEMA discussed killing the moon"
+    val ms = getMentions(s)
+    val less = ms filter (_ matches "Collaboration")
+    less should have length (1)
+  }
 }
