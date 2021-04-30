@@ -85,6 +85,8 @@ object FileUtils extends LazyLogging {
     writeTextToFile(Paths.get(dir, file).toFile, text)
   }
 
+  def writeTextToFile(file: String, text: String): Unit = writeTextToFile(new File(file), text)
+
   def writeTextToFile(file: File, text: String): Unit = {
     if (! file.getParentFile.exists) {
       file.getParentFile.mkdirs()

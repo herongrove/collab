@@ -7,7 +7,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import com.github.danebell.collab.utils.FileUtils
 
 class KorrectDocuments(val config: Config) {
-  val dict: Set[String] = FileUtils.getTextFromResource(config.getString("collab.dict"))
+  val dict: Set[String] = FileUtils.getTextFromFile(config.getString("collab.dict"))
     .split("\n+")
     .map(_.trim.toLowerCase)
     .toSet

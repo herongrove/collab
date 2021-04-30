@@ -32,7 +32,7 @@ class CollabSystem(rules: Option[Rules] = None) extends LazyLogging {
 
     if(relevantDoc.sentences.nonEmpty) try {
       proc.annotate(relevantDoc)
-    }
+    } catch { case e: Exception => () }
 
     relevantDoc
   }
