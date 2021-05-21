@@ -26,8 +26,13 @@ source activate collab
 ```
 To actually run the converter, use something like
 ```
-python ./src/main/python/textFromDir.py /path/to/pdf /path/to/raw
+python ./src/main/python/textFromDir.py [-t threads] /path/to/pdf /path/to/raw
 ```
+For example, if you want to use 4 [threads](https://www.reddit.com/r/explainlikeimfive/comments/1jiez7/eli5_multithreading_computer_architecure_and/) to convert PDFs in `/data/myproject/pdf` to raw text in `/data/myproject/raw`, you'd enter
+```
+python ./src/main/python/textFromDir.py -t4 /data/myproject/pdf /data/myproject/raw
+```
+
 This system doesn't work well on tables yet.
 
 ### Clean up txt documents
