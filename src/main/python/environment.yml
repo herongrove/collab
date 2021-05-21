@@ -1,6 +1,10 @@
 name: collab
+channels:
+  - conda-forge
 dependencies:
-  - python=2.7
+  - python>=3
   - pip
+  - tqdm>=4.42.0
   - pip:
     - pdfminer
+    - PyPDF2
